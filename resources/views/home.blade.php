@@ -3,11 +3,13 @@
 @section('slider')
 <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner">
-        <?php $sliders = App\Slider::all(); ?>
+        <?php $sliders = App\Slider::all();
+        $i=1; ?>
         @foreach($sliders as $slider)
-        <div class="carousel-item">
-            <img class="d-block w-100" src="{{ url('http://admin.mobilngetop.com/'.$slider->picture) }}">            
+        <div class="carousel-item {{ $i == 1 ? 'active' : null }}">
+            <img class="d-block w-100" src="{{ url('https://admin.mobilngetop.com/'.$slider->picture) }}">            
         </div>
+        {{ i++ }}
         @endforeach        
     </div>
 </div>
