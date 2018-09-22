@@ -19,7 +19,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/footer.css') }}" rel="stylesheet">
+    <!-- <link href="{{ asset('css/footer.css') }}" rel="stylesheet"> -->
 </head>
 <body>
     <div id="app">
@@ -49,13 +49,13 @@
                     <div class="row justify-content-center">
                         <ul class="nav nav-tabs mx-auto" style="margin-bottom: -20px;">
                             <li class="nav-item">
-                                <a class="nav-link nav-item-menu d-none d-sm-none d-md-block d-lg-block d-xl-block" href="#">Mobil</a>
+                                <a class="nav-link nav-item-menu d-none d-sm-none d-md-block d-lg-block d-xl-block" href="#" style="padding-left: 50px;padding-right: 50px;">Mobil</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link nav-item-menu d-none d-sm-none d-md-block d-lg-block d-xl-block" href="#">Promo</a>
+                                <a class="nav-link nav-item-menu d-none d-sm-none d-md-block d-lg-block d-xl-block" href="#" style="padding-left: 50px;padding-right: 50px;">Promo</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link nav-item-menu d-none d-sm-none d-md-block d-lg-block d-xl-block" href="#">Artikel</a>
+                                <a class="nav-link nav-item-menu d-none d-sm-none d-md-block d-lg-block d-xl-block" href="#" style="padding-left: 50px;padding-right: 50px;">Artikel</a>
                             </li>
                         </ul>
                     </div>
@@ -63,12 +63,9 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
-                        @guest
+                        @guest                        
                         <li class="nav-item">
-                            <div class="col"></div>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('login') }}" class="btn btn-primary">Login</a>
+                            <a href="{{ route('login') }}" class="btn btn-primary">Sign In</a>
                         </li>                        
                         @else
                         <li class="nav-item dropdown">

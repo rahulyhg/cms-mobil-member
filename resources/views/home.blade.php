@@ -3,15 +3,12 @@
 @section('slider')
 <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner">
-        <div class="carousel-item active">
-            <img class="d-block w-100" src="{{ asset('inset/homeslide-1.jpg') }}">
-        </div>
+        <?php $sliders = App\Slider::all(); ?>
+        @foreach($sliders as $slider)
         <div class="carousel-item">
-            <img class="d-block w-100" src="{{ asset('inset/homeslide-1.jpg') }}">
+            <img class="d-block w-100" src="{{ url('http://admin.mobilngetop.com/'.$slider->picture) }}">            
         </div>
-        <div class="carousel-item">
-            <img class="d-block w-100" src="{{ asset('inset/homeslide-1.jpg') }}">
-        </div>
+        @endforeach        
     </div>
 </div>
 <div class="row justify-content-center">
