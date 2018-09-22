@@ -9,7 +9,7 @@
         <div class="carousel-item {{ $i == 1 ? 'active' : null }}">
             <img class="d-block w-100" src="{{ url('https://admin.mobilngetop.com/'.$slider->picture) }}">            
         </div>
-        {{ $i++ }}
+        <?php $i++; ?>        
         @endforeach        
     </div>
 </div>
