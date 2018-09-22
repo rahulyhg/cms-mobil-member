@@ -34,6 +34,7 @@ publicftp
 /.spamassassin
 /.ssh
 /.trash
+/.gitconfig
 Homestead.json
 Homestead.yaml
 npm-debug.log
