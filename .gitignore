@@ -10,6 +10,13 @@ mail
 /publicftp
 publicftp
 /public_html/admin
+/public_html/.htaccess.old
+/public_html/error_log
+/public_html/glow.zip
+/public_html/glow
+/public_html/google214af6ac7bab0f57.html
+/public_html/images/
+/public_html/index.html
 /ssl
 /tmp
 /.idea
