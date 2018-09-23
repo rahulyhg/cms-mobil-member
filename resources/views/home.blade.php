@@ -52,7 +52,7 @@
             <div class="row justify-content-center">
                 <?php $cars = App\Car::orderBy('tdp', 'asc')->limit(5)->get(); ?>
                 @foreach($cars as $car)
-                <div class="col">
+                <div class="col d-none d-sm-none d-md-block d-lg-block d-xl-block">
                     <div class="card card-item border-danger" style="background-color: transparent;">
                         <div class="card-body text-center">
                             <img src="{{ url('https://admin.mobilngetop.com/'.$car->picture) }}" class="img-fluid">                        
@@ -61,6 +61,15 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-sm-12 col-xs-12 d-md-none d-lg-none d-xl-none d-sm-block">
+                    <div class="card card-item border-danger" style="background-color: transparent;">
+                        <div class="card-body text-center">
+                            <img src="{{ url('https://admin.mobilngetop.com/'.$car->picture) }}" class="img-fluid">                        
+                            <h5 class="text-center"><b>{{ $car->name }}hp</b></h5>
+                            <h4 class="text-center text-danger"><b>Rp. {{ number_format($car->tdp,0,",",".") }}</b></h4>
+                        </div>
+                    </div>
+                </div>                
                 @endforeach                
             </div>
         </div>
@@ -78,24 +87,31 @@
         </div>
         <div class="form-group">
             <div class="row justify-content-center">
-                <div class="col-md-4">
+                <?php $testimonis = App\Testimonial::all(); ?>
+                @foreach($testimonis as $testimoni)
+                <div class="col-md-4 d-none d-sm-none d-md-block d-lg-block d-xl-block">
                     <div class="card card-item border-danger" style="background-color: transparent;">
                         <div class="card-body">
-                            <img src="{{ asset('inset/AllNewFortuner-white.png') }}" class="img-fluid">
-                            <h5><b>David</b></h5>
-                            <h5><p><b>"Terimakasih tim Mobilngetop yang sangat ramah sudah membantu menemukan mobil sesuai budget saya dan juga selalu available. Recommend Banget!!!!"</b></p></h5>
+                            <div class="text-center">
+                                <img src="{{ url('https://admin.mobilngetop.com/'.$testimoni->picture) }}" class="img-fluid">
+                            </div>
+                            <h5><b>{{ $testimoni->name }}</b></h5>
+                            <h5><p><b>"{{ $testimoni->content }}"</b></p></h5>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-sm-12 col-xs-12 d-md-none d-lg-none d-xl-none d-sm-block">
                     <div class="card card-item border-danger" style="background-color: transparent;">
                         <div class="card-body">
-                            <img src="{{ asset('inset/AllNewFortuner-white.png') }}" class="img-fluid">
-                            <h5><b>David</b></h5>
-                            <h5><p><b>"Terimakasih tim Mobilngetop yang sangat ramah sudah membantu menemukan mobil sesuai budget saya dan juga selalu available. Recommend Banget!!!!"</b></p></h5>
+                            <div class="text-center">
+                                <img src="{{ url('https://admin.mobilngetop.com/'.$testimoni->picture) }}" class="img-fluid">
+                            </div>
+                            <h5><b>{{ $testimoni->name }}</b></h5>
+                            <h5><p><b>"{{ $testimoni->content }}"</b></p></h5>
                         </div>
                     </div>
                 </div>
+                @endforeach
             </div>
         </div>        
     </div>
@@ -107,7 +123,7 @@
         </div>
         <div class="form-group">
             <div class="row justify-content-center">
-                <div class="col">
+                <div class="col-md-4">
                     <div class="card mb-3">
                         <img class="card-img-top" src="{{ asset('inset/AllNewFortuner-white.png') }}">
                         <div class="card-body">
@@ -117,7 +133,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col">
+                <div class="col-md-4">
                     <div class="card mb-3">
                         <img class="card-img-top" src="{{ asset('inset/AllNewFortuner-white.png') }}">
                         <div class="card-body">
@@ -127,7 +143,7 @@
                         </div>
                     </div>              
                 </div>
-                <div class="col">
+                <div class="col-md-4">
                     <div class="card mb-3">
                         <img class="card-img-top" src="{{ asset('inset/AllNewFortuner-white.png') }}">
                         <div class="card-body">
