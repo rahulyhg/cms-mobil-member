@@ -54,10 +54,10 @@
                 @foreach($cars as $car)
                 <div class="col">
                     <div class="card card-item border-danger" style="background-color: transparent;">
-                        <div class="card-body">
+                        <div class="card-body text-center">
                             <img src="{{ url('https://admin.mobilngetop.com/'.$car->picture) }}" class="img-fluid">                        
                             <h5 class="text-center"><b>{{ $car->name }}</b></h5>
-                            <h4 class="text-center"><b>{{ $car->tdp }}</b></h4>
+                            <h4 class="text-center text-danger"><b>Rp. {{ number_format($car->tdp,0,",",".") }}</b></h4>
                         </div>
                     </div>
                 </div>
