@@ -1,5 +1,10 @@
 @extends('layouts.app')
 
+@section('head-content')
+<link rel="stylesheet" type="text/css" href="{{ asset('slick/slick.css') }}"/>
+<link rel="stylesheet" type="text/css" href="{{ asset('slick/slick-theme.css') }}"/>
+@endsection
+
 @section('slider')
 <div class="row justify-content-center">
     <div class="col-md-12">
@@ -122,20 +127,10 @@
             <center><h1>Berita Otomotif</h1></center>
         </div>
         <div class="form-group">
-            <div class="row justify-content-center">
+            <div class="row justify-content-center slick-artikel">
                 <?php $articles = App\Article::orderBy('updated_at', 'desc')->get(); ?>
                 @foreach($articles as $article)
-                <div class="col-md-4 d-none d-sm-none d-md-block d-lg-block d-xl-block">
-                    <div class="card mb-3">
-                        <img class="card-img-top" src="{{ url('https://admin.mobilngetop.com/'.$article->picture) }}">
-                        <div class="card-body">
-                            <h5 class="card-title"><b>{{ $article->title }}</b></h5>
-                            <p class="card-text">{{ $article->content }}</p>
-                            <p class="card-text"><small style="color: #006db8;">ditulis oleh {{ $article->user->name }} pukul {{ date("H:i", strtotime($article->created_at)) }}</small></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-12 col-xs-12 d-md-none d-lg-none d-xl-none d-sm-block">
+                <div style="padding: 10px;">
                     <div class="card mb-3">
                         <img class="card-img-top" src="{{ url('https://admin.mobilngetop.com/'.$article->picture) }}">
                         <div class="card-body">
@@ -153,6 +148,9 @@
 @endsection
 
 @section('foot-content')
+<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="{{ asset('slick/slick.min.js') }}"></script>
 <script type="text/javascript">
     $(document).ready(function(){
         $('#brand').on('click', function(){
@@ -187,7 +185,12 @@
                 });
             }
         });
-        $('#brand').click();
+        $('#brand').click();    
+        $('.slick-artikel').slick({
+          infinite: true,
+          slidesToShow: 3,
+          slidesToScroll: 1
+      });
     });
 </script>
 @endsection

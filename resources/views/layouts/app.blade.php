@@ -19,6 +19,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    @yield('head-content')    
     <!-- <link href="{{ asset('css/footer.css') }}" rel="stylesheet"> -->
 </head>
 <body>
