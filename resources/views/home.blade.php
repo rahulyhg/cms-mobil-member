@@ -127,7 +127,7 @@
             <center><h1>Berita Otomotif</h1></center>
         </div>
         <div class="form-group">
-            <div class="row justify-content-center slick-artikel">
+            <div class="row justify-content-center slick-artikel d-none d-sm-none d-md-block d-lg-block d-xl-block">
                 <?php $articles = App\Article::orderBy('updated_at', 'desc')->get(); ?>
                 @foreach($articles as $article)
                 <div style="padding: 10px;">
@@ -142,7 +142,7 @@
                 </div>
                 @endforeach               
             </div>
-            <div class="row justify-content-center slick-artikel-mobile">
+            <div class="row justify-content-center slick-artikel-mobile d-md-none d-lg-none d-xl-none d-sm-block">
                 <?php $articles = App\Article::orderBy('updated_at', 'desc')->get(); ?>
                 @foreach($articles as $article)
                 <div style="padding: 10px;">
