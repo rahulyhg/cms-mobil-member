@@ -123,36 +123,29 @@
         </div>
         <div class="form-group">
             <div class="row justify-content-center">
-                <div class="col-md-4">
+                <?php $articles = App\Article::orderBy('updated_at', 'desc')->get(); ?>
+                @foreach($articles as $article)
+                <div class="col-md-4 d-none d-sm-none d-md-block d-lg-block d-xl-block">
                     <div class="card mb-3">
-                        <img class="card-img-top" src="{{ asset('inset/AllNewFortuner-white.png') }}">
+                        <img class="card-img-top" src="{{ url('https://admin.mobilngetop.com/'.$article->picture) }}">
                         <div class="card-body">
-                            <h5 class="card-title"><b>Mobil Langkanya Hilang Pria ini Rela Buang Uang Rp 4,1 Milyar!</b></h5>
-                            <p class="card-text">Bagi siapapun yang dapat menemukan keberadaan Mercedez-Benz 300SL Gullwing '1955 ini akan mendapatkan hadiah berupa uang tunai sebesar USD284 ribu atau setara dengan 4,1 Milyaran, Uang tersebut  dijanjikan oleh pemilik yang kehilangan sedan langka tersebut.</p>
-                            <p class="card-text"><small style="color: #006db8;">ditulis oleh Nia pukul 18:27</small></p>
+                            <h5 class="card-title"><b>{{ $article->title }}</b></h5>
+                            <p class="card-text">{{ $article->content }}</p>
+                            <p class="card-text"><small style="color: #006db8;">ditulis oleh {{ $article->user->name }} pukul {{ date("H:i", strtotime($article->created_at)) }}</small></p>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-sm-12 col-xs-12 d-md-none d-lg-none d-xl-none d-sm-block">
                     <div class="card mb-3">
-                        <img class="card-img-top" src="{{ asset('inset/AllNewFortuner-white.png') }}">
+                        <img class="card-img-top" src="{{ url('https://admin.mobilngetop.com/'.$article->picture) }}">
                         <div class="card-body">
-                            <h5 class="card-title"><b>Mobil Langkanya Hilang Pria ini Rela Buang Uang Rp 4,1 Milyar!</b></h5>
-                            <p class="card-text">Bagi siapapun yang dapat menemukan keberadaan Mercedez-Benz 300SL Gullwing '1955 ini akan mendapatkan hadiah berupa uang tunai sebesar USD284 ribu atau setara dengan 4,1 Milyaran, Uang tersebut  dijanjikan oleh pemilik yang kehilangan sedan langka tersebut.</p>
-                            <p class="card-text"><small style="color: #006db8;">ditulis oleh Nia pukul 18:27</small></p>
+                            <h5 class="card-title"><b>{{ $article->title }}</b></h5>
+                            <p class="card-text">{{ $article->content }}</p>
+                            <p class="card-text"><small style="color: #006db8;">ditulis oleh {{ $article->user->name }} pukul {{ date("H:i", strtotime($article->created_at)) }}</small></p>
                         </div>
-                    </div>              
+                    </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="card mb-3">
-                        <img class="card-img-top" src="{{ asset('inset/AllNewFortuner-white.png') }}">
-                        <div class="card-body">
-                            <h5 class="card-title"><b>Mobil Langkanya Hilang Pria ini Rela Buang Uang Rp 4,1 Milyar!</b></h5>
-                            <p class="card-text">Bagi siapapun yang dapat menemukan keberadaan Mercedez-Benz 300SL Gullwing '1955 ini akan mendapatkan hadiah berupa uang tunai sebesar USD284 ribu atau setara dengan 4,1 Milyaran, Uang tersebut  dijanjikan oleh pemilik yang kehilangan sedan langka tersebut.</p>
-                            <p class="card-text"><small style="color: #006db8;">ditulis oleh Nia pukul 18:27</small></p>
-                        </div>
-                    </div>              
-                </div>
+                @endforeach               
             </div>
         </div>        
     </div>
