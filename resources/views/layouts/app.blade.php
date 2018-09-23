@@ -11,7 +11,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/app.js') }}"></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
@@ -87,9 +87,9 @@
                     </ul>
                 </div>
             </div>
-        </nav>    
-        @yield('slider')        
-        @yield('content')            
+        </nav>
+        @yield('slider')
+        @yield('content')
         <footer class="footer">
             <div class="container">
                 <span class="text-muted">Place sticky footer content here.</span>
@@ -97,4 +97,5 @@
         </footer>
     </div>
 </body>
+@yield('foot-content')
 </html>

@@ -1,30 +1,39 @@
 @extends('layouts.app')
 
 @section('slider')
-<div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
-    <div class="carousel-inner">
-        <?php $sliders = App\Slider::all();
-        $i=1; ?>
-        @foreach($sliders as $slider)
-        <div class="carousel-item {{ $i == 1 ? 'active' : null }}">
-            <img class="d-block w-100" src="{{ url('https://admin.mobilngetop.com/'.$slider->picture) }}">            
+<div class="row justify-content-center">
+    <div class="col-md-12">
+        <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <?php $sliders = App\Slider::all();
+                $i=1; ?>
+                @foreach($sliders as $slider)
+                <div class="carousel-item {{ $i == 1 ? 'active' : null }}">
+                    <img class="d-block w-100 img-fluid" src="{{ url('https://admin.mobilngetop.com/'.$slider->picture) }}">
+                </div>
+                <?php $i++; ?>        
+                @endforeach        
+            </div>
         </div>
-        <?php $i++; ?>        
-        @endforeach        
     </div>
 </div>
 <div class="row justify-content-center">
     <div class="col-md-6 nav-item-menu" style="-webkit-box-shadow:0 2px 4px rgba(0,0,0,.04);box-shadow:0 2px 4px rgba(0,0,0,.04);">
         <form>
+            @csrf
             <div class="row" style="padding: 10px;">
                 <div class="col-md-4">
-                    <select class="form-control" style="width: 100%;">
-                        <option>1</option>
+                    <select class="form-control" name="brand" id="brand" style="width: 100%;">
+                        <option disabled selected> Pilih Merk </option>
+                        <?php $brands = App\Brand::orderBy('name', 'asc')->get(); ?>
+                        @foreach($brands as $brand)
+                        <option value="{{ $brand->id }}">{{ $brand->name }}</option>
+                        @endforeach
                     </select>
                 </div>
                 <div class="col-md-4">
-                    <select class="form-control" style="width: 100%;">
-                        <option>1</option>
+                    <select class="form-control" id="model" style="width: 100%;">
+                        <option disabled selected> Pilih Model </option>
                     </select>
                 </div>
                 <div class="col-md-4">
@@ -41,51 +50,18 @@
         </div>
         <div class="form-group">
             <div class="row justify-content-center">
+                <?php $cars = App\Car::orderBy('tdp', 'asc')->limit(5)->get(); ?>
+                @foreach($cars as $car)
                 <div class="col">
                     <div class="card card-item border-danger" style="background-color: transparent;">
                         <div class="card-body">
-                            <img src="{{ asset('inset/AllNewFortuner-white.png') }}" class="img-fluid">                        
-                            <h5 class="text-center"><b>All New Fortuner</b></h5>
-                            <h4 class="text-center"><b>RP100000</b></h4>
+                            <img src="{{ url('https://admin.mobilngetop.com/'.$car->picture) }}" class="img-fluid">                        
+                            <h5 class="text-center"><b>{{ $car->name }}</b></h5>
+                            <h4 class="text-center"><b>{{ $car->tdp }}</b></h4>
                         </div>
                     </div>
                 </div>
-                <div class="col">
-                    <div class="card card-item border-danger" style="background-color: transparent;">
-                        <div class="card-body">
-                            <img src="{{ asset('inset/AllNewFortuner-white.png') }}" class="img-fluid">
-                            <h5 class="text-center"><b>All New Fortuner</b></h5>
-                            <h4 class="text-center"><b>RP100000</b></h4>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card card-item border-danger" style="background-color: transparent;">
-                        <div class="card-body">
-                            <img src="{{ asset('inset/AllNewFortuner-white.png') }}" class="img-fluid">
-                            <h5 class="text-center"><b>All New Fortuner</b></h5>
-                            <h4 class="text-center"><b>RP100000</b></h4>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card card-item border-danger" style="background-color: transparent;">
-                        <div class="card-body">
-                            <img src="{{ asset('inset/AllNewFortuner-white.png') }}" class="img-fluid">
-                            <h5 class="text-center"><b>All New Fortuner</b></h5>
-                            <h4 class="text-center"><b>RP100000</b></h4>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card card-item border-danger" style="background-color: transparent;">
-                        <div class="card-body">
-                            <img src="{{ asset('inset/AllNewFortuner-white.png') }}" class="img-fluid">
-                            <h5 class="text-center"><b>All New Fortuner</b></h5>
-                            <h4 class="text-center"><b>RP100000</b></h4>
-                        </div>
-                    </div>
-                </div>
+                @endforeach                
             </div>
         </div>
         <div class="form-group">
@@ -165,4 +141,44 @@
         </div>        
     </div>
 </div>
+@endsection
+
+@section('foot-content')
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#brand').on('click', function(){
+            var brand_id = $(this).val();
+            var _token  = $('input[name="_token"]').val();
+            if (brand_id == '' || brand_id == null)
+            {
+                $('#model').prop('disabled', true);
+            }
+            else
+            {
+                $('#model').prop('disabled', false);
+                $.ajax({
+                    url:"{{ route('select') }}",
+                    type: "POST",
+                    data: {'brand_id' : brand_id, '_token' : _token},
+                    dataType: 'json',
+                    success: function(data){
+                        $('#model').html(data);
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        alert('An error occurred... Look at the console (F12 or Ctrl+Shift+I, Console tab) for more information!');
+
+                        $('#result').html('<p>status code: '+jqXHR.status+'</p><p>errorThrown: ' + errorThrown + '</p><p>jqXHR.responseText:</p><div>'+jqXHR.responseText + '</div>');
+                        console.log('jqXHR:');
+                        console.log(jqXHR);
+                        console.log('textStatus:');
+                        console.log(textStatus);
+                        console.log('errorThrown:');
+                        console.log(errorThrown);
+                    },
+                });
+            }
+        });
+        $('#brand').click();
+    });
+</script>
 @endsection
