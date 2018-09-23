@@ -91,10 +91,10 @@
             <center><h1>Testimoni Oleh Customer</h1></center>
         </div>
         <div class="form-group">
-            <div class="row justify-content-center">
+            <div class="row justify-content-center slick-testimoni d-none d-sm-none d-md-block d-lg-block d-xl-block">
                 <?php $testimonis = App\Testimonial::all(); ?>
                 @foreach($testimonis as $testimoni)
-                <div class="col-md-4 d-none d-sm-none d-md-block d-lg-block d-xl-block">
+                <div style="padding: 10px;">
                     <div class="card card-item border-danger" style="background-color: transparent;">
                         <div class="card-body">
                             <div class="text-center">
@@ -102,10 +102,15 @@
                             </div>
                             <h5><b>{{ $testimoni->name }}</b></h5>
                             <h5><p><b>"{{ $testimoni->content }}"</b></p></h5>
-                        </div>
+                        </div>                        
                     </div>
                 </div>
-                <div class="col-sm-12 col-xs-12 d-md-none d-lg-none d-xl-none d-sm-block">
+                @endforeach
+            </div>
+            <div class="row justify-content-center slick-mobile d-md-none d-lg-none d-xl-none d-sm-block">
+                <?php $testimonis = App\Testimonial::all(); ?>
+                @foreach($testimonis as $testimoni)
+                <div style="padding: 10px;">                    
                     <div class="card card-item border-danger" style="background-color: transparent;">
                         <div class="card-body">
                             <div class="text-center">
@@ -142,7 +147,7 @@
                 </div>
                 @endforeach               
             </div>
-            <div class="row justify-content-center slick-artikel-mobile d-md-none d-lg-none d-xl-none d-sm-block">
+            <div class="row justify-content-center slick-mobile d-md-none d-lg-none d-xl-none d-sm-block">
                 <?php $articles = App\Article::orderBy('updated_at', 'desc')->get(); ?>
                 @foreach($articles as $article)
                 <div style="padding: 10px;">
@@ -206,7 +211,12 @@
             slidesToShow: 3,
             slidesToScroll: 1
         });
-        $('.slick-artikel-mobile').slick({
+        $('.slick-testimoni').slick({
+            infinite: true,
+            slidesToShow: 2,
+            slidesToScroll: 1
+        });
+        $('.slick-mobile').slick({
             infinite: true,
             slidesToShow: 1,
             slidesToScroll: 1
