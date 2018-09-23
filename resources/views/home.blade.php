@@ -97,9 +97,9 @@
                 <div style="padding: 10px;">
                     <div class="card card-item border-danger" style="background-color: transparent;">
                         <div class="card-body">
-                            <div class="text-center">
+                            <center>
                                 <img src="{{ url('https://admin.mobilngetop.com/'.$testimoni->picture) }}" class="img-fluid">
-                            </div>
+                            </center>
                             <h5><b>{{ $testimoni->name }}</b></h5>
                             <h5><p><b>"{{ $testimoni->content }}"</b></p></h5>
                         </div>                        
@@ -113,9 +113,9 @@
                 <div style="padding: 10px;">                    
                     <div class="card card-item border-danger" style="background-color: transparent;">
                         <div class="card-body">
-                            <div class="text-center">
+                            <center>
                                 <img src="{{ url('https://admin.mobilngetop.com/'.$testimoni->picture) }}" class="img-fluid">
-                            </div>
+                            </center>
                             <h5><b>{{ $testimoni->name }}</b></h5>
                             <h5><p><b>"{{ $testimoni->content }}"</b></p></h5>
                         </div>
