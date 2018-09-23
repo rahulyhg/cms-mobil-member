@@ -19,8 +19,11 @@
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
 
-    # Force Https
-    RewriteEngine On
+    # Force Https    
     RewriteCond %{HTTPS} !=on
     RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+    # Force WWW
+    RewriteCond %{HTTP_HOST} ^www.mobilngetop.com$ [NC]
+    RewriteRule ^(.*)$ https://mobilngetop.com/$1 [R=301,L]
 </IfModule>
