@@ -37,7 +37,7 @@
                     </select>
                 </div>
                 <div class="col-md-4">
-                    <select class="form-control" id="model" style="width: 100%;" required>
+                    <select class="form-control" name="model" id="model" style="width: 100%;" required>
                         <option disabled selected> Pilih Model </option>
                     </select>
                 </div>
