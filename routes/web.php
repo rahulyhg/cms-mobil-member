@@ -19,3 +19,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/', 'HomeController@select')->name('select');
+
+Route::post( '/get/states', 'HomeController@states' )->name( 'loadStates' );
+Route::post( '/get/cities', 'HomeController@cities' )->name( 'loadCities' );
+
+Route::get('json-regencies','HomeController@regencies');

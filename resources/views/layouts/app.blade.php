@@ -5,6 +5,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <!-- Meta SEO -->
+    <meta name="description" content="Mobil Ngetop">
+    <!-- Twitter meta-->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:site" content="@mobilngetop">
+    <meta property="twitter:creator" content="@mobilngetop">
+    <!-- Open Graph Meta-->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="{{ config('app.name', 'Laravel') }}">
+    <meta property="og:title" content="Mobil Ngetop">
+    <meta property="og:url" content="https://pratikborsadiya.in/blog/vali-admin">
+    <meta property="og:image" content="http://pratikborsadiya.in/blog/vali-admin/hero-social.png">
+    <meta property="og:description" content="Vali is a responsive and free admin theme built with Bootstrap 4, SASS and PUG.js. It's fully customizable and modular.">
+
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 

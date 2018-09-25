@@ -28,7 +28,7 @@
             @csrf
             <div class="row" style="padding: 10px;">
                 <div class="col-md-4">
-                    <select class="form-control" name="brand" id="brand" style="width: 100%;">
+                    <select class="form-control" name="brand" id="brand" style="width: 100%;" required>
                         <option disabled selected> Pilih Merk </option>
                         <?php $brands = App\Brand::orderBy('name', 'asc')->get(); ?>
                         @foreach($brands as $brand)
@@ -37,7 +37,7 @@
                     </select>
                 </div>
                 <div class="col-md-4">
-                    <select class="form-control" id="model" style="width: 100%;">
+                    <select class="form-control" id="model" style="width: 100%;" required>
                         <option disabled selected> Pilih Model </option>
                     </select>
                 </div>
@@ -94,21 +94,23 @@
             <center><h1>Testimoni Oleh Customer</h1></center>
         </div>
         <div class="form-group">
-            <div class="row justify-content-center slick-testimoni d-none d-sm-none d-md-block d-lg-block d-xl-block">
-                <?php $testimonis = App\Testimonial::all(); ?>
-                @foreach($testimonis as $testimoni)
-                <div style="padding: 10px;">
-                    <div class="card card-item border-danger" style="background-color: transparent;">
-                        <div class="card-body">
-                            <center>
-                                <img src="{{ url('https://admin.mobilngetop.com/'.$testimoni->picture) }}" class="img-fluid">
-                            </center>
-                            <h5><b>{{ $testimoni->name }}</b></h5>
-                            <h5><p><b>"{{ $testimoni->content }}"</b></p></h5>
-                        </div>                        
+            <div class="container">
+                <div class="row justify-content-center slick-testimoni d-none d-sm-none d-md-block d-lg-block d-xl-block">
+                    <?php $testimonis = App\Testimonial::all(); ?>
+                    @foreach($testimonis as $testimoni)
+                    <div style="padding: 10px;">
+                        <div class="card card-item border-danger" style="background-color: transparent;">
+                            <div class="card-body">
+                                <center>
+                                    <img src="{{ url('https://admin.mobilngetop.com/'.$testimoni->picture) }}" class="img-fluid">
+                                </center>
+                                <h5><b>{{ $testimoni->name }}</b></h5>
+                                <h5><p><b>"{{ $testimoni->content }}"</b></p></h5>
+                            </div>                        
+                        </div>
                     </div>
+                    @endforeach
                 </div>
-                @endforeach
             </div>
             <div class="row justify-content-center slick-mobile d-md-none d-lg-none d-xl-none d-sm-block">
                 <?php $testimonis = App\Testimonial::all(); ?>
@@ -135,20 +137,22 @@
             <center><h1>Berita Otomotif</h1></center>
         </div>
         <div class="form-group">
-            <div class="row justify-content-center slick-artikel d-none d-sm-none d-md-block d-lg-block d-xl-block">
-                <?php $articles = App\Article::orderBy('updated_at', 'desc')->get(); ?>
-                @foreach($articles as $article)
-                <div style="padding: 10px;">
-                    <div class="card mb-3">
-                        <img class="card-img-top" src="{{ url('https://admin.mobilngetop.com/'.$article->picture) }}">
-                        <div class="card-body">
-                            <h5 class="card-title"><b>{{ $article->title }}</b></h5>
-                            <p class="card-text">{{ $article->content }}</p>
-                            <p class="card-text"><small style="color: #006db8;">ditulis oleh {{ $article->user->name }} pukul {{ date("H:i", strtotime($article->created_at)) }}</small></p>
+            <div class="container">
+                <div class="row justify-content-center slick-artikel d-none d-sm-none d-md-block d-lg-block d-xl-block">
+                    <?php $articles = App\Article::orderBy('updated_at', 'desc')->get(); ?>
+                    @foreach($articles as $article)
+                    <div style="padding: 10px;">
+                        <div class="card mb-3">
+                            <img class="card-img-top" src="{{ url('https://admin.mobilngetop.com/'.$article->picture) }}">
+                            <div class="card-body">
+                                <h5 class="card-title"><b>{{ $article->title }}</b></h5>
+                                <p class="card-text">{{ $article->content }}</p>
+                                <p class="card-text"><small style="color: #006db8;">ditulis oleh {{ $article->user->name }} pukul {{ date("H:i", strtotime($article->created_at)) }}</small></p>
+                            </div>
                         </div>
                     </div>
+                    @endforeach               
                 </div>
-                @endforeach               
             </div>
             <div class="row justify-content-center slick-mobile d-md-none d-lg-none d-xl-none d-sm-block">
                 <?php $articles = App\Article::orderBy('updated_at', 'desc')->get(); ?>
@@ -176,36 +180,23 @@
 <script type="text/javascript" src="{{ asset('slick/slick.min.js') }}"></script>
 <script type="text/javascript">
     $(document).ready(function(){
-        $('#brand').on('click', function(){
-            var brand_id = $(this).val();
-            var _token  = $('input[name="_token"]').val();
+        $('#brand').on('click', function(e){
+            console.log(e);
+            var id = e.target.value;
+            var brand_id = $(this).val();            
             if (brand_id == '' || brand_id == null)
             {
                 $('#model').prop('disabled', true);
             }
-            else
-            {
-                $('#model').prop('disabled', false);
-                $.ajax({
-                    url:"{{ route('select') }}",
-                    type: "POST",
-                    data: {'brand_id' : brand_id, '_token' : _token},
-                    dataType: 'json',
-                    success: function(data){
-                        $('#model').html(data);
-                    },
-                    error: function(jqXHR, textStatus, errorThrown) {
-                        alert('An error occurred... Look at the console (F12 or Ctrl+Shift+I, Console tab) for more information!');
-
-                        $('#result').html('<p>status code: '+jqXHR.status+'</p><p>errorThrown: ' + errorThrown + '</p><p>jqXHR.responseText:</p><div>'+jqXHR.responseText + '</div>');
-                        console.log('jqXHR:');
-                        console.log(jqXHR);
-                        console.log('textStatus:');
-                        console.log(textStatus);
-                        console.log('errorThrown:');
-                        console.log(errorThrown);
-                    },
-                });
+            else {
+                $.get("{{ url('json-regencies') }}?id=" + id,function(data) {
+                  console.log(data);
+                  $('#model').empty();
+                  $('#model').append('<option disabled selected> Pilih Model </option>');
+                  $.each(data, function(index, regenciesObj){
+                    $('#model').append('<option value="'+ regenciesObj.id +'">'+ regenciesObj.name +'</option>');
+                })
+              });
             }
         });
         $('#brand').click();    
