@@ -189,6 +189,7 @@
                 $('#model').prop('disabled', true);
             }
             else {
+                $('#model').prop('disabled', false);
                 $.get("{{ url('json-regencies') }}?id=" + id,function(data) {
                   console.log(data);
                   $('#model').empty();
