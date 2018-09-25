@@ -180,7 +180,7 @@
 <script type="text/javascript" src="{{ asset('slick/slick.min.js') }}"></script>
 <script type="text/javascript">
     $(document).ready(function(){
-        $('#brand').on('change', function(e){
+        $('#brand').on('click', function(e){
             console.log(e);
             var id = e.target.value;
             var brand_id = $(this).val();            
@@ -199,7 +199,11 @@
                 })
               });
             }
-        });        
+        });
+        $('#brand').click();
+        $('#brand').on('change', function(){
+            $('#brand').click();
+        });
         $('.slick-artikel').slick({
             infinite: true,
             slidesToShow: 3,
