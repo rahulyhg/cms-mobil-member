@@ -55,7 +55,9 @@
         </div>
         <div class="form-group">
             <div class="row justify-content-center">
-                <?php $cars = App\Car::orderBy('tdp', 'asc')->limit(5)->get(); ?>
+                <?php $specimens = App\Specimen::orderBy('created_at', 'desc')->limit(5)->get(); ?>
+                @foreach($specimens as $specimen)
+                <?php $cars = App\Car::where('specimen_id', $specimen->id)->orderBy('tdp', 'asc')->limit(1)->get(); ?>
                 @foreach($cars as $car)
                 <div class="col d-none d-sm-none d-md-block d-lg-block d-xl-block">
                     <div class="card card-item border-danger" style="background-color: transparent;">
@@ -75,7 +77,8 @@
                         </div>
                     </div>
                 </div>                
-                @endforeach                
+                @endforeach
+                @endforeach
             </div>
         </div>
         <div class="form-group">
