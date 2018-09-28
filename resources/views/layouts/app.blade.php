@@ -4,9 +4,11 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <?php $keyword = App\SearchEngineOptimization::find(2); ?>
 
-    <!-- Meta SEO -->
+    <!-- Meta SEO -->    
     <meta name="description" content="Mobil Ngetop">
+    <meta name="keywords" content="{{ $keyword->content }}">
     <!-- Twitter meta-->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:site" content="@mobilngetop">
@@ -22,7 +24,8 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <?php $title = App\SearchEngineOptimization::find(1); ?>
+    <title>{{ $title->content, config('app.name') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
@@ -33,7 +36,8 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    @yield('head-content')    
+    @yield('head-content')
+    
     <!-- <link href="{{ asset('css/footer.css') }}" rel="stylesheet"> -->
 </head>
 <body>
