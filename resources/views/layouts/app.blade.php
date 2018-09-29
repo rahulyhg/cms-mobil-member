@@ -84,13 +84,13 @@
                     @guest
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <a class="nav-link d-md-none d-lg-none d-xl-none" href="#">Mobil</a>
+                            <a class="nav-link d-md-none d-lg-none d-xl-none" data-toggle="modal" data-target=".bd-example-modal-lg-hp" style="cursor: pointer;">Mobil</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link d-md-none d-lg-none d-xl-none" href="#">Promo</a>
+                            <a class="nav-link d-md-none d-lg-none d-xl-none" data-toggle="modal" data-target=".bd-example-modal-lg-hp" style="cursor: pointer;">Promo</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link d-md-none d-lg-none d-xl-none" href="#">Artikel</a>
+                            <a class="nav-link d-md-none d-lg-none d-xl-none" data-toggle="modal" data-target=".bd-example-modal-lg-hp" style="cursor: pointer;">Artikel</a>
                         </li>
                     </ul>
 
