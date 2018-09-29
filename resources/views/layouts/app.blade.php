@@ -113,9 +113,17 @@
         <footer style="background-color: white;padding: 50px;">
             <div class="row justify-content-center">
                 <div class="form-group" style="display: inline;">
-                    <a style="padding:5px;color: black;text-decoration: none;" href=""><b>FAQ</b></a>
-                    <a style="padding:5px;color: black;text-decoration: none;" href=""><b>Ketentuan Pribadi</b></a>
-                    <a style="padding:5px;color: black;text-decoration: none;" href=""><b>Tentang Kami</b></a>
+                    <div class="row justify-content-center">
+                        <center>
+                            <a class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-12" style="padding:10px;color: black;text-decoration: none;" href=""><b>FAQ</b></a>
+                        </center>
+                        <center>                            
+                            <a class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-12" style="padding:10px;color: black;text-decoration: none;" href=""><b>Ketentuan Pribadi</b></a>
+                        </center>
+                        <center>
+                            <a class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-12" style="padding:10px;color: black;text-decoration: none;" href=""><b>Tentang Kami</b></a>
+                        </center>
+                    </div>
                 </div>
             </div>
             <?php
