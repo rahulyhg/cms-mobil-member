@@ -144,20 +144,20 @@
                 <div class="modal-content" style="border-radius: 0px;">
                     <div class="row justify-content-center">                        
                         <center>
-                            <h1>Data Pribadi</h1>
-                            <br><br>
-                            <form>
+                            <br>
+                            <h1>Data Pribadi</h1>                            
+                            <form>                                
                                 <div class="form-group">
-                                    <input type="text" name="name" class="text-center col-md-6 form-control is-invalid" placeholder="nama" required autofocus>
+                                    <input type="text" name="name" class="text-center form-control is-invalid" placeholder="nama" required autofocus>
                                 </div>
                                 <div class="form-group">
-                                    <input type="email" name="email" class="text-center col-md-6 form-control is-invalid" placeholder="email" required>
+                                    <input type="email" name="email" class="text-center form-control is-invalid" placeholder="email" required>
                                 </div>
                                 <div class="form-group">
-                                    <input type="number" name="phone_number" class="text-center col-md-6 form-control is-invalid" placeholder="nomor handphone" required>
+                                    <input type="number" name="phone_number" class="text-center form-control is-invalid" placeholder="nomor handphone" required>
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" name="voucher_code" class="text-center col-md-6 form-control is-invalid" placeholder="kode voucher*">
+                                    <input type="text" name="voucher_code" class="text-center form-control is-invalid" placeholder="kode voucher*">
                                     <div class="col-md-6">
                                         <small class="float-left text-danger">*apabila ada</small>
                                     </div>
