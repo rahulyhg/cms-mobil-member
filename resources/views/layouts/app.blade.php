@@ -148,16 +148,16 @@
                             <h1>Data Pribadi</h1>                            
                             <form>
                                 <div class="form-group">
-                                    <input style="width: 100%;" type="text" name="name" class="text-center form-control is-invalid" placeholder="nama" required autofocus>
+                                    <input style="width: 50%;" type="text" name="name" class="text-center form-control is-invalid" placeholder="nama" required autofocus>
                                 </div>
                                 <div class="form-group">
-                                    <input style="width: 100%;" type="email" name="email" class="text-center form-control is-invalid" placeholder="email" required>
+                                    <input style="width: 50%;" type="email" name="email" class="text-center form-control is-invalid" placeholder="email" required>
                                 </div>
                                 <div class="form-group">
-                                    <input style="width: 100%;" type="number" name="phone_number" class="text-center form-control is-invalid" placeholder="nomor handphone" required>
+                                    <input style="width: 50%;" type="number" name="phone_number" class="text-center form-control is-invalid" placeholder="nomor handphone" required>
                                 </div>
                                 <div class="form-group">
-                                    <input style="width: 100%;" type="text" name="voucher_code" class="text-center form-control is-invalid" placeholder="kode voucher*">
+                                    <input style="width: 50%;" type="text" name="voucher_code" class="text-center form-control is-invalid" placeholder="kode voucher*">
                                     <div class="col-md-6">
                                         <small class="float-left text-danger">*apabila ada</small>
                                     </div>
