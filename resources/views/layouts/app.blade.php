@@ -158,13 +158,13 @@
                                 </div>
                                 <div class="form-group">
                                     <input style="width: 50%;" type="text" name="voucher_code" class="text-center form-control is-invalid" placeholder="kode voucher*">
-                                    <div class="col-md-6">
+                                    <div style="width: 50px;">
                                         <small class="float-left text-danger">*apabila ada</small>
                                     </div>
                                 </div>
                                 <br>
                                 <div class="form-group">
-                                    <div class="col-md-6">
+                                    <div style="width: 50px;">
                                         <h6 class="text-center" style="word-break: all;">isi data anda dan kami akan memberikan penawaran terbaik!</h6>
                                     </div>
                                 </div>
