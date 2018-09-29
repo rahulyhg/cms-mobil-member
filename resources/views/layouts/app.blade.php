@@ -36,6 +36,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     @yield('head-content')
     
     <!-- <link href="{{ asset('css/footer.css') }}" rel="stylesheet"> -->
@@ -82,10 +83,10 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
-                        @guest                        
+                        @guest
                         <li class="nav-item">
                             <a href="{{ route('login') }}" class="btn btn-primary">Sign In</a>
-                        </li>                        
+                        </li>
                         @else
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -109,9 +110,66 @@
         </nav>
         @yield('slider')
         @yield('content')
-        <footer class="footer">
-            <div class="container">
-                <span class="text-muted">Place sticky footer content here.</span>
+        <footer style="background-color: white;padding: 50px;">
+            <div class="row justify-content-center">
+                <div class="form-group" style="display: inline;">
+                    <a style="padding:10px;color: black;text-decoration: none;" href=""><b>FAQ</b></a>
+                    <a style="padding:10px;color: black;text-decoration: none;" href=""><b>Ketentuan Pribadi</b></a>
+                    <a style="padding:10px;color: black;text-decoration: none;" href=""><b>Tentang Kami</b></a>
+                </div>
+            </div>
+            <?php
+            $facebook = App\Social::find(1)->value('link');
+            $twitter = App\Social::find(2)->value('link');
+            $instagram = App\Social::find(3)->value('link');
+            $whatsapp = App\Social::find(4)->value('link');
+            ?>
+            <div class="row justify-content-center">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="{{ url($facebook) }}" target="_blank">
+                    <div style="border: 1px solid #e3342f;border-radius:20%;padding-left: 1px;padding-bottom: 1px;">
+                        <span class="fa-stack fa-lg">
+                            <i class="fa fa-square fa-stack-2x text-danger"></i>
+                            <i class="fa fa-facebook fa-stack-1x" style="color: white;"></i>
+                        </span>
+                    </div>
+                </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="{{ url($twitter) }}" target="_blank">
+                    <div style="border: 1px solid #e3342f;border-radius:20%;padding-left: 1px;padding-bottom: 1px;">
+                        <span class="fa-stack fa-lg">
+                            <i class="fa fa-square fa-stack-2x text-danger"></i>
+                            <i class="fa fa-twitter fa-stack-1x" style="color: white;"></i>
+                        </span>
+                    </div>
+                </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="{{ url($instagram) }}" target="_blank">
+                    <div style="border: 1px solid #e3342f;border-radius:20%;padding-left: 1px;padding-bottom: 1px;">
+                        <span class="fa-stack fa-lg">
+                            <i class="fa fa-square fa-stack-2x text-danger"></i>
+                            <i class="fa fa-instagram fa-stack-1x" style="color: white;"></i>
+                        </span>
+                    </div>
+                </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="{{ url($whatsapp) }}" target="_blank">
+                    <div style="border: 1px solid #e3342f;border-radius:20%;padding-left: 1px;padding-bottom: 1px;padding-right: 1px;">
+                        <span class="fa-stack fa-lg">
+                            <i class="fa fa-square fa-stack-2x text-danger"></i>
+                            <i class="fa fa-whatsapp fa-stack-1x" style="color: white;"></i>
+                        </span>
+                    </div>
+                </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </div><br>
+            <div class="row justify-content-center">
+                <b>Jalan Radin Inten II No. 62</b>
+            </div>
+            <div class="row justify-content-center">
+                <b>Duren Sawit, Jakarta Timur 13440</b>
+            </div>
+            <br>
+            <div class="row justify-content-center">
+                <img src="{{ asset('inset/logo.png') }}" style="max-height: 50px;">
+            </div>
+            <div class="row justify-content-center">
+                <small><b>2018 mobilngetop.com All Rights Reserved</b></small>
             </div>
         </footer>
     </div>

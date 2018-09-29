@@ -106,7 +106,7 @@
                                 </center>
                                 <h5><b>{{ $testimoni->name }}</b></h5>
                                 <h5><p><b>"{{ $testimoni->content }}"</b></p></h5>
-                            </div>                        
+                            </div>
                         </div>
                     </div>
                     @endforeach
@@ -128,7 +128,7 @@
                 </div>
                 @endforeach
             </div>
-        </div>        
+        </div>
     </div>
 </div>
 <div class="row justify-content-center">
