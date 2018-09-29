@@ -113,9 +113,9 @@
         <footer style="background-color: white;padding: 50px;">
             <div class="row justify-content-center">
                 <div class="form-group" style="display: inline;">
-                    <a style="padding:10px;color: black;text-decoration: none;" href=""><b>FAQ</b></a>
-                    <a style="padding:10px;color: black;text-decoration: none;" href=""><b>Ketentuan Pribadi</b></a>
-                    <a style="padding:10px;color: black;text-decoration: none;" href=""><b>Tentang Kami</b></a>
+                    <a style="padding:5px;color: black;text-decoration: none;" href=""><b>FAQ</b></a>
+                    <a style="padding:5px;color: black;text-decoration: none;" href=""><b>Ketentuan Pribadi</b></a>
+                    <a style="padding:5px;color: black;text-decoration: none;" href=""><b>Tentang Kami</b></a>
                 </div>
             </div>
             <?php
