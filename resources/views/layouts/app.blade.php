@@ -146,7 +146,7 @@
                         <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-4 d-none d-sm-none d-md-block d-lg-block d-xl-block">
                             <img src="{{ asset('inset/image_data_diri.png') }}" class="img-fluid">
                         </div>
-                        <div class="col-xl-7 col-lg-7 col-md-7 col-sm-7 col-xs-7">
+                        <div class="col-xl-7 col-lg-7 col-md-7 col-sm-12 col-xs-12">
                             <br>                            
                             <center>
                                 <h1>Data Pribadi</h1>
