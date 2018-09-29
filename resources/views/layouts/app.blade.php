@@ -147,28 +147,28 @@
                             <br>
                             <h1>Data Pribadi</h1>                            
                             <form>
-                                <div class="form-group" style="width: 50%;">
+                                <div class="form-group" style="width: 75%;">
                                     <input type="text" name="name" class="text-center  form-control is-invalid" placeholder="nama" required autofocus>
                                 </div>
-                                <div class="form-group" style="width: 50%;">
+                                <div class="form-group" style="width: 75%;">
                                     <input type="email" name="email" class="text-center  form-control is-invalid" placeholder="email" required>
                                 </div>
-                                <div class="form-group" style="width: 50%;">
+                                <div class="form-group" style="width: 75%;">
                                     <input type="number" name="phone_number" class="text-center  form-control is-invalid" placeholder="nomor handphone" required>
                                 </div>
-                                <div class="form-group" style="width: 50%;">
+                                <div class="form-group" style="width: 75%;">
                                     <input type="text" name="voucher_code" class="text-center  form-control is-invalid" placeholder="kode voucher*">
                                     <div class="">
                                         <small class="float-left text-danger">*apabila ada</small>
                                     </div>
                                 </div>
                                 <br>
-                                <div class="form-group" style="width: 50%;">
+                                <div class="form-group" style="width: 75%;">
                                     <div class="">
                                         <h6 class="text-center" style="word-break: all;">isi data anda dan kami akan memberikan penawaran terbaik!</h6>
                                     </div>
                                 </div>
-                                <div class="form-group" style="width: 50%;">
+                                <div class="form-group" style="width: 75%;">
                                     <button class="btn btn-primary" style="border-radius: 0px;">hubungi saya</button>
                                 </div>
                             </form>
