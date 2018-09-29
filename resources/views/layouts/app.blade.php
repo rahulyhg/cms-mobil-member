@@ -142,33 +142,80 @@
         <div class="modal fade bd-example-modal-lg-hp" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg modal-dialog-centered">
                 <div class="modal-content" style="border-radius: 0px;">
-                    <div class="row justify-content-center">                        
-                        <center>
+                    <div class="float-right" style="padding: 10px;">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                      </button>
+                  </div>
+                  <div class="row justify-content-center">                        
+                    <center>                        
+                        <h1>Data Pribadi</h1>                            
+                        <form>
+                            <div class="form-group" style="width: 75%;">
+                                <input type="text" name="name" class="text-center  form-control is-invalid" placeholder="nama" required autofocus>
+                            </div>
+                            <div class="form-group" style="width: 75%;">
+                                <input type="email" name="email" class="text-center  form-control is-invalid" placeholder="email" required>
+                            </div>
+                            <div class="form-group" style="width: 75%;">
+                                <input type="number" name="phone_number" class="text-center  form-control is-invalid" placeholder="nomor handphone" required>
+                            </div>
+                            <div class="form-group" style="width: 75%;">
+                                <input type="text" name="voucher_code" class="text-center  form-control is-invalid" placeholder="kode voucher*">
+                                <div class="">
+                                    <small class="float-left text-danger">*apabila ada</small>
+                                </div>
+                            </div>
                             <br>
-                            <h1>Data Pribadi</h1>                            
+                            <div class="form-group" style="width: 75%;">
+                                <div class="">
+                                    <h6 class="text-center" style="word-break: all;">isi data anda dan kami akan memberikan penawaran terbaik!</h6>
+                                </div>
+                            </div>
+                            <div class="form-group" style="width: 75%;">
+                                <button class="btn btn-primary" style="border-radius: 0px;">hubungi saya</button>
+                            </div>
+                        </form>
+                    </center>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="padding: 17px!important;">
+        <div class="modal-dialog modal-lg modal-dialog-centered" style="max-width: 75%;max-height: 75%;">
+            <div class="modal-content" style="border-radius: 0px;">
+                <div class="row justify-content-center">
+                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-4 d-none d-sm-none d-md-block d-lg-block d-xl-block">
+                        <img src="{{ asset('inset/image_data_diri.png') }}" class="img-fluid">
+                    </div>
+                    <div class="col-xl-7 col-lg-7 col-md-7 col-sm-7 col-xs-7">
+                        <br>                            
+                        <center>
+                            <h1>Data Pribadi</h1>
+                            <br><br>
                             <form>
-                                <div class="form-group" style="width: 75%;">
-                                    <input type="text" name="name" class="text-center  form-control is-invalid" placeholder="nama" required autofocus>
+                                <div class="form-group">
+                                    <input type="text" name="name" class="text-center col-md-6 form-control is-invalid" placeholder="nama" required autofocus>
                                 </div>
-                                <div class="form-group" style="width: 75%;">
-                                    <input type="email" name="email" class="text-center  form-control is-invalid" placeholder="email" required>
+                                <div class="form-group">
+                                    <input type="email" name="email" class="text-center col-md-6 form-control is-invalid" placeholder="email" required>
                                 </div>
-                                <div class="form-group" style="width: 75%;">
-                                    <input type="number" name="phone_number" class="text-center  form-control is-invalid" placeholder="nomor handphone" required>
+                                <div class="form-group">
+                                    <input type="number" name="phone_number" class="text-center col-md-6 form-control is-invalid" placeholder="nomor handphone" required>
                                 </div>
-                                <div class="form-group" style="width: 75%;">
-                                    <input type="text" name="voucher_code" class="text-center  form-control is-invalid" placeholder="kode voucher*">
-                                    <div class="">
+                                <div class="form-group">
+                                    <input type="text" name="voucher_code" class="text-center col-md-6 form-control is-invalid" placeholder="kode voucher*">
+                                    <div class="col-md-6">
                                         <small class="float-left text-danger">*apabila ada</small>
                                     </div>
                                 </div>
                                 <br>
-                                <div class="form-group" style="width: 75%;">
-                                    <div class="">
+                                <div class="form-group">
+                                    <div class="col-md-6">
                                         <h6 class="text-center" style="word-break: all;">isi data anda dan kami akan memberikan penawaran terbaik!</h6>
                                     </div>
                                 </div>
-                                <div class="form-group" style="width: 75%;">
+                                <div class="form-group">
                                     <button class="btn btn-primary" style="border-radius: 0px;">hubungi saya</button>
                                 </div>
                             </form>
@@ -177,126 +224,83 @@
                 </div>
             </div>
         </div>
-        <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="padding: 17px!important;">
-            <div class="modal-dialog modal-lg modal-dialog-centered" style="max-width: 75%;max-height: 75%;">
-                <div class="modal-content" style="border-radius: 0px;">
-                    <div class="row justify-content-center">
-                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-4 d-none d-sm-none d-md-block d-lg-block d-xl-block">
-                            <img src="{{ asset('inset/image_data_diri.png') }}" class="img-fluid">
-                        </div>
-                        <div class="col-xl-7 col-lg-7 col-md-7 col-sm-7 col-xs-7">
-                            <br>                            
-                            <center>
-                                <h1>Data Pribadi</h1>
-                                <br><br>
-                                <form>
-                                    <div class="form-group">
-                                        <input type="text" name="name" class="text-center col-md-6 form-control is-invalid" placeholder="nama" required autofocus>
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="email" name="email" class="text-center col-md-6 form-control is-invalid" placeholder="email" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="number" name="phone_number" class="text-center col-md-6 form-control is-invalid" placeholder="nomor handphone" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="text" name="voucher_code" class="text-center col-md-6 form-control is-invalid" placeholder="kode voucher*">
-                                        <div class="col-md-6">
-                                            <small class="float-left text-danger">*apabila ada</small>
-                                        </div>
-                                    </div>
-                                    <br>
-                                    <div class="form-group">
-                                        <div class="col-md-6">
-                                            <h6 class="text-center" style="word-break: all;">isi data anda dan kami akan memberikan penawaran terbaik!</h6>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <button class="btn btn-primary" style="border-radius: 0px;">hubungi saya</button>
-                                    </div>
-                                </form>
-                            </center>
-                        </div>
-                    </div>
+    </div>
+    <footer style="background-color: white;padding: 50px;">
+        <div class="row justify-content-center">
+            <div class="form-group" style="display: inline;">
+                <div class="row justify-content-center">
+                    <center>
+                        <a class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-12" style="padding:10px;color: black;text-decoration: none;" href=""><b>FAQ</b></a>
+                    </center>
+                    <center>                            
+                        <a class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-12" style="padding:10px;color: black;text-decoration: none;" href=""><b>Ketentuan Pribadi</b></a>
+                    </center>
+                    <center>
+                        <a class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-12" style="padding:10px;color: black;text-decoration: none;" href=""><b>Tentang Kami</b></a>
+                    </center>
                 </div>
             </div>
         </div>
-        <footer style="background-color: white;padding: 50px;">
-            <div class="row justify-content-center">
-                <div class="form-group" style="display: inline;">
-                    <div class="row justify-content-center">
-                        <center>
-                            <a class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-12" style="padding:10px;color: black;text-decoration: none;" href=""><b>FAQ</b></a>
-                        </center>
-                        <center>                            
-                            <a class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-12" style="padding:10px;color: black;text-decoration: none;" href=""><b>Ketentuan Pribadi</b></a>
-                        </center>
-                        <center>
-                            <a class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-12" style="padding:10px;color: black;text-decoration: none;" href=""><b>Tentang Kami</b></a>
-                        </center>
-                    </div>
-                </div>
-            </div>
-            <?php
-            $facebook = App\Social::find(1)->value('link');
-            $twitter = App\Social::find(2)->value('link');
-            $instagram = App\Social::find(3)->value('link');
-            $whatsapp = App\Social::find(4)->value('link');
-            ?>
-            <div class="row justify-content-center">
-                <a class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-xs-1" href="{{ url($facebook) }}" target="_blank">
-                    <center>
-                        <span class="fa-stack fa-lg">
-                            <i class="fa fa-square fa-stack-2x text-danger"></i>
-                            <i class="fa fa-facebook fa-stack-1x" style="color: white;"></i>
-                        </span>
-                    </center>
-                </a>
-                <a class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-xs-1" href="{{ url($twitter) }}" target="_blank">
-                    <center>
-                        <span class="fa-stack fa-lg">
-                            <i class="fa fa-square fa-stack-2x text-danger"></i>
-                            <i class="fa fa-twitter fa-stack-1x" style="color: white;"></i>
-                        </span>
-                    </center>
-                </a>
-                <a class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-xs-1" href="{{ url($instagram) }}" target="_blank">
-                    <center>
-                        <span class="fa-stack fa-lg">
-                            <i class="fa fa-square fa-stack-2x text-danger"></i>
-                            <i class="fa fa-instagram fa-stack-1x" style="color: white;"></i>
-                        </span>
-                    </center>
-                </a>
-                <a class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-xs-1" href="{{ url($whatsapp) }}" target="_blank">
-                    <center>
-                        <span class="fa-stack fa-lg">
-                            <i class="fa fa-square fa-stack-2x text-danger"></i>
-                            <i class="fa fa-whatsapp fa-stack-1x" style="color: white;"></i>
-                        </span>
-                    </center>
-                </a>
-            </div><br>
-            <div class="row justify-content-center">
-                <b>Jalan Radin Inten II No. 62</b>
-            </div>
-            <div class="row justify-content-center">
-                <b>Duren Sawit, Jakarta Timur 13440</b>
-            </div>
-            <br>
-            <div class="row justify-content-center">
-                <img src="{{ asset('inset/logo.png') }}" style="max-height: 50px;">
-            </div>
-            <div class="row justify-content-center">
-                <small><b>
-                    @if(date('Y')==2018)
-                    @else
-                    2018 - 
-                    @endif
-                {{ date('Y') }} mobilngetop.com All Rights Reserved</b></small>
-            </div>
-        </footer>
-    </div>
+        <?php
+        $facebook = App\Social::find(1)->value('link');
+        $twitter = App\Social::find(2)->value('link');
+        $instagram = App\Social::find(3)->value('link');
+        $whatsapp = App\Social::find(4)->value('link');
+        ?>
+        <div class="row justify-content-center">
+            <a class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-xs-1" href="{{ url($facebook) }}" target="_blank">
+                <center>
+                    <span class="fa-stack fa-lg">
+                        <i class="fa fa-square fa-stack-2x text-danger"></i>
+                        <i class="fa fa-facebook fa-stack-1x" style="color: white;"></i>
+                    </span>
+                </center>
+            </a>
+            <a class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-xs-1" href="{{ url($twitter) }}" target="_blank">
+                <center>
+                    <span class="fa-stack fa-lg">
+                        <i class="fa fa-square fa-stack-2x text-danger"></i>
+                        <i class="fa fa-twitter fa-stack-1x" style="color: white;"></i>
+                    </span>
+                </center>
+            </a>
+            <a class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-xs-1" href="{{ url($instagram) }}" target="_blank">
+                <center>
+                    <span class="fa-stack fa-lg">
+                        <i class="fa fa-square fa-stack-2x text-danger"></i>
+                        <i class="fa fa-instagram fa-stack-1x" style="color: white;"></i>
+                    </span>
+                </center>
+            </a>
+            <a class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-xs-1" href="{{ url($whatsapp) }}" target="_blank">
+                <center>
+                    <span class="fa-stack fa-lg">
+                        <i class="fa fa-square fa-stack-2x text-danger"></i>
+                        <i class="fa fa-whatsapp fa-stack-1x" style="color: white;"></i>
+                    </span>
+                </center>
+            </a>
+        </div><br>
+        <div class="row justify-content-center">
+            <b>Jalan Radin Inten II No. 62</b>
+        </div>
+        <div class="row justify-content-center">
+            <b>Duren Sawit, Jakarta Timur 13440</b>
+        </div>
+        <br>
+        <div class="row justify-content-center">
+            <img src="{{ asset('inset/logo.png') }}" style="max-height: 50px;">
+        </div>
+        <div class="row justify-content-center">
+            <small><b>
+                @if(date('Y')==2018)
+                @else
+                2018 - 
+                @endif
+            {{ date('Y') }} mobilngetop.com All Rights Reserved</b></small>
+        </div>
+    </footer>
+</div>
 </body>
 @yield('foot-content')
 </html>
