@@ -46,7 +46,8 @@
                     <button type="submit" class="btn btn-primary" style="width: 100%;">Cari</button>
                     @endauth
                     @guest
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg" style="cursor: pointer;color: white;width: 100%;">Cari</button>
+                    <button type="button" class="btn btn-primary d-none d-sm-none d-md-block d-lg-block d-xl-block" data-toggle="modal" data-target=".bd-example-modal-lg" style="cursor: pointer;color: white;width: 100%;">Cari</button>
+                    <button type="button" class="btn btn-primary d-sm-block d-md-none d-lg-none d-xl-none" data-toggle="modal" data-target=".bd-example-modal-lg-hp" style="cursor: pointer;color: white;width: 100%;">Cari</button>
                     @endguest
                 </div>
             </div>

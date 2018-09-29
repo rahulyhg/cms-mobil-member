@@ -139,6 +139,44 @@
         </nav>
         @yield('slider')
         @yield('content')
+        <div class="modal fade bd-example-modal-lg-hp" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content" style="border-radius: 0px;">
+                    <div class="row justify-content-center">                        
+                        <center>
+                            <h1>Data Pribadi</h1>
+                            <br><br>
+                            <form>
+                                <div class="form-group">
+                                    <input type="text" name="name" class="text-center col-md-6 form-control is-invalid" placeholder="nama" required autofocus>
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" name="email" class="text-center col-md-6 form-control is-invalid" placeholder="email" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="number" name="phone_number" class="text-center col-md-6 form-control is-invalid" placeholder="nomor handphone" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="voucher_code" class="text-center col-md-6 form-control is-invalid" placeholder="kode voucher*">
+                                    <div class="col-md-6">
+                                        <small class="float-left text-danger">*apabila ada</small>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        <h6 class="text-center" style="word-break: all;">isi data anda dan kami akan memberikan penawaran terbaik!</h6>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <button class="btn btn-primary" style="border-radius: 0px;">hubungi saya</button>
+                                </div>
+                            </form>
+                        </center>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="padding: 17px!important;">
             <div class="modal-dialog modal-lg modal-dialog-centered" style="max-width: 75%;max-height: 75%;">
                 <div class="modal-content" style="border-radius: 0px;">
@@ -146,7 +184,7 @@
                         <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-4 d-none d-sm-none d-md-block d-lg-block d-xl-block">
                             <img src="{{ asset('inset/image_data_diri.png') }}" class="img-fluid">
                         </div>
-                        <div class="col-xl-7 col-lg-7 col-md-7 col-sm-12 col-xs-12">
+                        <div class="col-xl-7 col-lg-7 col-md-7 col-sm-7 col-xs-7">
                             <br>                            
                             <center>
                                 <h1>Data Pribadi</h1>
