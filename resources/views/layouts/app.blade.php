@@ -132,39 +132,39 @@
             $instagram = App\Social::find(3)->value('link');
             $whatsapp = App\Social::find(4)->value('link');
             ?>
-            <div class="row justify-content-center">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <a href="{{ url($facebook) }}" target="_blank">
-                    <div style="border: 1px solid #e3342f;border-radius:20%;padding-left: 1px;padding-bottom: 1px;">
+            <div class="row justify-content-center">
+                <a class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-xs-1" href="{{ url($facebook) }}" target="_blank">
+                    <center>
                         <span class="fa-stack fa-lg">
                             <i class="fa fa-square fa-stack-2x text-danger"></i>
                             <i class="fa fa-facebook fa-stack-1x" style="color: white;"></i>
                         </span>
-                    </div>
-                </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <a href="{{ url($twitter) }}" target="_blank">
-                    <div style="border: 1px solid #e3342f;border-radius:20%;padding-left: 1px;padding-bottom: 1px;">
+                    </center>
+                </a>
+                <a class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-xs-1" href="{{ url($twitter) }}" target="_blank">
+                    <center>
                         <span class="fa-stack fa-lg">
                             <i class="fa fa-square fa-stack-2x text-danger"></i>
                             <i class="fa fa-twitter fa-stack-1x" style="color: white;"></i>
                         </span>
-                    </div>
-                </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <a href="{{ url($instagram) }}" target="_blank">
-                    <div style="border: 1px solid #e3342f;border-radius:20%;padding-left: 1px;padding-bottom: 1px;">
+                    </center>
+                </a>
+                <a class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-xs-1" href="{{ url($instagram) }}" target="_blank">
+                    <center>
                         <span class="fa-stack fa-lg">
                             <i class="fa fa-square fa-stack-2x text-danger"></i>
                             <i class="fa fa-instagram fa-stack-1x" style="color: white;"></i>
                         </span>
-                    </div>
-                </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <a href="{{ url($whatsapp) }}" target="_blank">
-                    <div style="border: 1px solid #e3342f;border-radius:20%;padding-left: 1px;padding-bottom: 1px;padding-right: 1px;">
+                    </center>
+                </a>
+                <a class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-xs-1" href="{{ url($whatsapp) }}" target="_blank">
+                    <center>
                         <span class="fa-stack fa-lg">
                             <i class="fa fa-square fa-stack-2x text-danger"></i>
                             <i class="fa fa-whatsapp fa-stack-1x" style="color: white;"></i>
                         </span>
-                    </div>
-                </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </center>
+                </a>
             </div><br>
             <div class="row justify-content-center">
                 <b>Jalan Radin Inten II No. 62</b>
