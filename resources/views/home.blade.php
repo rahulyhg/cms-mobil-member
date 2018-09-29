@@ -42,7 +42,12 @@
                     </select>
                 </div>
                 <div class="col-md-4">
-                    <button class="btn btn-primary" style="width: 100%;">Cari</button>
+                    @auth
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Cari</button>
+                    @endauth
+                    @guest
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg" style="cursor: pointer;color: white;width: 100%;">Cari</button>
+                    @endguest
                 </div>
             </div>
         </form>
