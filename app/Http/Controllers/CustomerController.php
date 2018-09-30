@@ -3,9 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Brand;
 
 class CustomerController extends Controller
 {
+    public function car()
+    {
+        $data['brand'] = Brand::all();
+        return view('member.car')->with($data);
+    }
+
     /**
      * Display a listing of the resource.
      *

@@ -137,8 +137,12 @@
                 </div>
             </div>
         </nav>
-        @yield('slider')
-        @yield('content')
+        <div style="background-color: white;">
+            @yield('slider')
+            <div class="py-4">
+                @yield('content')
+            </div>
+        </div>
         <div class="modal fade bd-example-modal-lg-hp" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg modal-dialog-centered">
                 <div class="modal-content" style="border-radius: 0px;">
@@ -225,7 +229,7 @@
             </div>
         </div>
     </div>
-    <footer style="background-color: white;padding: 50px;">
+    <footer style="background-color: white;padding: 50px;-webkit-box-shadow:0 2px 4px rgba(0,0,0,.04)!important;box-shadow:0 2px 4px black!important;">
         <div class="row justify-content-center">
             <div class="form-group" style="display: inline;">
                 <div class="row justify-content-center">

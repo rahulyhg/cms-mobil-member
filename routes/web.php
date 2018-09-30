@@ -12,11 +12,7 @@
 */
 
 Route::get('/', function () {
-	return view('home');
-});
-
-Route::get('form', function () {
-	return view('form');
+	return view('member.car');
 });
 
 Auth::routes();
@@ -28,3 +24,5 @@ Route::post( '/get/states', 'HomeController@states' )->name( 'loadStates' );
 Route::post( '/get/cities', 'HomeController@cities' )->name( 'loadCities' );
 
 Route::get('json-regencies','HomeController@regencies');
+
+Route::get('car-choose', 'CustomerController@car')->name('car');
