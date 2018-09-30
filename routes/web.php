@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-	return view('member.car');
+	return view('home');
 });
 
 Auth::routes();
@@ -24,5 +24,9 @@ Route::post( '/get/states', 'HomeController@states' )->name( 'loadStates' );
 Route::post( '/get/cities', 'HomeController@cities' )->name( 'loadCities' );
 
 Route::get('json-regencies','HomeController@regencies');
+Route::get('json-model','HomeController@model');
+Route::get('json-variant','HomeController@variant');
+Route::get('json-transmission','HomeController@transmission');
+Route::get('json-tenor','HomeController@tenor');
 
 Route::get('car-choose', 'CustomerController@car')->name('car');

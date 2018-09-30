@@ -9,7 +9,7 @@ class CustomerController extends Controller
 {
     public function car()
     {
-        $data['brand'] = Brand::all();
+        $data['brands'] = Brand::orderBy('name', 'asc')->get();
         return view('member.car')->with($data);
     }
 

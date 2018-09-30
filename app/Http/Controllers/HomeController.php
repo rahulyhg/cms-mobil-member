@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use App\Specimen;
+use App\Car;
 
 class HomeController extends Controller
 {
@@ -42,6 +43,39 @@ class HomeController extends Controller
     public function regencies(Request $request){
       $id = $request->input('id');
       $regencies = Specimen::where('brand_id', '=', $id)->get();
+      return response()->json($regencies);
+    }
+
+    public function model(Request $request){
+      $id = $request->input('id');
+      $regencies = Car::where('specimen_id', '=', $id)->get();
+      return response()->json($regencies);
+    }
+
+    public function variant(Request $request){
+      $id = $request->input('id');
+      $model = $request->input('model_id');
+      $matchThese = ['specimen_id' => $model, 'variant' => $id];
+      $regencies = Car::where($matchThese)->get();
+      return response()->json($regencies);
+    }
+
+    public function transmission(Request $request){
+      $id = $request->input('id');
+      $model = $request->input('model_id');
+      $variant = $request->input('variant_id');
+      $matchThese = ['specimen_id' => $model, 'variant' => $variant, 'transmission' => $id];
+      $regencies = Car::where($matchThese)->get();
+      return response()->json($regencies);
+    }
+
+    public function tenor(Request $request){
+      $id = $request->input('id');
+      $model = $request->input('model_id');
+      $variant = $request->input('variant_id');
+      $transmission = $request->input('transmission_id');
+      $matchThese = ['specimen_id' => $model, 'variant' => $variant, 'transmission' => $transmission, 'tenor' => $id];
+      $regencies = Car::where($matchThese)->get();
       return response()->json($regencies);
     }
 
