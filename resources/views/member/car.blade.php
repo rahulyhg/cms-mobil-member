@@ -4,8 +4,8 @@
 <div class="container">
 	<div class="row">
 		<div class="col-sm-5">
-			<h3><b>All New Fortuner</b></h3>
-			<h4>ALL NEW FORTUNER 4X2 2.4 G A/T DSL</h4>
+			<h3 id="name"><b>All New Fortuner</b></h3>
+			<h4 id="title">ALL NEW FORTUNER 4X2 2.4 G A/T DSL</h4>
 			<form>
 				<div class="form-group row">
 					<label for="variant" class="col-sm-3 col-form-label">Variant</label>
@@ -37,7 +37,7 @@
 				</div>
 				<div class="form-group text-center">
 					<h2>TDP</h2>
-					<h1><b>Rp. 500.000.000</b></h1>
+					<h1 id="tdp"><b>Rp. 500.000.000</b></h1>
 				</div>
 				<div class="form-group row justify-content-center">
 					<button type="submit" class="btn btn-danger" style="border-radius: 0px;">pesan sekarang</button>
@@ -48,7 +48,7 @@
 			<div class="text-center">
 				<form class="form-inline row justify-content-center">
 					<div class="col-sm-4">
-						<select class="form-control" required name="brand" id="brand" style="width: 100%;">
+						<select class="form-control" required name="brand" id="brand" style="width: 100%;">							
 							@foreach($brands as $brand)
 							<option value="{{ $brand->id }}">{{ $brand->name }}</option>
 							@endforeach
@@ -58,7 +58,7 @@
 						<select class="form-control" required name="model" id="model" style="width: 100%;">							
 						</select>
 					</div>
-					<img src="{{ asset('inset/AllNewFortuner-black.png') }}" class="img-fluid">
+					<img id="image" src="{{ asset('inset/AllNewFortuner-black.png') }}" class="img-fluid">
 				</form>
 			</div>
 		</div>
@@ -68,8 +68,8 @@
 
 @section('foot-content')
 <script type="text/javascript">
-	$(document).ready(function(){
-		$('#brand').on('click', function(e){
+	$(document).ready(function(){		
+		$('#brand').on('change', function(e){
 			console.log(e);
 			var id = e.target.value;
 			var brand_id = $(this).val();
@@ -84,17 +84,14 @@
 					$('#model').empty();					
 					$.each(data, function(index, regenciesObj){
 						$('#model').append('<option value="'+ regenciesObj.id +'">'+ regenciesObj.name +'</option>');
+						$('#model').change();
 					})
-					$('#model').click();
 				});
 			}
-		});
-		$('#brand').click();
-		$('#brand').on('change', function(){
-			$('#brand').click();
-		});
+		});	
+		$('#brand').change();	
 
-		$('#model').on('click', function(e){
+		$('#model').on('change', function(e){
 			console.log(e);
 			var id = e.target.value;
 			var model_id = $(this).val();
@@ -110,16 +107,12 @@
 					$.each(data, function(index, regenciesObj){
 						$('#variant').append('<option value="'+ regenciesObj.variant +'">'+ regenciesObj.variant +'</option>');
 					})
-					$('#variant').click();
+					$('#variant').change();
 				});
 			}
-		});
-		$('#model').click();
-		$('#model').on('change', function(){
-			$('#model').click();
-		});
+		});		
 
-		$('#variant').on('click', function(e){
+		$('#variant').on('change', function(e){
 			console.log(e);
 			var id = e.target.value;			
 			var model = $('#model').val();
@@ -135,17 +128,13 @@
 					$('#transmission').empty();					
 					$.each(data, function(index, regenciesObj){
 						$('#transmission').append('<option>'+ regenciesObj.transmission +'</option>');
-					})
-					$('#transmission').click();
+						$('#transmission').change();
+					})					
 				});
 			}
-		});
-		$('#variant').click();
-		$('#variant').on('change', function(){
-			$('#variant').click();
-		});
+		});		
 
-		$('#transmission').on('click', function(e){
+		$('#transmission').on('change', function(e){
 			console.log(e);
 			var id = e.target.value;			
 			var model = $('#model').val();
@@ -163,16 +152,12 @@
 					$.each(data, function(index, regenciesObj){
 						$('#tenor').append('<option>'+ regenciesObj.tenor +'</option>');
 					})
-					$('#tenor').click();
+					$('#tenor').change();
 				});
 			}
-		});
-		$('#transmission').click();
-		$('#transmission').on('change', function(){
-			$('#transmission').click();
-		});
+		});		
 
-		$('#tenor').on('click', function(e){
+		$('#tenor').on('change', function(e){
 			console.log(e);
 			var id = e.target.value;			
 			var model = $('#model').val();
@@ -191,33 +176,42 @@
 					$.each(data, function(index, regenciesObj){
 						$('#fuel').append('<option>'+ regenciesObj.fuel +'</option>');
 					})
+					$('#fuel').change();
 				});
 			}
-		});
-		$('#tenor').click();
-		$('#tenor').on('change', function(){
-			$('#tenor').click();
-		});
+		});		
 
-		$('#tenor').on('click', function(e){
+		$('#fuel').on('change', function(e){
 			console.log(e);
 			var id = e.target.value;			
 			var model = $('#model').val();
 			var variant = $('#variant').val();
 			var transmission = $('#transmission').val();
-			var tenor_id = $(this).val();			
-			$.get("{{ url('json-tenor') }}?id=" + id +"&transmission_id=" + transmission + "&variant_id=" + variant + "&model_id=" + model,function(data) {
+			var tenor = $('#tenor').val();
+			$.get("{{ url('json-fuel') }}?id=" + id +"&tenor_id=" + tenor + "&transmission_id=" + transmission + "&variant_id=" + variant + "&model_id=" + model,function(data) {
 				console.log(data);
-				$('#fuel').empty();					
 				$.each(data, function(index, regenciesObj){
-					$('#fuel').append('<option>'+ regenciesObj.fuel +'</option>');
+					document.getElementById("name").innerHTML = "<b>" + regenciesObj.name + "</b>";
+					document.getElementById("title").innerHTML = regenciesObj.name;
+					var rp = (regenciesObj.tdp).formatMoney(2, ".", ",");
+					<?php $rp = ?>+ regenciesObj.tdp +<?php ; ?>;
+					<?php dd($rp) ?>
+					document.getElementById("tdp").innerHTML = rp;
+					document.getElementById("image").src = "http://localhost/cms-mobil-admin/public/"+ regenciesObj.picture;					
 				})
 			});			
 		});
-		$('#tenor').click();
-		$('#tenor').on('change', function(){
-			$('#tenor').click();
-		});
+
+		function formatMoney(n, c, d, t) {
+			var c = isNaN(c = Math.abs(c)) ? 2 : c,
+			d = d == undefined ? "." : d,
+			t = t == undefined ? "," : t,
+			s = n < 0 ? "-" : "",
+			i = String(parseInt(n = Math.abs(Number(n) || 0).toFixed(c))),
+			j = (j = i.length) > 3 ? j % 3 : 0;
+
+			return s + (j ? i.substr(0, j) + t : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + t) + (c ? d + Math.abs(n - i).toFixed(c).slice(2) : "");
+		};		
 	});
 </script>
 @endsection

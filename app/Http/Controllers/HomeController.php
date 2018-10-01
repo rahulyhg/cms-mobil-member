@@ -79,6 +79,17 @@ class HomeController extends Controller
       return response()->json($regencies);
     }
 
+    public function fuel(Request $request){
+      $id = $request->input('id');
+      $model = $request->input('model_id');
+      $variant = $request->input('variant_id');
+      $transmission = $request->input('transmission_id');
+      $tenor = $request->input('tenor_id');
+      $matchThese = ['specimen_id' => $model, 'variant' => $variant, 'transmission' => $transmission, 'tenor' => $tenor, 'fuel' => $id];
+      $regencies = Car::where($matchThese)->get();
+      return response()->json($regencies);
+    }
+
     function states( Request $request )
     {        
         $states = App\Specimen::where('brand_id', $request->get('id') )->get();      

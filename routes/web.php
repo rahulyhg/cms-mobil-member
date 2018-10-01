@@ -28,5 +28,6 @@ Route::get('json-model','HomeController@model');
 Route::get('json-variant','HomeController@variant');
 Route::get('json-transmission','HomeController@transmission');
 Route::get('json-tenor','HomeController@tenor');
+Route::get('json-fuel','HomeController@fuel');
 
 Route::get('car-choose', 'CustomerController@car')->name('car');

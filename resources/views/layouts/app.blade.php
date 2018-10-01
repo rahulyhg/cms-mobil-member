@@ -28,18 +28,38 @@
     <title>{{ $title->content, config('app.name') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
-
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
+    <script src="{{ asset('js/app.js') }}"></script>    
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     @yield('head-content')
-    
-    <!-- <link href="{{ asset('css/footer.css') }}" rel="stylesheet"> -->
+    <!-- Fonts -->
+    <style type="text/css">
+    @font-face {
+        font-family: Gotham-Thin;
+        src: url('font/Gotham-Thin.tff') format('truetype');
+    }
+    @font-face {
+        font-family: Gotham-Light;
+        src: url('font/Gotham-Light.tff') format('truetype');
+    }
+    @font-face {
+        font-family: Gotham-Medium;
+        src: url('font/Gotham-Medium.tff') format('truetype');
+    }
+    html {
+        font-family: "Gotham-Thin", sans-serif;
+    }
+    p {
+        font-family: "Gotham-Light", sans-serif;
+    }
+    h1,h2,h3,h4,h5,h6 {
+        font-family: "Gotham-Medium", sans-serif;
+    }
+    </style>
+
+<!-- <link href="{{ asset('css/footer.css') }}" rel="stylesheet"> -->
 </head>
 <body>
     <div id="app" style="overflow-x: hidden;">
@@ -252,37 +272,17 @@
         $whatsapp = App\Social::find(4)->value('link');
         ?>
         <div class="row justify-content-center">
-            <a class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-xs-1" href="{{ url($facebook) }}" target="_blank">
-                <center>
-                    <span class="fa-stack fa-lg">
-                        <i class="fa fa-square fa-stack-2x text-danger"></i>
-                        <i class="fa fa-facebook fa-stack-1x" style="color: white;"></i>
-                    </span>
-                </center>
+            <a class="col-xs-3" href="{{ url($facebook) }}" target="_blank" style="padding: 10px;">
+                <img src="{{ asset('inset/facebook.png') }}" class="img-fluid" style="max-width: 50px;">
             </a>
-            <a class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-xs-1" href="{{ url($twitter) }}" target="_blank">
-                <center>
-                    <span class="fa-stack fa-lg">
-                        <i class="fa fa-square fa-stack-2x text-danger"></i>
-                        <i class="fa fa-twitter fa-stack-1x" style="color: white;"></i>
-                    </span>
-                </center>
+            <a class="col-xs-3" href="{{ url($twitter) }}" target="_blank" style="padding: 10px;">
+                <img src="{{ asset('inset/twitter.png') }}" class="img-fluid" style="max-width: 50px;">
             </a>
-            <a class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-xs-1" href="{{ url($instagram) }}" target="_blank">
-                <center>
-                    <span class="fa-stack fa-lg">
-                        <i class="fa fa-square fa-stack-2x text-danger"></i>
-                        <i class="fa fa-instagram fa-stack-1x" style="color: white;"></i>
-                    </span>
-                </center>
+            <a class="col-xs-3" href="{{ url($instagram) }}" target="_blank" style="padding: 10px;">
+                <img src="{{ asset('inset/instagram.png') }}" class="img-fluid" style="max-width: 50px;">
             </a>
-            <a class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-xs-1" href="{{ url($whatsapp) }}" target="_blank">
-                <center>
-                    <span class="fa-stack fa-lg">
-                        <i class="fa fa-square fa-stack-2x text-danger"></i>
-                        <i class="fa fa-whatsapp fa-stack-1x" style="color: white;"></i>
-                    </span>
-                </center>
+            <a class="col-xs-3" href="{{ url($whatsapp) }}" target="_blank" style="padding: 10px;">
+                <img src="{{ asset('inset/youtube.png') }}" class="img-fluid" style="max-width: 50px;">
             </a>
         </div><br>
         <div class="row justify-content-center">

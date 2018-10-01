@@ -4,12 +4,19 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Brand;
+use App\Specimen;
+use App\Car;
 
 class CustomerController extends Controller
 {
     public function car()
     {
         $data['brands'] = Brand::orderBy('name', 'asc')->get();
+        // $brand_id = Brand::orderBy('name', 'asc')->first()->value('id');
+        // $data['models'] = Specimen::where('brand_id', $brand_id)->orderBy('name', 'asc')->get();
+        // $model_id = Specimen::where('brand_id', $brand_id)->orderBy('name', 'asc')->first()->value('id');
+        // $data['cars'] = Car::where('specimen_id', $model_id)->orderBy('name', 'asc')->get();
+        // $car_id = Car::where('specimen_id', $model_id)->orderBy('name', 'asc')->first()->value('id');
         return view('member.car')->with($data);
     }
 
