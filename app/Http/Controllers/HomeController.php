@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use DB;
 use App\Specimen;
 use App\Car;
+use App\User;
 
 class HomeController extends Controller
 {
@@ -26,18 +27,55 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+      return view('home');
+    }
+
+    public function generateNumber() {
+      $number = rand(1111,9999);
+      if ($this->numberExists($number)) {
+        return generateNumber();
+      }
+      return $number;
+    }
+
+    public function numberExists($number) {    
+      return User::where('phone_verification_code', $number)->exists();
+    }
+
+    public function generateToken() {
+      $number = str_random(12);
+      if ($this->tokenExists($number)) {
+        return generateToken();
+      }
+      return $number;
+    }
+
+    public function tokenExists($number) {    
+      return User::where('email_verification_token', $number)->exists();
+    }
+
+    public function form_data(Request $request)
+    {
+      $table = new User;
+      $table->name = $request->input('name');
+      $table->email = $request->input('email');
+      $table->phone_number = $request->input('phone_number');
+      $table->voucher_code = $request->input('voucher_code');      
+      $table->phone_verification_code = $this->generateNumber();
+      $table->email_verification_token = $this->generateToken();
+      $table->save();
+      return view('verifikasi');
     }
 
     public function select(Request $request)
     {
-        $brand_id = $request->input('brand_id');        
-        $models = Specimen::where('brand_id',$brand_id)->orderBy('name', 'asc')->get();
-        $output = '<option value="">Select</option>';
-        foreach ($models as $model) {
-            $output .= '<option value="'.$model->id.'">'.$model->name.'</option>';
-        }
-        echo $output;
+      $brand_id = $request->input('brand_id');        
+      $models = Specimen::where('brand_id',$brand_id)->orderBy('name', 'asc')->get();
+      $output = '<option value="">Select</option>';
+      foreach ($models as $model) {
+        $output .= '<option value="'.$model->id.'">'.$model->name.'</option>';
+      }
+      echo $output;
     }
 
     public function regencies(Request $request){
@@ -92,23 +130,23 @@ class HomeController extends Controller
 
     function states( Request $request )
     {        
-        $states = App\Specimen::where('brand_id', $request->get('id') )->get();      
-        $output = [];
-        foreach( $states as $state )
-        {
-            $output[$state->id] = $state->name;
-        }
-        return $output;
+      $states = App\Specimen::where('brand_id', $request->get('id') )->get();      
+      $output = [];
+      foreach( $states as $state )
+      {
+        $output[$state->id] = $state->name;
+      }
+      return $output;
     }
 
     function cities( Request $request )
     {        
-        $cities = App\Car::where('state_id', $request->get('id') )->get();
-        $output = [];
-        foreach( $cities as $city )
-        {
-            $output[$city->id] = $city->name;
-        }
-        return $output;
+      $cities = App\Car::where('state_id', $request->get('id') )->get();
+      $output = [];
+      foreach( $cities as $city )
+      {
+        $output[$city->id] = $city->name;
+      }
+      return $output;
     }
-}
+  }

@@ -57,7 +57,7 @@
     h1,h2,h3,h4,h5,h6 {
         font-family: "Gotham-Medium", sans-serif;
     }
-    </style>
+</style>
 
 <!-- <link href="{{ asset('css/footer.css') }}" rel="stylesheet"> -->
 </head>
@@ -174,7 +174,8 @@
                   <div class="row justify-content-center">                        
                     <center>                        
                         <h1>Data Pribadi</h1>                            
-                        <form>
+                        <form method="POST" action="{{ route('form-data') }}">
+                            @csrf
                             <div class="form-group" style="width: 75%;">
                                 <input type="text" name="name" class="text-center  form-control is-invalid" placeholder="nama" required autofocus>
                             </div>
@@ -217,7 +218,8 @@
                         <center>
                             <h1>Data Pribadi</h1>
                             <br><br>
-                            <form>
+                            <form method="POST" action="{{ route('form-data') }}">
+                            @csrf
                                 <div class="form-group">
                                     <input type="text" name="name" class="text-center col-md-6 form-control is-invalid" placeholder="nama" required autofocus>
                                 </div>
@@ -269,7 +271,7 @@
         $facebook = App\Social::find(1)->value('link');
         $twitter = App\Social::find(2)->value('link');
         $instagram = App\Social::find(3)->value('link');
-        $whatsapp = App\Social::find(4)->value('link');
+        $youtube = App\Social::find(4)->value('link');
         ?>
         <div class="row justify-content-center">
             <a class="col-xs-3" href="{{ url($facebook) }}" target="_blank" style="padding: 10px;">
@@ -281,7 +283,7 @@
             <a class="col-xs-3" href="{{ url($instagram) }}" target="_blank" style="padding: 10px;">
                 <img src="{{ asset('inset/instagram.png') }}" class="img-fluid" style="max-width: 50px;">
             </a>
-            <a class="col-xs-3" href="{{ url($whatsapp) }}" target="_blank" style="padding: 10px;">
+            <a class="col-xs-3" href="{{ url($youtube) }}" target="_blank" style="padding: 10px;">
                 <img src="{{ asset('inset/youtube.png') }}" class="img-fluid" style="max-width: 50px;">
             </a>
         </div><br>

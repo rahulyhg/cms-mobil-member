@@ -15,10 +15,14 @@ Route::get('/', function () {
 	return view('home');
 });
 
+Route::get('test', function () {
+	return view('member.account');
+});
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::post('/', 'HomeController@select')->name('select');
+Route::post('verifikasi', 'HomeController@form_data')->name('form-data');
 
 Route::post( '/get/states', 'HomeController@states' )->name( 'loadStates' );
 Route::post( '/get/cities', 'HomeController@cities' )->name( 'loadCities' );

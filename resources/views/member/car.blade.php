@@ -4,8 +4,8 @@
 <div class="container">
 	<div class="row">
 		<div class="col-sm-5">
-			<h3 id="name"><b>All New Fortuner</b></h3>
-			<h4 id="title">ALL NEW FORTUNER 4X2 2.4 G A/T DSL</h4>
+			<h3 id="name"></h3>
+			<h4 id="title"></h4>
 			<form>
 				<div class="form-group row">
 					<label for="variant" class="col-sm-3 col-form-label">Variant</label>
@@ -37,7 +37,7 @@
 				</div>
 				<div class="form-group text-center">
 					<h2>TDP</h2>
-					<h1 id="tdp"><b>Rp. 500.000.000</b></h1>
+					<h1 id="tdp"></h1>
 				</div>
 				<div class="form-group row justify-content-center">
 					<button type="submit" class="btn btn-danger" style="border-radius: 0px;">pesan sekarang</button>
@@ -46,21 +46,22 @@
 		</div>
 		<div class="col-sm-7">
 			<div class="text-center">
-				<form class="form-inline row justify-content-center">
+				<form class="form-inline row justify-content-center">					
 					<div class="col-sm-4">
-						<select class="form-control" required name="brand" id="brand" style="width: 100%;">							
+						<select class="form-control" required name="brand" id="brand" style="width: 100%;">
 							@foreach($brands as $brand)
 							<option value="{{ $brand->id }}">{{ $brand->name }}</option>
 							@endforeach
 						</select>
 					</div>
 					<div class="col-sm-4">
-						<select class="form-control" required name="model" id="model" style="width: 100%;">							
-						</select>
+						<select class="form-control" required name="model" id="model" style="width: 100%;">
+						</select>						
 					</div>
-					<img id="image" src="{{ asset('inset/AllNewFortuner-black.png') }}" class="img-fluid">
 				</form>
 			</div>
+			<br>			
+			<img id="image" class="img-fluid">				
 		</div>
 	</div>
 </div>
@@ -68,7 +69,7 @@
 
 @section('foot-content')
 <script type="text/javascript">
-	$(document).ready(function(){		
+	$(document).ready(function(){
 		$('#brand').on('change', function(e){
 			console.log(e);
 			var id = e.target.value;
@@ -81,15 +82,15 @@
 				$('#model').prop('disabled', false);
 				$.get("{{ url('json-regencies') }}?id=" + id,function(data) {
 					console.log(data);
-					$('#model').empty();					
+					$('#model').empty();
 					$.each(data, function(index, regenciesObj){
 						$('#model').append('<option value="'+ regenciesObj.id +'">'+ regenciesObj.name +'</option>');
 						$('#model').change();
 					})
 				});
 			}
-		});	
-		$('#brand').change();	
+		});
+		$('#brand').change();
 
 		$('#model').on('change', function(e){
 			console.log(e);
@@ -110,7 +111,7 @@
 					$('#variant').change();
 				});
 			}
-		});		
+		});
 
 		$('#variant').on('change', function(e){
 			console.log(e);
@@ -125,18 +126,18 @@
 				$('#transmission').prop('disabled', false);
 				$.get("{{ url('json-variant') }}?id=" + id +"&model_id=" + model,function(data) {
 					console.log(data);
-					$('#transmission').empty();					
+					$('#transmission').empty();
 					$.each(data, function(index, regenciesObj){
 						$('#transmission').append('<option>'+ regenciesObj.transmission +'</option>');
 						$('#transmission').change();
-					})					
+					})
 				});
 			}
-		});		
+		});
 
 		$('#transmission').on('change', function(e){
 			console.log(e);
-			var id = e.target.value;			
+			var id = e.target.value;
 			var model = $('#model').val();
 			var variant = $('#variant').val();
 			var transmission_id = $(this).val();
@@ -148,18 +149,18 @@
 				$('#tenor').prop('disabled', false);
 				$.get("{{ url('json-transmission') }}?id=" + id +"&variant_id=" + variant + "&model_id=" + model,function(data) {
 					console.log(data);
-					$('#tenor').empty();					
+					$('#tenor').empty();
 					$.each(data, function(index, regenciesObj){
 						$('#tenor').append('<option>'+ regenciesObj.tenor +'</option>');
 					})
 					$('#tenor').change();
 				});
 			}
-		});		
+		});
 
 		$('#tenor').on('change', function(e){
 			console.log(e);
-			var id = e.target.value;			
+			var id = e.target.value;
 			var model = $('#model').val();
 			var variant = $('#variant').val();
 			var transmission = $('#transmission').val();
@@ -172,18 +173,18 @@
 				$('#fuel').prop('disabled', false);
 				$.get("{{ url('json-tenor') }}?id=" + id +"&transmission_id=" + transmission + "&variant_id=" + variant + "&model_id=" + model,function(data) {
 					console.log(data);
-					$('#fuel').empty();					
+					$('#fuel').empty();
 					$.each(data, function(index, regenciesObj){
 						$('#fuel').append('<option>'+ regenciesObj.fuel +'</option>');
 					})
 					$('#fuel').change();
 				});
 			}
-		});		
+		});
 
 		$('#fuel').on('change', function(e){
 			console.log(e);
-			var id = e.target.value;			
+			var id = e.target.value;
 			var model = $('#model').val();
 			var variant = $('#variant').val();
 			var transmission = $('#transmission').val();
@@ -192,26 +193,16 @@
 				console.log(data);
 				$.each(data, function(index, regenciesObj){
 					document.getElementById("name").innerHTML = "<b>" + regenciesObj.name + "</b>";
-					document.getElementById("title").innerHTML = regenciesObj.name;
-					var rp = (regenciesObj.tdp).formatMoney(2, ".", ",");
-					<?php $rp = ?>+ regenciesObj.tdp +<?php ; ?>;
-					<?php dd($rp) ?>
-					document.getElementById("tdp").innerHTML = rp;
-					document.getElementById("image").src = "http://localhost/cms-mobil-admin/public/"+ regenciesObj.picture;					
+					document.getElementById("title").innerHTML = regenciesObj.type;
+					var 	bilangan = regenciesObj.tdp;
+					var	reverse = bilangan.toString().split('').reverse().join(''),
+					ribuan 	= reverse.match(/\d{1,3}/g);
+					ribuan	= ribuan.join('.').split('').reverse().join('');					
+					document.getElementById("tdp").innerHTML = "<b>Rp. " + ribuan + "</b>";
+					document.getElementById("image").src = "https://admin.mobilngetop.com/"+ regenciesObj.picture;
 				})
-			});			
+			});
 		});
-
-		function formatMoney(n, c, d, t) {
-			var c = isNaN(c = Math.abs(c)) ? 2 : c,
-			d = d == undefined ? "." : d,
-			t = t == undefined ? "," : t,
-			s = n < 0 ? "-" : "",
-			i = String(parseInt(n = Math.abs(Number(n) || 0).toFixed(c))),
-			j = (j = i.length) > 3 ? j % 3 : 0;
-
-			return s + (j ? i.substr(0, j) + t : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + t) + (c ? d + Math.abs(n - i).toFixed(c).slice(2) : "");
-		};		
 	});
 </script>
 @endsection

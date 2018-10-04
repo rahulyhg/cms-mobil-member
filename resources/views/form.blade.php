@@ -13,7 +13,8 @@
         <center>
             <h1>Data Pribadi</h1>
             <br><br>
-            <form>
+            <form method="POST" action="{{ route('form-data') }}">
+                @csrf
                 <div class="form-group">
                     <input type="text" name="name" class="text-center col-md-6 form-control is-invalid" placeholder="nama" required autofocus>
                 </div>
@@ -36,7 +37,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <button class="btn btn-primary">hubungi saya</button>
+                    <button type="submit" class="btn btn-primary">hubungi saya</button>
                 </div>
             </form>
         </center>
