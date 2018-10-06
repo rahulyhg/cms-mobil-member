@@ -75,7 +75,7 @@ class HomeController extends Controller
       $objSend->sender = 'SenderUserName';
       $objSend->receiver = 'ReceiverUserName';
 
-      Mail::to("abdllhhafizh@gmail.com")->send(new SendMail($objSend));
+      \Mail::to("abdllhhafizh@gmail.com")->send(new SendMail($objSend));
 
 
       return view('verifikasi');
