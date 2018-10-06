@@ -60,15 +60,22 @@ class HomeController extends Controller
     {
       $table = new User;
       $table->name = $request->input('name');
+      $nm = $table->name;
       $table->email = $request->input('email');
       $table->password = Hash::make(str_random(8));
+      $pw = $table->password;
       $table->phone_number = $request->input('phone_number');
       $table->voucher_code = $request->input('voucher_code');      
       $table->phone_verification_code = $this->generateNumber();
       $table->email_verification_token = $this->generateToken();
+      $tkn = $table->email_verification_token;
       $table->save();
 
-      $data = array('name'=>"Virat Gandhi");
+      $data = array(
+        'name' => $nm,
+        'password' => $pw,
+        'url' => "mobilngetop.com/register/".$tkn
+      );
       Mail::send('mails.send', $data, function($message) {
         $message->to('abdllhhafizh@gmail.com', 'Tutorials Point')->subject
         ('Laravel HTML Testing Mail');
