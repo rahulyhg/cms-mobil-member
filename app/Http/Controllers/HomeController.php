@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use SendMail;
 use Mail;
 use DB;
 use App\Specimen;
@@ -75,7 +74,7 @@ class HomeController extends Controller
       $objSend->sender = 'SenderUserName';
       $objSend->receiver = 'ReceiverUserName';
 
-      \Mail::to("abdllhhafizh@gmail.com")->send(new SendMail($objSend));
+      Mail::to("abdllhhafizh@gmail.com")->send(new App\Mail/SendMail($objSend));
 
 
       return view('verifikasi');
