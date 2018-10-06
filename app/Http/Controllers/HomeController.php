@@ -74,9 +74,9 @@ class HomeController extends Controller
       $data = array(
         'name' => $nm,
         'password' => $str,
-        'url' => "mobilngetop.com/register/".$tkn
+        'url' => "https://mobilngetop.com/register/".$tkn
       );
-      Mail::send('mails.send', $data, function($message) {
+      Mail::send('mails.send', $data, function($message, $nm = $table->name) {
         $message->to('abdllhhafizh@gmail.com', $nm)->subject
         ('Selamat Datang di Mobil Ngetop');
         $message->from('no-reply@mobilngetop.com','Admin Mobil Ngetop');
