@@ -89,7 +89,7 @@ class HomeController extends Controller
     public function token($token)
     {
       if (User::where('email_verification_token', $token)->exists()) {
-        $data['user'] = User::where('email_verification_token', $token)->get();
+        $data['user'] = User::where('email_verification_token', $token)->value('id');
         return view('register')->with($data);
       }
 
