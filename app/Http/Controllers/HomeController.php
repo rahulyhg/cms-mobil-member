@@ -99,11 +99,15 @@ class HomeController extends Controller
 
     public function chgpwd(Request $request)
     {
+      if ($request->input('password') !== $request->input('confirm_password'))
+      {
+        return back()->with('message', 'Password tidak sama');
+      }      
       $table = User::find($request->input('id'));
       $table->password = Hash::make($request->input('password'));
       $role = $table->role_id;
       $table->role_id = $role + 1;
-      $table->save();
+      $table->save();      
     }
 
     public function select(Request $request)

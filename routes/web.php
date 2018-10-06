@@ -16,7 +16,7 @@ Route::get('/', function () {
 });
 
 Route::get('test', function () {
-	return view('verifikasi');
+	return view('register');
 });
 
 Auth::routes();
@@ -37,3 +37,4 @@ Route::get('json-tenor','HomeController@tenor');
 Route::get('json-fuel','HomeController@fuel');
 
 Route::get('car-choose', 'CustomerController@car')->name('car');
+Route::get('akun', 'CustomerController@account')->name('account');

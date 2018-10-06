@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Brand;
 use App\Specimen;
 use App\Car;
+use App\User;
 
 class CustomerController extends Controller
 {
@@ -18,6 +19,11 @@ class CustomerController extends Controller
         // $data['cars'] = Car::where('specimen_id', $model_id)->orderBy('name', 'asc')->get();
         // $car_id = Car::where('specimen_id', $model_id)->orderBy('name', 'asc')->first()->value('id');
         return view('member.car')->with($data);
+    }
+
+    public function account()
+    {
+        return "akun";
     }
 
     /**
