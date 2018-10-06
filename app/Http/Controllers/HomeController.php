@@ -64,7 +64,7 @@ class HomeController extends Controller
       $table->email = $request->input('email');
       $ml = $table->email;
       $str = str_random(8);
-      $table->password = Hash::make($str);      
+      $table->password = Hash::make($str);
       $table->phone_number = $request->input('phone_number');
       $table->voucher_code = $request->input('voucher_code');      
       $table->phone_verification_code = $this->generateNumber();
@@ -95,6 +95,15 @@ class HomeController extends Controller
 
       abort(404);
 
+    }
+
+    public function chgpwd(Request $request)
+    {
+      $table = User::find($request->input('id'));
+      $table->password = Hash::make($request->input('password'));
+      $role = $table->role_id;
+      $table->role_id = $role + 1;
+      $table->save();
     }
 
     public function select(Request $request)

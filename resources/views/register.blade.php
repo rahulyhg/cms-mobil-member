@@ -5,7 +5,8 @@
     <div class="row">
         <div class="col-sm-6">
             <h1>Register</h1>
-            <form>
+            <form method="POST" action="{{ route('chgpwd') }}">
+                @csrf
                 <div class="form-group">
                     <label for="password">Password*</label>
                     <input type="password" class="form-control" id="password" name="password">

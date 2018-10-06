@@ -21,6 +21,7 @@ Route::get('test', function () {
 
 Auth::routes();
 Route::get('register/{token}', 'HomeController@token');
+Route::post('change_password', 'HomeController@chgpwd')->name('chgpwd');
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::post('verifikasi', 'HomeController@form_data')->name('form-data');
