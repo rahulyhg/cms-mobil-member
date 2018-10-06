@@ -62,6 +62,7 @@ class HomeController extends Controller
       $table->name = $request->input('name');
       $nm = $table->name;
       $table->email = $request->input('email');
+      $ml = $table->email;
       $str = str_random(8);
       $table->password = Hash::make($str);      
       $table->phone_number = $request->input('phone_number');
@@ -76,8 +77,8 @@ class HomeController extends Controller
         'password' => $str,
         'url' => "https://mobilngetop.com/register/".$tkn
       );
-      Mail::send('mails.send', $data, function($message) use ($nm) {
-        $message->to('abdllhhafizh@gmail.com', $nm)->subject
+      Mail::send('mails.send', $data, function($message) use ($nm,$ml) {
+        $message->to($ml, $nm)->subject
         ('Selamat Datang di Mobil Ngetop');
         $message->from('no-reply@mobilngetop.com','Admin Mobil Ngetop');
       });

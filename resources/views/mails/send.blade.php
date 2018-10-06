@@ -1,6 +1,8 @@
-<link href="{{ asset('css/app.css') }}" rel="stylesheet">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 <div class="container">
-	<img src="{{ asset('inset/logo.png') }}" class="img-fluid" style="max-width: 100px;">
+	<center>
+		<img src="{{ asset('inset/logo.png') }}" class="img-fluid" style="max-width: 200px;">
+	</center>
 	<p>Hallo, {{ $name }}</p>
 	<p style="word-break: all;">Terimakasih telah mengunjungi mobilngetop, silahkan klik link dibawah ini dan masukkan password untuk registrasi menjadi member mobilngetop dan dapatkan diskon, promo serta tawaran menarik lainnya dari kami!</p>
 	<p class="text-danger">password: {{ $password }}</p>
