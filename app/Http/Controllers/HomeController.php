@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use App\Mail\SendMail;
-use Illuminate\Support\Facades\Mail;
+use SendMail;
+use Mail;
 use DB;
 use App\Specimen;
 use App\Car;
