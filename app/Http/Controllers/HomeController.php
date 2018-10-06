@@ -62,8 +62,8 @@ class HomeController extends Controller
       $table->name = $request->input('name');
       $nm = $table->name;
       $table->email = $request->input('email');
-      $table->password = Hash::make(str_random(8));
-      $pw = $table->password;
+      $str = str_random(8);
+      $table->password = Hash::make($str);      
       $table->phone_number = $request->input('phone_number');
       $table->voucher_code = $request->input('voucher_code');      
       $table->phone_verification_code = $this->generateNumber();
@@ -73,12 +73,12 @@ class HomeController extends Controller
 
       $data = array(
         'name' => $nm,
-        'password' => $pw,
+        'password' => $str,
         'url' => "mobilngetop.com/register/".$tkn
       );
       Mail::send('mails.send', $data, function($message) {
-        $message->to('abdllhhafizh@gmail.com', 'Tutorials Point')->subject
-        ('Laravel HTML Testing Mail');
+        $message->to('abdllhhafizh@gmail.com', $nm)->subject
+        ('Selamat Datang di Mobil Ngetop');
         $message->from('no-reply@mobilngetop.com','Admin Mobil Ngetop');
       });
 
