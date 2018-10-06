@@ -16,7 +16,7 @@ Route::get('/', function () {
 });
 
 Route::get('test', function () {
-	return view('member.account');
+	return view('verifikasi');
 });
 
 Auth::routes();

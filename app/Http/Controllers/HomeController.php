@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use App\Mail\SendMail;
+use Illuminate\Support\Facades\Mail;
 use DB;
 use App\Specimen;
 use App\Car;
@@ -31,7 +34,7 @@ class HomeController extends Controller
     }
 
     public function generateNumber() {
-      $number = rand(1111,9999);
+      $number = rand(1001,9999);
       if ($this->numberExists($number)) {
         return generateNumber();
       }
@@ -59,11 +62,22 @@ class HomeController extends Controller
       $table = new User;
       $table->name = $request->input('name');
       $table->email = $request->input('email');
+      $table->password = Hash::make(str_random(8));
       $table->phone_number = $request->input('phone_number');
       $table->voucher_code = $request->input('voucher_code');      
       $table->phone_verification_code = $this->generateNumber();
       $table->email_verification_token = $this->generateToken();
       $table->save();
+
+      $objSend = new \stdClass();
+      $objSend->demo_one = 'Demo One Value';
+      $objSend->demo_two = 'Demo Two Value';
+      $objSend->sender = 'SenderUserName';
+      $objSend->receiver = 'ReceiverUserName';
+
+      Mail::to("abdllhhafizh@gmail.com")->send(new SendMail($objSend));
+
+
       return view('verifikasi');
     }
 
