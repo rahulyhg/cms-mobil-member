@@ -19,7 +19,7 @@ class HomeController extends Controller
      */
     // public function __construct()
     // {
-    //     $this->middleware('auth');
+    //   $this->middleware(['auth', 'verified']);
     // }
 
     /**
@@ -68,14 +68,12 @@ class HomeController extends Controller
       $table->email_verification_token = $this->generateToken();
       $table->save();
 
-      $objSend = new \stdClass();
-      $objSend->demo_one = 'Demo One Value';
-      $objSend->demo_two = 'Demo Two Value';
-      $objSend->sender = 'SenderUserName';
-      $objSend->receiver = 'ReceiverUserName';
-
-      Mail::to("abdllhhafizh@gmail.com")->send(new App\Mail/SendMail($objSend));
-
+      $data = array('name'=>"Virat Gandhi");
+      Mail::send('mails.send', $data, function($message) {
+        $message->to('abdllhhafizh@gmail.com', 'Tutorials Point')->subject
+        ('Laravel HTML Testing Mail');
+        $message->from('no-reply@mobilngetop.com','Admin Mobil Ngetop');
+      });
 
       return view('verifikasi');
     }
