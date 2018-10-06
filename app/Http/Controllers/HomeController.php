@@ -86,6 +86,17 @@ class HomeController extends Controller
       return view('verifikasi');
     }
 
+    public function token($token)
+    {
+      if (User::where('email_verification_token', $token)->exist()) {
+        $data['user'] = User::where('email_verification_token', $token)->get();
+        return view('register')->with($data);
+      }
+
+      abort(404);
+
+    }
+
     public function select(Request $request)
     {
       $brand_id = $request->input('brand_id');        
