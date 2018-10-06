@@ -38,15 +38,15 @@
     <style type="text/css">
     @font-face {
         font-family: Gotham-Thin;
-        src: url('{{ asset('font/Gotham-Thin.tff') }}') format('truetype');
+        src: url('{{ asset('font/Gotham-Thin.otf') }}') format('truetype');
     }
     @font-face {
         font-family: Gotham-Light;
-        src: url('{{ asset('font/Gotham-Light.tff') }}') format('truetype');
+        src: url('{{ asset('font/Gotham-Light.otf') }}') format('truetype');
     }
     @font-face {
         font-family: Gotham-Medium;
-        src: url('{{ asset('font/Gotham-Medium.tff') }}') format('truetype');
+        src: url('{{ asset('font/Gotham-Medium.otf') }}') format('truetype');
     }
     html {
         font-family: "Gotham-Thin", sans-serif;
