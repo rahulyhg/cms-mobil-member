@@ -4,7 +4,7 @@
 <div class="container">
     <form class="login-form" method="POST" action="{{ route('login') }}">
         @csrf
-        <div class="row justify-content-center">
+        <div class="row justify-content-center" style="padding-bottom: 20px;padding-top: 10px;">
             <div class="col-sm-6 text-center">
                 <img src="{{ asset('inset/login.png') }}" class="img-fluid">
             </div>

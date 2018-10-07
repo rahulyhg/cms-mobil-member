@@ -65,7 +65,7 @@
     <div id="app" style="overflow-x: hidden;">
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand mr-auto" href="{{ url('/') }}">
                     <img src="{{ asset('inset/logo.png') }}" class="img-fluid" width="100">
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -90,13 +90,13 @@
                     <div class="row justify-content-center">
                         <ul class="nav nav-tabs mx-auto" style="margin-bottom: -20px;">
                             <li class="nav-item">
-                                <a class="nav-link nav-item-menu d-none d-sm-none d-md-block d-lg-block d-xl-block" href="#" style="padding-left: 50px;padding-right: 50px;">Mobil</a>
+                                <a class="nav-link nav-item-menu d-none d-sm-none d-md-block d-lg-block d-xl-block" href="#">Mobil</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link nav-item-menu d-none d-sm-none d-md-block d-lg-block d-xl-block" href="#" style="padding-left: 50px;padding-right: 50px;">Promo</a>
+                                <a class="nav-link nav-item-menu d-none d-sm-none d-md-block d-lg-block d-xl-block" href="#">Promo</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link nav-item-menu d-none d-sm-none d-md-block d-lg-block d-xl-block" href="#" style="padding-left: 50px;padding-right: 50px;">Artikel</a>
+                                <a class="nav-link nav-item-menu d-none d-sm-none d-md-block d-lg-block d-xl-block" href="#">Artikel</a>
                             </li>
                         </ul>
                     </div>
