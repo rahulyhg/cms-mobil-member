@@ -257,13 +257,13 @@
             <div class="form-group" style="display: inline;">
                 <div class="row justify-content-center">
                     <center>
-                        <a class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-12" style="padding:10px;color: black;text-decoration: none;" href=""><b>FAQ</b></a>
+                        <a class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-12" style="padding:10px;color: black;text-decoration: none;" href="{{ route('faq') }}"><b>FAQ</b></a>
                     </center>
                     <center>                            
-                        <a class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-12" style="padding:10px;color: black;text-decoration: none;" href=""><b>Ketentuan Pribadi</b></a>
+                        <a class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-12" style="padding:10px;color: black;text-decoration: none;" href="{{ route('privacyPolicy') }}"><b>Ketentuan Pribadi</b></a>
                     </center>
                     <center>
-                        <a class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-12" style="padding:10px;color: black;text-decoration: none;" href=""><b>Tentang Kami</b></a>
+                        <a class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-12" style="padding:10px;color: black;text-decoration: none;" href="{{ route('aboutUs') }}"><b>Tentang Kami</b></a>
                     </center>
                 </div>
             </div>

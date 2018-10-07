@@ -7,6 +7,7 @@ use App\Brand;
 use App\Specimen;
 use App\Car;
 use App\User;
+use App\Article;
 
 class CustomerController extends Controller
 {
@@ -24,6 +25,21 @@ class CustomerController extends Controller
     public function account()
     {
         return "akun";
+    }
+
+    public function article()
+    {
+        $first = Article::orderBy('created_at', 'desc')->first()->value('id');
+        $data['first'] = Article::find($first);
+        $data['articles'] = Article::where('id', '!=', $first)->orderby('created_at', 'desc')->paginate(3);
+        return view('member.article')->with($data);
+    }
+
+    public function showArticle($id)
+    {        
+        $data['first'] = Article::find($id);
+        $data['articles'] = Article::where('id', '!=', $id)->orderby('created_at', 'desc')->paginate(3);
+        return view('member.showArticle')->with($data);
     }
 
     /**

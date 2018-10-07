@@ -65,7 +65,7 @@
                 @foreach($specimens as $specimen)
                 <?php $cars = App\Car::where('specimen_id', $specimen->id)->orderBy('tdp', 'asc')->limit(1)->get(); ?>
                 @foreach($cars as $car)
-                <div class="col d-none d-sm-none d-md-block d-lg-block d-xl-block">
+                <div class="col d-none d-sm-none d-md-block d-lg-block d-xl-block" style="padding-bottom: 10px;">
                     <div class="card card-item border-danger" style="background-color: transparent;">
                         <div class="card-body text-center">
                             <img src="{{ url('https://admin.mobilngetop.com/'.$car->picture) }}" class="img-fluid">                        
@@ -74,7 +74,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-12 col-xs-12 d-md-none d-lg-none d-xl-none d-sm-block">
+                <div class="col-sm-12 col-xs-12 d-md-none d-lg-none d-xl-none d-sm-block" style="padding-bottom: 10px;">
                     <div class="card card-item border-danger" style="background-color: transparent;">
                         <div class="card-body text-center">
                             <img src="{{ url('https://admin.mobilngetop.com/'.$car->picture) }}" class="img-fluid">                        

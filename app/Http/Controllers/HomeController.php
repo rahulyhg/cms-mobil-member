@@ -9,6 +9,7 @@ use DB;
 use App\Specimen;
 use App\Car;
 use App\User;
+use App\About;
 
 class HomeController extends Controller
 {
@@ -108,6 +109,24 @@ class HomeController extends Controller
       $role = $table->role_id;
       $table->role_id = $role + 1;
       $table->save();      
+    }
+
+    public function privacyPolicy()
+    {
+      $data['privacy_policies'] = About::where('type', '1')->orderBy('created_at', 'asc')->get();
+      return view('privacy_policy')->with($data);
+    }
+
+    public function faq()
+    {
+      $data['faqs'] = About::where('type', '2')->orderBy('created_at', 'asc')->get();
+      return view('faq')->with($data);
+    }
+
+    public function aboutUs()
+    {
+      $data['abouts'] = About::where('type', '3')->orderBy('created_at', 'asc')->get();
+      return view('about_us')->with($data);
     }
 
     public function select(Request $request)

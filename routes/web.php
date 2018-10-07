@@ -36,5 +36,10 @@ Route::get('json-transmission','HomeController@transmission');
 Route::get('json-tenor','HomeController@tenor');
 Route::get('json-fuel','HomeController@fuel');
 
-Route::get('car-choose', 'CustomerController@car')->name('car');
+Route::get('pilih-mobil', 'CustomerController@car')->name('car');
 Route::get('akun', 'CustomerController@account')->name('account');
+Route::get('artikel', 'CustomerController@article')->name('article');
+Route::get('artikel/{id}', 'CustomerController@showArticle')->name('showArticle');
+Route::get('ketentuan-pribadi', 'HomeController@privacyPolicy')->name('privacyPolicy');
+Route::get('faq', 'HomeController@faq')->name('faq');
+Route::get('tentang-kami', 'HomeController@aboutUs')->name('aboutUs');
