@@ -12,25 +12,27 @@
             </div>
         </div>
         <div class="row justify-content-center">
-            <div class="col-sm-6">
-                <input id="email" type="text" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
+            <div class="col-sm-4">
+                <div class="form-group">                    
+                    <i class="fa fa-envelope-o fa-fw">Email</i>
+                    <input id="email" type="text" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
 
-                @if ($errors->has('email'))
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $errors->first('email') }}</strong>
-                </span>
-                @endif
-            </div>
-        </div>
-        <div class="row justify-content-center">
-            <div class="col-sm-6">
-                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
+                    @if ($errors->has('email'))
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $errors->first('email') }}</strong>
+                    </span>
+                    @endif
+                </div>
+                <div class="form-group">                    
+                    <i class="fa fa-lock fa-fw">Password</i>
+                    <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
 
-                @if ($errors->has('password'))
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $errors->first('password') }}</strong>
-                </span>
-                @endif
+                    @if ($errors->has('password'))
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $errors->first('password') }}</strong>
+                    </span>
+                    @endif
+                </div>
             </div>
         </div>
         <div class="row justify-content-center">
