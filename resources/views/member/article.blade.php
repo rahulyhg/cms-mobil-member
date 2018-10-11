@@ -36,7 +36,7 @@
 								</div>
 							</div>
 							<div class="col-sm-6 text-center">
-								<img src="{{ url('https://admin.mobilngetop.com/'.$article->picture) }}" class="img-fluid" style="width: 100%;height: 100%;">
+								<img src="{{ url('https://admin.mobilngetop.com/'.$article->picture) }}" class="img-fluid" style="width: 100%;">
 							</div>
 						</div>			
 					</div>
