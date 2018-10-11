@@ -5,15 +5,19 @@
 	<h1>Berita Otomotif</h1>
 	<div class="row">
 		<div class="col-sm-8">			
-				<img src="{{ url('https://admin.mobilngetop.com/'.$first->picture) }}" class="img-fluid" style="width: 100%;">
+			<img src="{{ url('https://admin.mobilngetop.com/'.$first->picture) }}" class="img-fluid" style="width: 100%;">
+			<div style="padding-top: 20px;">
 				<h2>{{ $first->title }}</h2>
-				<small style="color: #006db8;">ditulis oleh {{ $first->user->name }} pukul {{ date("H:i", strtotime($first->created_at)) }}</small>
-				@if(strlen($first->content)<=400)
-				<p style="word-break: all;">{{ $first->content }}</p>
-				@else
-				<p style="word-break: all;">{{ substr($first->content, 0, 400) }}...</p>			
-				@endif			
-				<a href="{{ route('showArticle', $first->id) }}" class="btn btn-danger" style="border-radius: 0px;">Baca Selengkapnya</a>
+			</div>
+			<div style="padding-top: 10px;padding-bottom: 20px;">
+			<small style="color: #006db8;">ditulis oleh {{ $first->user->name }} pukul {{ date("H:i", strtotime($first->created_at)) }}</small>
+			</div>
+			@if(strlen($first->content)<=400)
+			<p style="word-break: all;">{{ $first->content }}</p>
+			@else
+			<p style="word-break: all;">{{ substr($first->content, 0, 400) }}...</p>			
+			@endif			
+			<a href="{{ route('showArticle', $first->id) }}" class="btn btn-danger" style="border-radius: 0px;">Baca Selengkapnya</a>
 		</div>
 		<div class="col-sm-4">
 			@foreach($articles as $article)			
