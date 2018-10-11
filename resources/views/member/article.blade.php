@@ -7,7 +7,7 @@
 		<div class="col-sm-8">			
 			<img src="{{ url('https://admin.mobilngetop.com/'.$first->picture) }}" class="img-fluid" style="width: 100%;">
 			<div style="padding-top: 20px;">				
-				<h2><a href="{{ route('showArticle', $first->id) }}" style="color: black;">{{ $first->title }}</a></h2>
+				<h2><a href="{{ route('showArticle', $first->id) }}" style="color: black;text-decoration: none;">{{ $first->title }}</a></h2>
 			</div>
 			<div style="padding-top: 10px;padding-bottom: 20px;">
 			<small style="color: #006db8;">ditulis oleh {{ $first->user->name }} pukul {{ date("H:i", strtotime($first->created_at)) }}</small>
@@ -36,7 +36,7 @@
 								</div>
 							</div>
 							<div class="col-sm-6 text-center">
-								<img src="{{ url('https://admin.mobilngetop.com/'.$article->picture) }}" class="img-fluid">
+								<img src="{{ url('https://admin.mobilngetop.com/'.$article->picture) }}" class="img-fluid" style="width: 100%;height: 100%;">
 							</div>
 						</div>			
 					</div>

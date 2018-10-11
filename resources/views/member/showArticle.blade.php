@@ -8,7 +8,7 @@
 			<a style="color: #006db8;">{{ date("j F Y", strtotime($first->created_at)) }} pada {{ date("H:i", strtotime($first->created_at)) }} oleh {{ $first->user->name }}</a>
 			<div class="row" style="padding-top: 10px;padding-bottom: 10px;">
 				<div class="col-sm-12 text-center">
-					<img src="{{ url('https://admin.mobilngetop.com/'.$first->picture) }}" class="img-fluid">
+					<img src="{{ url('https://admin.mobilngetop.com/'.$first->picture) }}" class="img-fluid" style="width: 100%;">
 				</div>
 				<div class="col-sm-12">
 					@if($first->picture_credit !== null)
@@ -38,7 +38,7 @@
 								</div>
 							</div>
 							<div class="col-sm-6 text-center">
-								<img src="{{ url('https://admin.mobilngetop.com/'.$article->picture) }}" class="img-fluid">
+								<img src="{{ url('https://admin.mobilngetop.com/'.$article->picture) }}" class="img-fluid" style="width: 100%;height: 100%;">
 							</div>
 						</div>			
 					</div>
