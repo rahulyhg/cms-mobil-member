@@ -95,7 +95,6 @@ class HomeController extends Controller
       }
 
       abort(404);
-
     }
 
     public function chgpwd(Request $request)
@@ -127,6 +126,72 @@ class HomeController extends Controller
     {
       $data['abouts'] = About::where('type', '3')->orderBy('created_at', 'asc')->get();
       return view('about_us')->with($data);
+    }
+
+    public function p()
+    {
+      return view('test');
+    }
+
+    public function pn(Request $request)
+    {      
+      ob_start();
+      $apikey      = '3f98d8978b971272f0c587eebfccf45e';
+      $urlserver   = 'http://45.32.118.255/sms/api_sms_otp_send_json.php';
+      $callbackurl = '';
+      $senderid    = '1';
+
+      $senddata = array(
+        'apikey' => $apikey,  
+        'callbackurl' => $callbackurl, 
+        'senderid' => $senderid, 
+        'datapacket'=>array()
+      );
+
+      $number='+6285893567552';
+      $message='udeh mandi blon?';
+      array_push($senddata['datapacket'],array(
+        'number' => trim($number),
+        'message' => $message
+      ));
+
+      $data=json_encode($senddata);
+      $curlHandle = curl_init($urlserver);
+      curl_setopt($curlHandle, CURLOPT_CUSTOMREQUEST, "POST");
+      curl_setopt($curlHandle, CURLOPT_POSTFIELDS, $data);
+      curl_setopt($curlHandle, CURLOPT_RETURNTRANSFER, true);
+      curl_setopt($curlHandle, CURLOPT_HTTPHEADER, array(
+        'Content-Type: application/json',
+        'Content-Length: ' . strlen($data))
+    );
+      curl_setopt($curlHandle, CURLOPT_TIMEOUT, 30);
+      curl_setopt($curlHandle, CURLOPT_CONNECTTIMEOUT, 30);
+      $respon = curl_exec($curlHandle);
+
+      $curl_errno = curl_errno($curlHandle);
+      $curl_error = curl_error($curlHandle);  
+      $http_code  = curl_getinfo($curlHandle, CURLINFO_HTTP_CODE);
+      curl_close($curlHandle);
+      if ($curl_errno > 0) {
+        $senddatax = array(
+          'sending_respon'=>array(
+            'globalstatus' => 90, 
+            'globalstatustext' => $curl_errno."|".$http_code)
+        );
+        $respon=json_encode($senddatax);
+      } else {
+        if ($http_code<>"200") {
+          $senddatax = array(
+            'sending_respon'=>array(
+              'globalstatus' => 90, 
+              'globalstatustext' => $curl_errno."|".$http_code)
+          );
+          $respon= json_encode($senddatax); 
+        }
+      }   
+      header('Content-Type: application/json');
+      echo $respon;
+
     }
 
     public function select(Request $request)

@@ -43,3 +43,6 @@ Route::get('artikel/{id}', 'CustomerController@showArticle')->name('showArticle'
 Route::get('ketentuan-pribadi', 'HomeController@privacyPolicy')->name('privacyPolicy');
 Route::get('faq', 'HomeController@faq')->name('faq');
 Route::get('tentang-kami', 'HomeController@aboutUs')->name('aboutUs');
+
+Route::get('p', 'HomeController@p');
+Route::post('p', 'HomeController@pn')->name('p');

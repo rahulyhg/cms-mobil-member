@@ -102,20 +102,26 @@
         <div class="form-group">
             <div class="container">
                 <div class="row justify-content-center slick-testimoni d-none d-sm-none d-md-block d-lg-block d-xl-block">
-                    <?php $testimonis = App\Testimonial::all(); ?>
-                    @foreach($testimonis as $testimoni)
-                    <div style="padding: 10px;">
-                        <div class="card card-item border-danger" style="background-color: transparent;">
-                            <div class="card-body">
-                                <center>
-                                    <img src="{{ url('https://admin.mobilngetop.com/'.$testimoni->picture) }}" class="img-fluid">
-                                </center>
-                                <h5><b>{{ $testimoni->name }}</b></h5>
-                                <h5><p><b>"{{ $testimoni->content }}"</b></p></h5>
+                    <div class="card-deck">
+                        <?php $testimonis = App\Testimonial::all(); ?>
+                        @foreach($testimonis as $testimoni)
+                        <div style="padding: 10px;">
+                            <div class="card card-item border-danger" style="background-color: transparent;">
+                                <div class="card-body">
+                                    <div style="padding: 10px;">
+                                        <center>
+                                            <img src="{{ url('https://admin.mobilngetop.com/'.$testimoni->picture) }}" class="img-fluid">
+                                        </center>
+                                    </div>
+                                    <div style="padding: 10px;">
+                                        <h5><b>{{ $testimoni->name }}</b></h5>
+                                        <h5><p><b>{{ $testimoni->content }}</b></p></h5>
+                                    </div>
+                                </div>
                             </div>
                         </div>
+                        @endforeach
                     </div>
-                    @endforeach
                 </div>
             </div>
             <div class="row justify-content-center slick-mobile d-md-none d-lg-none d-xl-none d-sm-block">

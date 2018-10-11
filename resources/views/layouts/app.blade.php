@@ -66,42 +66,14 @@
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
                 <a class="navbar-brand mr-auto" href="{{ url('/') }}">
-                    <img src="{{ asset('inset/logo.png') }}" class="img-fluid" width="100">
+                    <img src="{{ asset('inset/logo.png') }}" class="img-fluid" style="width: 200px;">
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    @auth
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item">
-                            <a class="nav-link d-md-none d-lg-none d-xl-none" href="#">Mobil</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link d-md-none d-lg-none d-xl-none" href="#">Promo</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link d-md-none d-lg-none d-xl-none" href="#">Artikel</a>
-                        </li>
-                    </ul>
-
-                    <div class="row justify-content-center">
-                        <ul class="nav nav-tabs mx-auto" style="margin-bottom: -20px;">
-                            <li class="nav-item">
-                                <a class="nav-link nav-item-menu d-none d-sm-none d-md-block d-lg-block d-xl-block" href="#">Mobil</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link nav-item-menu d-none d-sm-none d-md-block d-lg-block d-xl-block" href="#">Promo</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link nav-item-menu d-none d-sm-none d-md-block d-lg-block d-xl-block" href="#">Artikel</a>
-                            </li>
-                        </ul>
-                    </div>
-                    @endauth
-                    @guest
+                    <!-- Left Side Of Navbar -->                    
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
                             <a class="nav-link d-md-none d-lg-none d-xl-none" data-toggle="modal" data-target=".bd-example-modal-lg-hp" style="cursor: pointer;">Mobil</a>
@@ -114,20 +86,19 @@
                         </li>
                     </ul>
 
-                    <div class="row justify-content-center">
-                        <ul class="nav nav-tabs mx-auto" style="margin-bottom: -20px;">
+                    <div class="row justify-content-center  d-none d-sm-none d-md-block d-lg-block d-xl-block" style="margin-bottom: -54px;margin-right: 80px;">
+                        <ul class="nav nav-tabs">
                             <li class="nav-item">
-                                <a class="nav-link nav-item-menu d-none d-sm-none d-md-block d-lg-block d-xl-block" data-toggle="modal" data-target=".bd-example-modal-lg" style="cursor: pointer;color: white;padding-left: 50px;padding-right: 50px;">Mobil</a>                                
+                                <a class="nav-link nav-item-menu" data-toggle="modal" data-target=".bd-example-modal-lg" style="cursor: pointer;color: white;padding-left: 50px;padding-right: 50px;">Mobil</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link nav-item-menu d-none d-sm-none d-md-block d-lg-block d-xl-block" data-toggle="modal" data-target=".bd-example-modal-lg" style="cursor: pointer;color: white;padding-left: 50px;padding-right: 50px;">Promo</a>
+                                <a class="nav-link nav-item-menu" data-toggle="modal" data-target=".bd-example-modal-lg" style="cursor: pointer;color: white;padding-left: 50px;padding-right: 50px;">Promo</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link nav-item-menu d-none d-sm-none d-md-block d-lg-block d-xl-block" data-toggle="modal" data-target=".bd-example-modal-lg" style="cursor: pointer;color: white;padding-left: 50px;padding-right: 50px;">Artikel</a>
+                                <a class="nav-link nav-item-menu" data-toggle="modal" data-target=".bd-example-modal-lg" style="cursor: pointer;color: white;padding-left: 50px;padding-right: 50px;">Artikel</a>
                             </li>
                         </ul>
-                    </div>
-                    @endguest
+                    </div>                    
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
