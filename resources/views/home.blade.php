@@ -103,69 +103,52 @@
             <div class="container">
                 <div class="row justify-content-center d-none d-sm-none d-md-block d-lg-block d-xl-block">                    
                     <?php $testimonis = App\Testimonial::all(); ?>
-                    <div class="carousel-inner">
-                        <div class="card-deck carousel-item">               
-                            @foreach($testimonis as $testimoni)                        
-                            <div class="card card-item border-danger" style="background-color: transparent;padding-bottom: 10px;">
-                                <div class="card-body">
-                                    <div style="padding: 10px;">
-                                        <center>
-                                            <img src="{{ url('https://admin.mobilngetop.com/'.$testimoni->picture) }}" class="img-fluid">
-                                        </center>
-                                    </div>
-                                    <div style="padding: 10px;">
-                                        <h5><b>{{ $testimoni->name }}</b></h5>
-                                        <h5><p><b>{{ $testimoni->content }}</b></p></h5>
-                                    </div>
-                                </div>
-                            </div>                    
-                            @endforeach
-                        </div>
-                    </div>
-                </div>
-                <div class="row justify-content-center slick-mobile d-md-none d-lg-none d-xl-none d-sm-block">
-                    <?php $testimonis = App\Testimonial::all(); ?>
-                    @foreach($testimonis as $testimoni)
-                    <div style="padding: 10px;">                    
-                        <div class="card card-item border-danger" style="background-color: transparent;">
+                    <div class="card-deck slick-testimoni">
+                        @foreach($testimonis as $testimoni)                        
+                        <div class="card card-item border-danger" style="background-color: transparent;padding-bottom: 10px;">
                             <div class="card-body">
-                                <center>
-                                    <img src="{{ url('https://admin.mobilngetop.com/'.$testimoni->picture) }}" class="img-fluid">
-                                </center>
-                                <h5><b>{{ $testimoni->name }}</b></h5>
-                                <h5><p><b>"{{ $testimoni->content }}"</b></p></h5>
+                                <div style="padding: 10px;">
+                                    <center>
+                                        <img src="{{ url('https://admin.mobilngetop.com/'.$testimoni->picture) }}" class="img-fluid">
+                                    </center>
+                                </div>
+                                <div style="padding: 10px;">
+                                    <h5><b>{{ $testimoni->name }}</b></h5>
+                                    <h5><p><b>{{ $testimoni->content }}</b></p></h5>
+                                </div>
                             </div>
+                        </div>                    
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center slick-mobile d-md-none d-lg-none d-xl-none d-sm-block">
+                <?php $testimonis = App\Testimonial::all(); ?>
+                @foreach($testimonis as $testimoni)
+                <div style="padding: 10px;">                    
+                    <div class="card card-item border-danger" style="background-color: transparent;">
+                        <div class="card-body">
+                            <center>
+                                <img src="{{ url('https://admin.mobilngetop.com/'.$testimoni->picture) }}" class="img-fluid">
+                            </center>
+                            <h5><b>{{ $testimoni->name }}</b></h5>
+                            <h5><p><b>"{{ $testimoni->content }}"</b></p></h5>
                         </div>
                     </div>
-                    @endforeach
                 </div>
+                @endforeach
             </div>
         </div>
     </div>
-    <div class="row justify-content-center">
-        <div class="col-md-12" style="background-color: #ebe9ea;padding: 50px;">
-            <div class="form-group">
-                <center><h1>Berita Otomotif</h1></center>
-            </div>
-            <div class="form-group">
-                <div class="container">
-                    <div class="row justify-content-center slick-artikel d-none d-sm-none d-md-block d-lg-block d-xl-block">
-                        <?php $articles = App\Article::orderBy('updated_at', 'desc')->get(); ?>
-                        @foreach($articles as $article)
-                        <div style="padding: 10px;">
-                            <div class="card mb-3">
-                                <img class="card-img-top" src="{{ url('https://admin.mobilngetop.com/'.$article->picture) }}">
-                                <div class="card-body">
-                                    <h5 class="card-title"><b>{{ $article->title }}</b></h5>
-                                    <p class="card-text">{{ $article->content }}</p>
-                                    <p class="card-text"><small style="color: #006db8;">ditulis oleh {{ $article->user->name }} pukul {{ date("H:i", strtotime($article->created_at)) }}</small></p>
-                                </div>
-                            </div>
-                        </div>
-                        @endforeach               
-                    </div>
-                </div>
-                <div class="row justify-content-center slick-mobile d-md-none d-lg-none d-xl-none d-sm-block">
+</div>
+<div class="row justify-content-center">
+    <div class="col-md-12" style="background-color: #ebe9ea;padding: 50px;">
+        <div class="form-group">
+            <center><h1>Berita Otomotif</h1></center>
+        </div>
+        <div class="form-group">
+            <div class="container">
+                <div class="row justify-content-center slick-artikel d-none d-sm-none d-md-block d-lg-block d-xl-block">
                     <?php $articles = App\Article::orderBy('updated_at', 'desc')->get(); ?>
                     @foreach($articles as $article)
                     <div style="padding: 10px;">
@@ -180,56 +163,72 @@
                     </div>
                     @endforeach               
                 </div>
-            </div>        
-        </div>
+            </div>
+            <div class="row justify-content-center slick-mobile d-md-none d-lg-none d-xl-none d-sm-block">
+                <?php $articles = App\Article::orderBy('updated_at', 'desc')->get(); ?>
+                @foreach($articles as $article)
+                <div style="padding: 10px;">
+                    <div class="card mb-3">
+                        <img class="card-img-top" src="{{ url('https://admin.mobilngetop.com/'.$article->picture) }}">
+                        <div class="card-body">
+                            <h5 class="card-title"><b>{{ $article->title }}</b></h5>
+                            <p class="card-text">{{ $article->content }}</p>
+                            <p class="card-text"><small style="color: #006db8;">ditulis oleh {{ $article->user->name }} pukul {{ date("H:i", strtotime($article->created_at)) }}</small></p>
+                        </div>
+                    </div>
+                </div>
+                @endforeach               
+            </div>
+        </div>        
     </div>
-    @endsection
+</div>
+@endsection
 
-    @section('foot-content')
-    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-    <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-    <script type="text/javascript" src="{{ asset('slick/slick.min.js') }}"></script>
-    <script type="text/javascript">
-        $(document).ready(function(){
-            $('#brand').on('click', function(e){
-                console.log(e);
-                var id = e.target.value;
-                var brand_id = $(this).val();            
-                if (brand_id == '' || brand_id == null)
-                {
-                    $('#model').prop('disabled', true);
-                }
-                else {
-                    $('#model').prop('disabled', false);
-                    $.get("{{ url('json-regencies') }}?id=" + id,function(data) {
-                      console.log(data);
-                      $('#model').empty();
-                      $('#model').append('<option disabled selected> Pilih Model </option>');
-                      $.each(data, function(index, regenciesObj){
-                        $('#model').append('<option value="'+ regenciesObj.id +'">'+ regenciesObj.name +'</option>');
-                    })
-                  });
-                }
-            });
-            $('#brand').click();
-            $('#brand').on('change', function(){
-                $('#brand').click();
-            });
-            $('.slick-artikel').slick({
-                infinite: true,
-                slidesToShow: 3,
-                slidesToScroll: 1
-            });
-            $('.slick-testimoni').slick({
-                infinite: true,
-                slidesToShow: 2,
-                slidesToScroll: 1
-            });
-            $('.slick-mobile').slick({
-                infinite: true,
-                slidesToShow: 1,
-                slidesToScroll: 1
-            });
+@section('foot-content')
+<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="{{ asset('slick/slick.min.js') }}"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#brand').on('click', function(e){
+            console.log(e);
+            var id = e.target.value;
+            var brand_id = $(this).val();            
+            if (brand_id == '' || brand_id == null)
+            {
+                $('#model').prop('disabled', true);
+            }
+            else {
+                $('#model').prop('disabled', false);
+                $.get("{{ url('json-regencies') }}?id=" + id,function(data) {
+                  console.log(data);
+                  $('#model').empty();
+                  $('#model').append('<option disabled selected> Pilih Model </option>');
+                  $.each(data, function(index, regenciesObj){
+                    $('#model').append('<option value="'+ regenciesObj.id +'">'+ regenciesObj.name +'</option>');
+                })
+              });
+            }
         });
-    </script>
-    @endsection
+        $('#brand').click();
+        $('#brand').on('change', function(){
+            $('#brand').click();
+        });
+        $('.slick-artikel').slick({
+            infinite: true,
+            slidesToShow: 3,
+            slidesToScroll: 1
+        });
+        $('.slick-testimoni').slick({
+            infinite: true,
+            slidesToShow: 2,
+            slidesToScroll: 1
+        });
+        $('.slick-mobile').slick({
+            infinite: true,
+            slidesToShow: 1,
+            slidesToScroll: 1
+        });
+    });
+</script>
+@endsection
