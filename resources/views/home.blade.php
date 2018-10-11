@@ -104,22 +104,20 @@
                 <div class="row justify-content-center d-none d-sm-none d-md-block d-lg-block d-xl-block">                    
                     <?php $testimonis = App\Testimonial::all(); ?>
                     <div class="card-deck">
-                        @foreach($testimonis as $testimoni)
-                        <div class="col-sm-6">
-                            <div class="card card-item border-danger" style="background-color: transparent;">
-                                <div class="card-body">
-                                    <div style="padding: 10px;">
-                                        <center>
-                                            <img src="{{ url('https://admin.mobilngetop.com/'.$testimoni->picture) }}" class="img-fluid">
-                                        </center>
-                                    </div>
-                                    <div style="padding: 10px;">
-                                        <h5><b>{{ $testimoni->name }}</b></h5>
-                                        <h5><p><b>{{ $testimoni->content }}</b></p></h5>
-                                    </div>
+                        @foreach($testimonis as $testimoni)                        
+                        <div class="card col-sm-6 card-item border-danger" style="background-color: transparent;padding-bottom: 10px;">
+                            <div class="card-body">
+                                <div style="padding: 10px;">
+                                    <center>
+                                        <img src="{{ url('https://admin.mobilngetop.com/'.$testimoni->picture) }}" class="img-fluid">
+                                    </center>
+                                </div>
+                                <div style="padding: 10px;">
+                                    <h5><b>{{ $testimoni->name }}</b></h5>
+                                    <h5><p><b>{{ $testimoni->content }}</b></p></h5>
                                 </div>
                             </div>
-                        </div>              
+                        </div>                    
                         @endforeach
                     </div>
                 </div>
