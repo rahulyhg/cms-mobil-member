@@ -103,9 +103,9 @@
             <div class="container">
                 <div class="row justify-content-center d-none d-sm-none d-md-block d-lg-block d-xl-block">                    
                     <?php $testimonis = App\Testimonial::all(); ?>
-                    <div class="card-deck">
+                    <div class="card-deck slick-testimoni">
                         @foreach($testimonis as $testimoni)                        
-                        <div class="card col-sm-6 card-item border-danger" style="background-color: transparent;padding-bottom: 10px;">
+                        <div class="card card-item border-danger" style="background-color: transparent;padding-bottom: 10px;">
                             <div class="card-body">
                                 <div style="padding: 10px;">
                                     <center>
