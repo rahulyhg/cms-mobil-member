@@ -101,10 +101,10 @@
         </div>
         <div class="form-group">
             <div class="container">
-                <div class="row justify-content-center slick-testimoni d-none d-sm-none d-md-block d-lg-block d-xl-block">                    
+                <div class="row justify-content-center d-none d-sm-none d-md-block d-lg-block d-xl-block">                    
                     <?php $testimonis = App\Testimonial::all(); ?>
-                    @foreach($testimonis as $testimoni)
-                    <div style="padding: 10px;">
+                    <div class="card-deck">
+                        @foreach($testimonis as $testimoni)                    
                         <div class="card card-item border-danger" style="background-color: transparent;">
                             <div class="card-body">
                                 <div style="padding: 10px;">
@@ -117,9 +117,9 @@
                                     <h5><p><b>{{ $testimoni->content }}</b></p></h5>
                                 </div>
                             </div>
-                        </div>
+                        </div>                    
+                        @endforeach
                     </div>
-                    @endforeach
                 </div>
             </div>
             <div class="row justify-content-center slick-mobile d-md-none d-lg-none d-xl-none d-sm-block">
