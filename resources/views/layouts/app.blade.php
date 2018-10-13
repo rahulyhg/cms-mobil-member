@@ -76,26 +76,26 @@
                     <!-- Left Side Of Navbar -->                    
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <a class="nav-link d-md-none d-lg-none d-xl-none" data-toggle="modal" data-target=".bd-example-modal-lg-hp" style="cursor: pointer;">Mobil</a>
+                            <a href="{{ route('car') }}" class="nav-link d-md-none d-lg-none d-xl-none" style="cursor: pointer;">Mobil</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link d-md-none d-lg-none d-xl-none" data-toggle="modal" data-target=".bd-example-modal-lg-hp" style="cursor: pointer;">Promo</a>
+                            <a class="nav-link d-md-none d-lg-none d-xl-none" style="cursor: pointer;">Promo</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link d-md-none d-lg-none d-xl-none" data-toggle="modal" data-target=".bd-example-modal-lg-hp" style="cursor: pointer;">Artikel</a>
+                            <a href="{{ route('article') }}" class="nav-link d-md-none d-lg-none d-xl-none" style="cursor: pointer;">Artikel</a>
                         </li>
                     </ul>
 
                     <div class="row justify-content-center  d-none d-sm-none d-md-block d-lg-block d-xl-block" style="margin-bottom: -54px;margin-right: 80px;">
                         <ul class="nav nav-tabs">
                             <li class="nav-item">
-                                <a class="nav-link nav-item-menu" data-toggle="modal" data-target=".bd-example-modal-lg" style="cursor: pointer;color: white;padding-left: 50px;padding-right: 50px;">Mobil</a>
+                                <a href="{{ route('car') }}" class="nav-link nav-item-menu" style="cursor: pointer;color: white;padding-left: 50px;padding-right: 50px;">Mobil</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link nav-item-menu" data-toggle="modal" data-target=".bd-example-modal-lg" style="cursor: pointer;color: white;padding-left: 50px;padding-right: 50px;">Promo</a>
+                                <a class="nav-link nav-item-menu" style="cursor: pointer;color: white;padding-left: 50px;padding-right: 50px;">Promo</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link nav-item-menu" data-toggle="modal" data-target=".bd-example-modal-lg" style="cursor: pointer;color: white;padding-left: 50px;padding-right: 50px;">Artikel</a>
+                                <a href="{{ route('article') }}" class="nav-link nav-item-menu" style="cursor: pointer;color: white;padding-left: 50px;padding-right: 50px;">Artikel</a>
                             </li>
                         </ul>
                     </div>                    
