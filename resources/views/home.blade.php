@@ -69,23 +69,23 @@
                     <div style="padding: 10px;">
                         <img class="card-img-top" src="{{ url('https://admin.mobilngetop.com/'.$car->picture) }}" alt="{{ $car->name }}">
                     </div>
-                    <div class="card-body" style="padding: 10px;flex: 0;">
-                      <h3 class="card-title text-center"><b>{{ $car->name }}</b></h3>
-                  </div>
-                  <div class="card-footer" style="background-color: transparent;border:0px;padding: 10px;">
-                      <h2 class="text-center text-danger"><b>Rp. {{ number_format($car->tdp,0,",",".") }}</b></h2>
-                  </div>
-              </div>              
-              @endforeach
-              @endforeach
-          </div>
-      </div>
-      <div class="form-group">
-        <div class="row justify-content-center">
-            <button class="btn btn-primary">Lihat Semua</button>
+                    <div class="card-body" style="padding: 0px;flex: 0;">
+                        <h5 class="card-title text-center"><b>{{ $car->name }}</b></h5>
+                    </div>
+                    <div class="card-footer" style="background-color: transparent;border:0px;padding: 0px;">
+                        <h4 class="text-center text-danger"><b>Rp. {{ number_format($car->tdp,0,",",".") }}</b></h4>
+                    </div>
+                </div>
+                @endforeach
+                @endforeach
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row justify-content-center">
+                <button class="btn btn-primary">Lihat Semua</button>
+            </div>
         </div>
     </div>
-</div>
 </div>
 <div class="row justify-content-center">
     <div class="col-md-12" style="background-color: white;padding: 50px;">
