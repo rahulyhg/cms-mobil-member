@@ -69,11 +69,13 @@
                     <div style="padding: 10px;">
                         <img class="card-img-top" src="{{ url('https://admin.mobilngetop.com/'.$car->picture) }}" alt="{{ $car->name }}">
                     </div>
-                    <div class="card-body" style="padding: 0px;flex: 0;">
-                        <h5 class="card-title text-center"><b>{{ $car->name }}</b></h5>
-                    </div>
-                    <div class="card-footer" style="background-color: transparent;border:0px;padding: 0px;">
-                        <h4 class="text-center text-danger"><b>Rp. {{ number_format($car->tdp,0,",",".") }}</b></h4>
+                    <div style="padding: 10px;">
+                        <div class="card-body" style="padding: 0px;flex: 0;">
+                            <h5 class="card-title text-center"><b>{{ $car->name }}</b></h5>
+                        </div>
+                        <div class="card-footer" style="background-color: transparent;border:0px;padding: 0px;">
+                            <h4 class="text-center text-danger"><b>Rp. {{ number_format($car->tdp,0,",",".") }}</b></h4>
+                        </div>
                     </div>
                 </div>
                 @endforeach
