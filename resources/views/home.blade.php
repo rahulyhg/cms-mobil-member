@@ -64,14 +64,25 @@
                 <?php $specimens = App\Specimen::orderBy('created_at', 'desc')->limit(5)->get(); ?>
                 @foreach($specimens as $specimen)
                 <?php $cars = App\Car::where('specimen_id', $specimen->id)->orderBy('tdp', 'asc')->limit(1)->get(); ?>
-                @foreach($cars as $car)                
-                <div class="col-sm-1 card card-item border-danger" style="background-color: transparent;padding-bottom: 10px;">
-                    <div class="card-body text-center">
-                        <img src="{{ url('https://admin.mobilngetop.com/'.$car->picture) }}" class="img-fluid">                        
-                        <h5 class="text-center"><b>{{ $car->name }}</b></h5>
-                        <h4 class="text-center text-danger"><b>Rp. {{ number_format($car->tdp,0,",",".") }}</b></h4>
-                    </div>                    
+                @foreach($cars as $car)
+                <div class="col d-none d-sm-none d-md-block d-lg-block d-xl-block" style="padding-bottom: 10px;">
+                    <div class="card card-item border-danger" style="background-color: transparent;">
+                        <div class="card-body text-center">
+                            <img src="{{ url('https://admin.mobilngetop.com/'.$car->picture) }}" class="img-fluid">                        
+                            <h5 class="text-center"><b>{{ $car->name }}</b></h5>
+                            <h4 class="text-center text-danger"><b>Rp. {{ number_format($car->tdp,0,",",".") }}</b></h4>
+                        </div>
+                    </div>
                 </div>
+                <div class="col-sm-12 col-xs-12 d-md-none d-lg-none d-xl-none d-sm-block" style="padding-bottom: 10px;">
+                    <div class="card card-item border-danger" style="background-color: transparent;">
+                        <div class="card-body text-center">
+                            <img src="{{ url('https://admin.mobilngetop.com/'.$car->picture) }}" class="img-fluid">                        
+                            <h5 class="text-center"><b>{{ $car->name }}hp</b></h5>
+                            <h4 class="text-center text-danger"><b>Rp. {{ number_format($car->tdp,0,",",".") }}</b></h4>
+                        </div>
+                    </div>
+                </div>                
                 @endforeach
                 @endforeach
             </div>
