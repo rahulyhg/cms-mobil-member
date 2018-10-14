@@ -64,31 +64,26 @@
                 <?php $specimens = App\Specimen::orderBy('created_at', 'desc')->limit(5)->get(); ?>
                 @foreach($specimens as $specimen)
                 <?php $cars = App\Car::where('specimen_id', $specimen->id)->orderBy('tdp', 'asc')->limit(1)->get(); ?>
-                @foreach($cars as $car)                
-                <div class="card card-item border-danger col d-none d-sm-none d-md-block d-lg-block d-xl-block" style="background-color: transparent;padding-bottom: 10px;">
-                    <div class="card-body text-center">
-                        <img src="{{ url('https://admin.mobilngetop.com/'.$car->picture) }}" class="img-fluid">                        
-                        <h5 class="text-center"><b>{{ $car->name }}</b></h5>
-                        <h4 class="text-center text-danger"><b>Rp. {{ number_format($car->tdp,0,",",".") }}</b></h4>
-                    </div>                    
-                </div>                
-                <div class="card card-item border-danger col-sm-12 col-xs-12 d-md-none d-lg-none d-xl-none d-sm-block" style="background-color: transparent;padding-bottom: 10px;">
-                    <div class="card-body text-center">
-                        <img src="{{ url('https://admin.mobilngetop.com/'.$car->picture) }}" class="img-fluid">                        
-                        <h5 class="text-center"><b>{{ $car->name }}hp</b></h5>
-                        <h4 class="text-center text-danger"><b>Rp. {{ number_format($car->tdp,0,",",".") }}</b></h4>
-                    </div>
-                </div>                
-                @endforeach
-                @endforeach
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="row justify-content-center">
-                <button class="btn btn-primary">Lihat Semua</button>
-            </div>
+                @foreach($cars as $car)
+                <div class="card card-item border-danger">
+                    <img class="card-img-top" src="{{ url('https://admin.mobilngetop.com/'.$car->picture) }}" alt="{{ $car->name }}">
+                    <div class="card-body">
+                      <h5 class="card-title text-center"><b>{{ $car->name }}</b></h5>
+                  </div>
+                  <div class="card-footer">
+                      <h4 class="text-center text-danger"><b>Rp. {{ number_format($car->tdp,0,",",".") }}</b></h4>
+                  </div>
+              </div>              
+              @endforeach
+              @endforeach
+          </div>
+      </div>
+      <div class="form-group">
+        <div class="row justify-content-center">
+            <button class="btn btn-primary">Lihat Semua</button>
         </div>
     </div>
+</div>
 </div>
 <div class="row justify-content-center">
     <div class="col-md-12" style="background-color: white;padding: 50px;">
