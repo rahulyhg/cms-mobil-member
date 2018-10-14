@@ -16,7 +16,7 @@ Route::get('/', function () {
 });
 
 Route::get('test', function () {
-	return view('register');
+	return view('member.advancedCar');
 });
 
 Auth::routes();
