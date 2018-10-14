@@ -60,7 +60,7 @@
             <center><h1>Mobil Pilihan</h1></center>
         </div>
         <div class="form-group">
-            <div class="row justify-content-center card-deck">
+            <div class="row justify-content-center">
                 <?php $specimens = App\Specimen::orderBy('created_at', 'desc')->limit(5)->get(); ?>
                 @foreach($specimens as $specimen)
                 <?php $cars = App\Car::where('specimen_id', $specimen->id)->orderBy('tdp', 'asc')->limit(1)->get(); ?>
