@@ -65,13 +65,15 @@
                 @foreach($specimens as $specimen)
                 <?php $cars = App\Car::where('specimen_id', $specimen->id)->orderBy('tdp', 'asc')->limit(1)->get(); ?>
                 @foreach($cars as $car)
-                <div class="card card-item border-danger">
-                    <img class="card-img-top" src="{{ url('https://admin.mobilngetop.com/'.$car->picture) }}" alt="{{ $car->name }}">
+                <div class="card card-item border-danger" style="background-color: transparent;">
+                    <div style="padding: 10px;">
+                        <img class="card-img-top" src="{{ url('https://admin.mobilngetop.com/'.$car->picture) }}" alt="{{ $car->name }}">
+                    </div>
                     <div class="card-body">
-                      <h5 class="card-title text-center"><b>{{ $car->name }}</b></h5>
+                      <h2 class="card-title text-center"><b>{{ $car->name }}</b></h2>
                   </div>
-                  <div class="card-footer">
-                      <h4 class="text-center text-danger"><b>Rp. {{ number_format($car->tdp,0,",",".") }}</b></h4>
+                  <div class="card-footer" style="background-color: transparent;border:0px;padding: 10px;">
+                      <h1 class="text-center text-danger"><b>Rp. {{ number_format($car->tdp,0,",",".") }}</b></h1>
                   </div>
               </div>              
               @endforeach
