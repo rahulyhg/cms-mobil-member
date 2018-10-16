@@ -96,10 +96,10 @@
         </div>
         <div class="form-group">
             <div class="container">
-                <div class="row justify-content-center card-deck">   
+                <div class="row justify-content-center card-deck slick-testimoni">
                     <?php $testimonis = App\Testimonial::all(); ?>
                     @foreach($testimonis as $testimoni)
-                    <div class="col-sm-12 card card-item border-danger" style="background-color: transparent;padding-bottom: 10px;">
+                    <div class="card card-item border-danger" style="background-color: transparent;padding-bottom: 10px;">
                         <div class="card-body">
                             <img class="card-img-top" src="{{ url('https://admin.mobilngetop.com/'.$testimoni->picture) }}">
                             <div class="card-body">
@@ -121,10 +121,10 @@
         </div>
         <div class="form-group">
             <div class="container">
-                <div class="row justify-content-center card-deck">
+                <div class="row justify-content-center card-deck slick-artikel">
                     <?php $articles = App\Article::orderBy('updated_at', 'desc')->get(); ?>
                     @foreach($articles as $article)
-                    <div class="card col-sm-4">
+                    <div class="card">
                         <div class="card-body">
                             <img class="card-img-top" src="{{ url('https://admin.mobilngetop.com/'.$article->picture) }}">
                             <div class="card-body">
