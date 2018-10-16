@@ -96,8 +96,8 @@
         </div>
         <div class="form-group">
             <div class="container">
-                <div class="row justify-content-center slick-testimoni card-deck">
-                    <?php $testimonis = App\Testimonial::all(); ?>
+                <div class="row justify-content-center card-deck">   
+                    <?php $testimonis = App\Testimonial::paginate(2); ?>
                     @foreach($testimonis as $testimoni)
                     <div class="card card-item border-danger" style="background-color: transparent;padding-bottom: 10px;">
                         <div class="card-body">
@@ -121,15 +121,19 @@
         </div>
         <div class="form-group">
             <div class="container">
-                <div class="row justify-content-center card-deck slick-artikel">
-                    <?php $articles = App\Article::orderBy('updated_at', 'desc')->get(); ?>
+                <div class="row justify-content-center card-deck">
+                    <?php $articles = App\Article::orderBy('updated_at', 'desc')->paginate(3); ?>
                     @foreach($articles as $article)
                     <div class="card">
                         <div class="card-body">
                             <img class="card-img-top" src="{{ url('https://admin.mobilngetop.com/'.$article->picture) }}">
                             <div class="card-body">
                                 <h5 class="card-title">{{ $article->title }}</h5>
+                                @if(strlen($article->content)<=400)
                                 <p class="card-text">{{ $article->content }}</p>
+                                @else
+                                <p class="card-text">{{ substr($article->content, 0, 400) }}...</p>
+                                @endif
                                 <p class="card-text"><small style="color: #006db8;">ditulis oleh {{ $article->user->name }} pukul {{ date("H:i", strtotime($article->created_at)) }}</small></p>
                             </div>                      
                         </div>
