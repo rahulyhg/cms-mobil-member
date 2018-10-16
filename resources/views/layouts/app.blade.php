@@ -76,7 +76,12 @@
                     <!-- Left Side Of Navbar -->                    
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
+                            @auth
                             <a href="{{ route('car') }}" class="nav-link d-md-none d-lg-none d-xl-none" style="cursor: pointer;">Mobil</a>
+                            @endauth
+                            @guest
+                            <a href="{{ route('car') }}" class="nav-link d-md-none d-lg-none d-xl-none" data-toggle="modal" data-target=".bd-example-modal-lg-hp" style="cursor: pointer;">Mobil</a>
+                            @endguest                    
                         </li>
                         <li class="nav-item">
                             <a class="nav-link d-md-none d-lg-none d-xl-none" style="cursor: pointer;">Promo</a>
@@ -89,7 +94,12 @@
                     <div class="row justify-content-center  d-none d-sm-none d-md-block d-lg-block d-xl-block" style="margin-bottom: -54px;margin-right: 80px;">
                         <ul class="nav nav-tabs">
                             <li class="nav-item">
+                                @auth
                                 <a href="{{ route('car') }}" class="nav-link nav-item-menu" style="cursor: pointer;color: white;padding-left: 50px;padding-right: 50px;">Mobil</a>
+                                @endauth
+                                @guest
+                                <a href="{{ route('car') }}" class="nav-link nav-item-menu" data-toggle="modal" data-target=".bd-example-modal-lg" style="cursor: pointer;color: white;padding-left: 50px;padding-right: 50px;">Mobil</a>                      
+                                @endguest
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link nav-item-menu" style="cursor: pointer;color: white;padding-left: 50px;padding-right: 50px;">Promo</a>
@@ -191,7 +201,7 @@
                             <h1>Data Pribadi</h1>
                             <br><br>
                             <form method="POST" action="{{ route('form-data') }}">
-                            @csrf
+                                @csrf
                                 <div class="form-group">
                                     <input type="text" name="name" class="text-center col-md-6 form-control is-invalid" placeholder="nama" required autofocus>
                                 </div>
