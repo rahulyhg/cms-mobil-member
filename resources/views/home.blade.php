@@ -104,7 +104,7 @@
                             <img class="card-img-top" src="{{ url('https://admin.mobilngetop.com/'.$testimoni->picture) }}">
                             <div class="card-body">
                               <h5 class="card-title">{{ $testimoni->name }}</h5>
-                              <p class="card-text">{{ $testimoni->content }}</p>    
+                              <p class="card-text">"{{ $testimoni->content }}"</p>    
                           </div>                          
                       </div>
                   </div>                    
