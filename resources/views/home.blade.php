@@ -101,22 +101,18 @@
                     @foreach($testimonis as $testimoni)                        
                     <div class="col-sm-6 card card-item border-danger" style="background-color: transparent;padding-bottom: 10px;">
                         <div class="card-body">
-                            <div style="padding: 10px;">
-                                <center>
-                                    <img src="{{ url('https://admin.mobilngetop.com/'.$testimoni->picture) }}" class="img-fluid">
-                                </center>
-                            </div>
-                            <div style="padding: 10px;">
-                                <h5><b>{{ $testimoni->name }}</b></h5>
-                                <h5><p><b>{{ $testimoni->content }}</b></p></h5>
-                            </div>
-                        </div>
-                    </div>                    
-                    @endforeach
-                </div>
-            </div>            
-        </div>
-    </div>
+                            <img class="card-img-top" src="{{ url('https://admin.mobilngetop.com/'.$testimoni->picture) }}">
+                            <div class="card-body">
+                              <h5 class="card-title">{{ $testimoni->name }}</h5>
+                              <p class="card-text">{{ $testimoni->content }}</p>    
+                          </div>                          
+                      </div>
+                  </div>                    
+                  @endforeach
+              </div>
+          </div>            
+      </div>
+  </div>
 </div>
 <div class="row justify-content-center">
     <div class="col-md-12" style="background-color: #ebe9ea;padding: 50px;">
