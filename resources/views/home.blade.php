@@ -99,7 +99,7 @@
                 <div class="row justify-content-center card-deck">   
                     <?php $testimonis = App\Testimonial::all(); ?>
                     @foreach($testimonis as $testimoni)
-                    <div class="col-sm-6 card card-item border-danger" style="background-color: transparent;padding-bottom: 10px;">
+                    <div class="col-sm-12 card card-item border-danger" style="background-color: transparent;padding-bottom: 10px;">
                         <div class="card-body">
                             <img class="card-img-top" src="{{ url('https://admin.mobilngetop.com/'.$testimoni->picture) }}">
                             <div class="card-body">
