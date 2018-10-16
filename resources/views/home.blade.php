@@ -96,7 +96,7 @@
         </div>
         <div class="form-group">
             <div class="container">
-                <div class="row justify-content-center card-deck slick-testimoni">
+                <div class="row justify-content-center slick-testimoni card-deck">
                     <?php $testimonis = App\Testimonial::all(); ?>
                     @foreach($testimonis as $testimoni)
                     <div class="card card-item border-danger" style="background-color: transparent;padding-bottom: 10px;">
