@@ -98,8 +98,8 @@
             <div class="container">
                 <div class="row justify-content-center card-deck">   
                     <?php $testimonis = App\Testimonial::all(); ?>
-                    @foreach($testimonis as $testimoni)                        
-                    <div class="col-sm-6 card card-item border-danger" style="background-color: transparent;padding-bottom: 10px;">
+                    @foreach($testimonis as $testimoni)
+                    <div class="col-xs-6 card card-item border-danger" style="background-color: transparent;padding-bottom: 10px;">
                         <div class="card-body">
                             <img class="card-img-top" src="{{ url('https://admin.mobilngetop.com/'.$testimoni->picture) }}">
                             <div class="card-body">
@@ -121,37 +121,22 @@
         </div>
         <div class="form-group">
             <div class="container">
-                <div class="row justify-content-center slick-artikel d-none d-sm-none d-md-block d-lg-block d-xl-block">
+                <div class="row justify-content-center card-deck">
                     <?php $articles = App\Article::orderBy('updated_at', 'desc')->get(); ?>
                     @foreach($articles as $article)
-                    <div style="padding: 10px;">
-                        <div class="card mb-3">
+                    <div class="card col-xs-4">
+                        <div class="card-body">
                             <img class="card-img-top" src="{{ url('https://admin.mobilngetop.com/'.$article->picture) }}">
                             <div class="card-body">
-                                <h5 class="card-title"><b>{{ $article->title }}</b></h5>
+                                <h5 class="card-title">{{ $article->title }}</h5>
                                 <p class="card-text">{{ $article->content }}</p>
                                 <p class="card-text"><small style="color: #006db8;">ditulis oleh {{ $article->user->name }} pukul {{ date("H:i", strtotime($article->created_at)) }}</small></p>
-                            </div>
+                            </div>                      
                         </div>
                     </div>
                     @endforeach               
                 </div>
-            </div>
-            <div class="row justify-content-center slick-mobile d-md-none d-lg-none d-xl-none d-sm-block">
-                <?php $articles = App\Article::orderBy('updated_at', 'desc')->get(); ?>
-                @foreach($articles as $article)
-                <div style="padding: 10px;">
-                    <div class="card mb-3">
-                        <img class="card-img-top" src="{{ url('https://admin.mobilngetop.com/'.$article->picture) }}">
-                        <div class="card-body">
-                            <h5 class="card-title"><b>{{ $article->title }}</b></h5>
-                            <p class="card-text">{{ $article->content }}</p>
-                            <p class="card-text"><small style="color: #006db8;">ditulis oleh {{ $article->user->name }} pukul {{ date("H:i", strtotime($article->created_at)) }}</small></p>
-                        </div>
-                    </div>
-                </div>
-                @endforeach               
-            </div>
+            </div>            
         </div>        
     </div>
 </div>
