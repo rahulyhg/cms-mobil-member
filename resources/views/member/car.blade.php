@@ -63,7 +63,7 @@
 			<br>			
 			<img id="image" class="img-fluid">
 			<div class="row justify-content-center">
-				<div id="color" class="modal-footer"></div>
+				<div id="color" class="modal-footer" style="background-color: rgba(235, 233, 234, 0.5);"></div>
 			</div>			
 		</div>
 	</div>
@@ -210,7 +210,7 @@
 		});
 
 	});
-function color(id) {
+function color(id) {	
 	$.get("{{ url('json-src') }}?id=" + id,function(data) {		
 		$('#image').attr('src', 'https://admin.mobilngetop.com/' + data.picture);		
 	});
