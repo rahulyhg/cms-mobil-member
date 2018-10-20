@@ -61,7 +61,10 @@
 				</form>
 			</div>
 			<br>			
-			<img id="image" class="img-fluid">				
+			<img id="image" class="img-fluid">
+			<div class="row justify-content-center">
+				<div id="color" class="modal-footer"></div>
+			</div>			
 		</div>
 	</div>
 </div>
@@ -69,7 +72,7 @@
 
 @section('foot-content')
 <script type="text/javascript">
-	$(document).ready(function(){
+	$(document).ready(function(){		
 		$('#brand').on('change', function(e){
 			console.log(e);
 			var id = e.target.value;
@@ -148,7 +151,7 @@
 			else {
 				$('#fuel').prop('disabled', false);
 				$.get("{{ url('json-transmission') }}?id=" + id +"&variant_id=" + variant + "&model_id=" + model,function(data) {
-					console.log(data);
+					console.log(data);					
 					$('#fuel').empty();
 					$.each(data, function(index, regenciesObj){
 						document.getElementById("name").innerHTML = "<b>" + regenciesObj.name + "</b>";
@@ -156,6 +159,15 @@
 						$('#fuel').append('<option>'+ regenciesObj.fuel +'</option>');
 					})
 					$('#fuel').change();
+				});
+				$.get("{{ url('json-first-src') }}?id=" + id +"&variant_id=" + variant + "&model_id=" + model,function(data) {					
+					$('#image').attr('src', 'https://admin.mobilngetop.com/' + data.picture);		
+				});
+				$.get("{{ url('json-image') }}?id=" + id +"&variant_id=" + variant + "&model_id=" + model,function(data) {
+					console.log(data);										
+					$.each(data, function(index, regenciesObj){						
+						$('#color').append('<button onClick="color(' + regenciesObj.id + ')" class="btn btn-sm" id="btn-color" style="padding:10px;border-radius: 100%;background-color: ' + regenciesObj.color + ';"></button>');
+					})					
 				});
 			}
 		});		
@@ -186,17 +198,22 @@
 			else {
 				$.get("{{ url('json-tenor') }}?id=" + id,function(data) {
 					console.log(data);					
-					$.each(data, function(index, regenciesObj){						
+					$.each(data, function(index, regenciesObj){
 						var bilangan = regenciesObj.tdp;
 						var	reverse = bilangan.toString().split('').reverse().join(''),
 						ribuan 	= reverse.match(/\d{1,3}/g);
 						ribuan	= ribuan.join('.').split('').reverse().join('');
 						document.getElementById("tdp").innerHTML = "<b>Rp. " + ribuan + "</b>";
-						document.getElementById("image").src = "https://admin.mobilngetop.com/"+ regenciesObj.picture;						
-					})					
+					})
 				});
 			}
 		});
+
 	});
+function color(id) {
+	$.get("{{ url('json-src') }}?id=" + id,function(data) {		
+		$('#image').attr('src', 'https://admin.mobilngetop.com/' + data.picture);		
+	});
+}
 </script>
 @endsection

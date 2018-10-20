@@ -35,6 +35,9 @@ Route::get('json-variant','HomeController@variant');
 Route::get('json-transmission','HomeController@transmission');
 Route::get('json-tenor','HomeController@tenor');
 Route::get('json-fuel','HomeController@fuel');
+Route::get('json-image','HomeController@image');
+Route::get('json-src','HomeController@src');
+Route::get('json-first-src','HomeController@firstSrc');
 
 Route::get('pilih-mobil', 'CustomerController@car')->name('car');
 Route::get('akun', 'CustomerController@account')->name('account');

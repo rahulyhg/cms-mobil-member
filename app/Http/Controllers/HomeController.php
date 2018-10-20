@@ -11,6 +11,7 @@ use App\Car;
 use App\User;
 use App\About;
 use App\Price;
+use App\CarImage;
 
 class HomeController extends Controller
 {
@@ -243,7 +244,34 @@ class HomeController extends Controller
       $matchThese = ['specimen_id' => $model, 'variant' => $variant, 'transmission' => $transmission, 'fuel' => $id];
       $regencie = Car::where($matchThese)->value('id');
       $regencies = Price::where('car_id', $regencie)->get();
+      $images = CarImage::where('car_id', $regencie)->get();
       return response()->json($regencies);
+    }
+
+    public function image(Request $request){
+      $id = $request->input('id');
+      $model = $request->input('model_id');
+      $variant = $request->input('variant_id');
+      $matchThese = ['specimen_id' => $model, 'variant' => $variant, 'transmission' => $id];      
+      $regencie = Car::where($matchThese)->value('id');
+      $images = CarImage::where('car_id', $regencie)->orderBy('created_at', 'asc')->get();
+      return response()->json($images);
+    }
+
+    public function src(Request $request){
+      $id = $request->input('id');                  
+      $images = CarImage::find($id);
+      return response()->json($images);
+    }
+
+    public function firstSrc(Request $request){
+      $id = $request->input('id');
+      $model = $request->input('model_id');
+      $variant = $request->input('variant_id');
+      $matchThese = ['specimen_id' => $model, 'variant' => $variant, 'transmission' => $id];      
+      $regencie = Car::where($matchThese)->value('id');
+      $images = CarImage::where('car_id', $regencie)->orderBy('created_at', 'asc')->first();
+      return response()->json($images);
     }
 
     public function tenor(Request $request){
