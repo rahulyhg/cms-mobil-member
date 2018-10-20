@@ -20,18 +20,18 @@
 						<select class="form-control" name="transmission" id="transmission" required>
 						</select>
 					</div>
+				</div>				
+				<div class="form-group row">
+					<label for="fuel" class="col-sm-3 col-form-label">Bahan Bakar</label>
+					<div class="col-sm-6">
+						<select class="form-control" name="fuel" id="fuel" required>
+						</select>
+					</div>
 				</div>
 				<div class="form-group row">
 					<label for="tenor" class="col-sm-3 col-form-label">Tenor</label>
 					<div class="col-sm-6">
 						<select class="form-control" name="tenor" id="tenor" required>
-						</select>
-					</div>
-				</div>
-				<div class="form-group row">
-					<label for="fuel" class="col-sm-3 col-form-label">Bahan Bakar</label>
-					<div class="col-sm-6">
-						<select class="form-control" name="fuel" id="fuel" required>
 						</select>
 					</div>
 				</div>
@@ -143,44 +143,22 @@
 			var transmission_id = $(this).val();
 			if (transmission_id == '' || transmission_id == null)
 			{
-				$('#tenor').prop('disabled', true);
-			}
-			else {
-				$('#tenor').prop('disabled', false);
-				$.get("{{ url('json-transmission') }}?id=" + id +"&variant_id=" + variant + "&model_id=" + model,function(data) {
-					console.log(data);
-					$('#tenor').empty();
-					$.each(data, function(index, regenciesObj){
-						$('#tenor').append('<option>'+ regenciesObj.tenor +'</option>');
-					})
-					$('#tenor').change();
-				});
-			}
-		});
-
-		$('#tenor').on('change', function(e){
-			console.log(e);
-			var id = e.target.value;
-			var model = $('#model').val();
-			var variant = $('#variant').val();
-			var transmission = $('#transmission').val();
-			var tenor_id = $(this).val();
-			if (tenor_id == '' || tenor_id == null)
-			{
 				$('#fuel').prop('disabled', true);
 			}
 			else {
 				$('#fuel').prop('disabled', false);
-				$.get("{{ url('json-tenor') }}?id=" + id +"&transmission_id=" + transmission + "&variant_id=" + variant + "&model_id=" + model,function(data) {
+				$.get("{{ url('json-transmission') }}?id=" + id +"&variant_id=" + variant + "&model_id=" + model,function(data) {
 					console.log(data);
 					$('#fuel').empty();
 					$.each(data, function(index, regenciesObj){
+						document.getElementById("name").innerHTML = "<b>" + regenciesObj.name + "</b>";
+						document.getElementById("title").innerHTML = regenciesObj.type;
 						$('#fuel').append('<option>'+ regenciesObj.fuel +'</option>');
 					})
 					$('#fuel').change();
 				});
 			}
-		});
+		});		
 
 		$('#fuel').on('change', function(e){
 			console.log(e);
@@ -188,20 +166,36 @@
 			var model = $('#model').val();
 			var variant = $('#variant').val();
 			var transmission = $('#transmission').val();
-			var tenor = $('#tenor').val();
-			$.get("{{ url('json-fuel') }}?id=" + id +"&tenor_id=" + tenor + "&transmission_id=" + transmission + "&variant_id=" + variant + "&model_id=" + model,function(data) {
+			$.get("{{ url('json-fuel') }}?id=" + id +"&transmission_id=" + transmission + "&variant_id=" + variant + "&model_id=" + model,function(data) {
 				console.log(data);
-				$.each(data, function(index, regenciesObj){
-					document.getElementById("name").innerHTML = "<b>" + regenciesObj.name + "</b>";
-					document.getElementById("title").innerHTML = regenciesObj.type;
-					var 	bilangan = regenciesObj.tdp;
-					var	reverse = bilangan.toString().split('').reverse().join(''),
-					ribuan 	= reverse.match(/\d{1,3}/g);
-					ribuan	= ribuan.join('.').split('').reverse().join('');					
-					document.getElementById("tdp").innerHTML = "<b>Rp. " + ribuan + "</b>";
-					document.getElementById("image").src = "https://admin.mobilngetop.com/"+ regenciesObj.picture;
+				$.each(data, function(index, regenciesObj){					
+					$('#tenor').append('<option value="' + regenciesObj.id + '">'+ regenciesObj.tenor +'</option>');					
 				})
+				$('#tenor').change();
 			});
+		});
+
+		$('#tenor').on('change', function(e){
+			console.log(e);
+			var id = e.target.value;
+			var tenor_id = $(this).val();
+			if (tenor_id == '' || tenor_id == null)
+			{
+				
+			}
+			else {
+				$.get("{{ url('json-tenor') }}?id=" + id,function(data) {
+					console.log(data);					
+					$.each(data, function(index, regenciesObj){						
+						var bilangan = regenciesObj.tdp;
+						var	reverse = bilangan.toString().split('').reverse().join(''),
+						ribuan 	= reverse.match(/\d{1,3}/g);
+						ribuan	= ribuan.join('.').split('').reverse().join('');
+						document.getElementById("tdp").innerHTML = "<b>Rp. " + ribuan + "</b>";
+						document.getElementById("image").src = "https://admin.mobilngetop.com/"+ regenciesObj.picture;						
+					})					
+				});
+			}
 		});
 	});
 </script>

@@ -63,7 +63,7 @@
             <div class="row justify-content-center card-deck">
                 <?php $specimens = App\Specimen::orderBy('created_at', 'desc')->limit(5)->get(); ?>
                 @foreach($specimens as $specimen)
-                <?php $cars = App\Car::where('specimen_id', $specimen->id)->orderBy('tdp', 'asc')->limit(1)->get(); ?>
+                <?php $cars = App\Car::where('specimen_id', $specimen->id)->orderBy('created_at', 'desc')->limit(1)->get(); ?>
                 @foreach($cars as $car)
                 <div class="card card-item border-danger" style="background-color: transparent;">
                     <div style="padding: 10px;">

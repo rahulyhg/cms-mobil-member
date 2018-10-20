@@ -10,6 +10,7 @@ use App\Specimen;
 use App\Car;
 use App\User;
 use App\About;
+use App\Price;
 
 class HomeController extends Controller
 {
@@ -234,24 +235,21 @@ class HomeController extends Controller
       return response()->json($regencies);
     }
 
-    public function tenor(Request $request){
-      $id = $request->input('id');
-      $model = $request->input('model_id');
-      $variant = $request->input('variant_id');
-      $transmission = $request->input('transmission_id');
-      $matchThese = ['specimen_id' => $model, 'variant' => $variant, 'transmission' => $transmission, 'tenor' => $id];
-      $regencies = Car::where($matchThese)->get();
-      return response()->json($regencies);
-    }
-
     public function fuel(Request $request){
       $id = $request->input('id');
       $model = $request->input('model_id');
       $variant = $request->input('variant_id');
       $transmission = $request->input('transmission_id');
-      $tenor = $request->input('tenor_id');
-      $matchThese = ['specimen_id' => $model, 'variant' => $variant, 'transmission' => $transmission, 'tenor' => $tenor, 'fuel' => $id];
-      $regencies = Car::where($matchThese)->get();
+      $matchThese = ['specimen_id' => $model, 'variant' => $variant, 'transmission' => $transmission, 'fuel' => $id];
+      $regencie = Car::where($matchThese)->value('id');
+      $regencies = Price::where('car_id', $regencie)->get();
+      return response()->json($regencies);
+    }
+
+    public function tenor(Request $request){
+      $id = $request->input('id');      
+      $matchThese = ['tenor' => $id];
+      $regencies = Price::where('id', $matchThese)->get();
       return response()->json($regencies);
     }
 
