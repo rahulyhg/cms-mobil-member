@@ -67,14 +67,18 @@
                 @foreach($cars as $car)
                 <div class="card card-item border-danger" style="background-color: transparent;">
                     <div style="padding: 10px;">
-                        <img class="card-img-top" src="{{ url('https://admin.mobilngetop.com/'.$car->picture) }}" alt="{{ $car->name }}">
+                        <?php
+                        $image = App\CarImage::where('car_id', $car->id)->orderBy('created_at', 'asc')->first();
+                        $price = App\Price::where('car_id', $car->id)->orderBy('tdp', 'asc')->first();
+                        ?>
+                        <img class="card-img-top" src="{{ url('https://admin.mobilngetop.com/'.$image->picture) }}" alt="{{ $car->name }}">
                     </div>
                     <div style="padding: 10px;">
                         <div class="card-body" style="padding: 0px;flex: 0;">
                             <h5 class="card-title text-center"><b>{{ $car->name }}</b></h5>
                         </div>
                         <div class="card-footer" style="background-color: transparent;border:0px;padding: 0px;">
-                            <h4 class="text-center text-danger"><b>Rp. {{ number_format($car->tdp,0,",",".") }}</b></h4>
+                            <h4 class="text-center text-danger"><b>Rp. {{ number_format($price->tdp,0,",",".") }}</b></h4>
                         </div>
                     </div>
                 </div>
