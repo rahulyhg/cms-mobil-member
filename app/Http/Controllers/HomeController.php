@@ -12,6 +12,7 @@ use App\User;
 use App\About;
 use App\Price;
 use App\CarImage;
+use App\Promo;
 
 class HomeController extends Controller
 {
@@ -128,6 +129,13 @@ class HomeController extends Controller
     {
       $data['abouts'] = About::where('type', '3')->orderBy('created_at', 'asc')->get();
       return view('about_us')->with($data);
+    }
+
+    public function promo()
+    {
+      $data['promos'] = Promo::all();
+      $data['about_promos'] = About::where('type', '4')->orderBy('created_at', 'asc')->get();
+      return view('member.promo')->with($data);
     }
 
     public function p()

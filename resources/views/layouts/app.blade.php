@@ -36,6 +36,9 @@
     @yield('head-content')
     <!-- Fonts -->
     <style type="text/css">
+    .pb-4, .py-4 {
+        padding-bottom: 0rem!important; 
+    }
     @font-face {
         font-family: Gotham-Thin;
         src: url('{{ asset('font/Gotham-Thin.otf') }}') format('truetype');

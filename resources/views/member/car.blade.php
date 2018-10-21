@@ -68,6 +68,24 @@
 		</div>
 	</div>
 </div>
+@auth
+@if(Auth::user()->role_id >= 2)
+<div style="background-color: #ebe9ea;padding: 50px;">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6" style="border-right-style: solid;border-right-width: thin;">
+				<h1>Spesifikasi</h1>
+				<div id="spesifikasi" style="word-break: all;"></div>
+			</div>
+			<div class="col-sm-6" style="border-left-style: solid;border-left-width: thin;">
+				<h1>Engine</h1>
+				<div id="engine" style="word-break: all;"></div>
+			</div>
+		</div>
+	</div>
+</div>
+@endif
+@endauth
 @endsection
 
 @section('foot-content')
@@ -156,6 +174,8 @@
 					$.each(data, function(index, regenciesObj){
 						document.getElementById("name").innerHTML = "<b>" + regenciesObj.name + "</b>";
 						document.getElementById("title").innerHTML = regenciesObj.type;
+						document.getElementById("spesifikasi").innerHTML = '<p><b>' + regenciesObj.specification + '</b></p>';
+						document.getElementById("engine").innerHTML = '<p><b>' + regenciesObj.engine + '</b></p>';
 						$('#fuel').append('<option>'+ regenciesObj.fuel +'</option>');
 					})
 					$('#fuel').change();
@@ -180,6 +200,7 @@
 			var transmission = $('#transmission').val();
 			$.get("{{ url('json-fuel') }}?id=" + id +"&transmission_id=" + transmission + "&variant_id=" + variant + "&model_id=" + model,function(data) {
 				console.log(data);
+				$('#tenor').empty();
 				$.each(data, function(index, regenciesObj){					
 					$('#tenor').append('<option value="' + regenciesObj.id + '">'+ regenciesObj.tenor +'</option>');					
 				})

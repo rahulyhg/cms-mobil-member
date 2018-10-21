@@ -128,7 +128,7 @@
                 <div class="row justify-content-center card-deck">
                     <?php $articles = App\Article::orderBy('updated_at', 'desc')->paginate(3); ?>
                     @foreach($articles as $article)
-                    <div class="card">
+                    <div class="card col-sm-4">
                         <div class="card-body">
                             <img class="card-img-top" src="{{ url('https://admin.mobilngetop.com/'.$article->picture) }}">
                             <div class="card-body">
