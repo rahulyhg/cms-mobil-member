@@ -15,10 +15,6 @@ Route::get('/', function () {
 	return view('home');
 });
 
-Route::get('test', function () {
-	return view('member.advancedCar');
-});
-
 Auth::routes();
 Route::get('register/{token}', 'HomeController@token');
 Route::post('change_password', 'HomeController@chgpwd')->name('chgpwd');
@@ -40,6 +36,7 @@ Route::get('json-src','HomeController@src');
 Route::get('json-first-src','HomeController@firstSrc');
 
 Route::get('pilih-mobil', 'CustomerController@car')->name('car');
+Route::get('pencarian-lanjutan', 'CustomerController@advancedCar')->name('advancedCar');
 Route::get('akun', 'CustomerController@account')->name('account');
 Route::get('artikel', 'CustomerController@article')->name('article');
 Route::get('artikel/{id}', 'CustomerController@showArticle')->name('showArticle');

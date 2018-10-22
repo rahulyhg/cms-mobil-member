@@ -276,7 +276,7 @@ class HomeController extends Controller
       $id = $request->input('id');
       $model = $request->input('model_id');
       $variant = $request->input('variant_id');
-      $matchThese = ['specimen_id' => $model, 'variant' => $variant, 'transmission' => $id];      
+      $matchThese = ['specimen_id' => $model, 'variant' => $variant, 'transmission' => $id];
       $regencie = Car::where($matchThese)->value('id');
       $images = CarImage::where('car_id', $regencie)->orderBy('created_at', 'asc')->first();
       return response()->json($images);

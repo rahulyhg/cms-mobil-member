@@ -8,6 +8,7 @@ use App\Specimen;
 use App\Car;
 use App\User;
 use App\Article;
+use App\Price;
 
 class CustomerController extends Controller
 {
@@ -20,6 +21,36 @@ class CustomerController extends Controller
         // $data['cars'] = Car::where('specimen_id', $model_id)->orderBy('name', 'asc')->get();
         // $car_id = Car::where('specimen_id', $model_id)->orderBy('name', 'asc')->first()->value('id');
         return view('member.car')->with($data);
+    }
+
+    public function advancedCar(Request $request)
+    {        
+        $data['brands'] = Brand::orderBy('name', 'asc')->get();
+        if (isset($request->b)) {
+            $_SESSION['brand'] = $request->b;
+        }
+        if (isset($request->m) && isset($request->pin) && isset($request->pax) && isset($request->ein) && isset($request->eax)) {
+            $prices = Price::where('tdp', '>=', $request->pin)->where('tdp', '<=', $request->pax)->get();
+
+            $ids = array();
+            foreach ($prices as $key => $value) {                
+                $ids[] = $value->car_id;                
+            }
+            $data['cars'] = Car::where('specimen_id', $request->m)->where('engine_power', '>=', $request->ein)->where('engine_power', '<=', $request->eax)->whereIn('id', $ids)->get();
+            $_SESSION['model'] = $request->m;
+            $_SESSION['price_min'] = $request->pin;
+            $_SESSION['price_max'] = $request->pax;
+            $_SESSION['engine_min'] = $request->ein;
+            $_SESSION['engine_max'] = $request->eax;
+        }        
+        else {
+            $data['cars'] = Car::orderBy('created_at', 'desc')->get();
+        }
+        $data['cheap'] = Price::orderBy('tdp', 'asc')->first();
+        $data['rich'] = Price::orderBy('tdp', 'desc')->first();
+        $data['late'] = Car::orderBy('engine_power', 'asc')->first();
+        $data['fast'] = Car::orderBy('engine_power', 'desc')->first();
+        return view('member.advancedCar')->with($data);
     }
 
     public function account()

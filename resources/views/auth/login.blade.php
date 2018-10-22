@@ -14,7 +14,7 @@
                 <div class="form-group">                    
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
-                            <span class="input-group-text" style="color: black;background-color: transparent;border:0px;"><i class="fa fa-envelope fa-fw fa-2x"></i></span>
+                            <span class="input-group-text" style="color: black;background-color: transparent;border:0px;"><i class="fas fa-envelope fa-fw fa-2x"></i></span>
                         </div>
                         <input id="email" type="text" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" placeholder="email" required autofocus>
 
@@ -28,7 +28,7 @@
                 <div class="form-group">                    
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
-                            <span class="input-group-text" style="color: black;background-color: transparent;border:0px;"><i class="fa fa-lock fa-fw fa-2x"></i></span>
+                            <span class="input-group-text" style="color: black;background-color: transparent;border:0px;"><i class="fas fa-lock fa-fw fa-2x"></i></span>
                         </div>
                         <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required placeholder="password">
 

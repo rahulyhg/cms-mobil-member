@@ -7,25 +7,37 @@
 @section('content')
 <div class="container">
 	<div class="row">
-		<div class="col-sm-5">
+		<div class="col-sm-4">
 			<h3 class="text-danger">Filter Pencarian</h3>
-			<form>
+			<form method="GET" action="{{ route('advancedCar') }}">				
 				<div class="form-group row">
-					<label for="variant" class="col-sm-3 col-form-label">Merk</label>
+					<label for="variant" class="col-sm-3 col-form-label text-md-right">Merk</label>
 					<div class="col-sm-6">
-						<select class="form-control" name="variant" id="variant" required>
+						<select class="form-control" name="b" id="brand" required style="width: 100%;">
+							<?php
+							if (isset($_SESSION['brand'])) {
+								$old_brand = $_SESSION['brand'];
+							}
+							else {
+								$old_brand = null;
+							}
+							?>
+							<option disabled selected>Pilih Merk</option>
+							@foreach($brands as $brand)
+							<option value="{{ $brand->id }}" {{ $old_brand == $brand->id ? 'selected' : null }}>{{ $brand->name }}</option>
+							@endforeach
 						</select>
 					</div>
 				</div>
 				<div class="form-group row">
-					<label for="transmission" class="col-sm-3 col-form-label">Model</label>
+					<label for="transmission" class="col-sm-3 col-form-label text-md-right">Model</label>
 					<div class="col-sm-6">
-						<select class="form-control" name="transmission" id="transmission" required>
+						<select class="form-control" name="m" id="model" required>
 						</select>
 					</div>
 				</div>
 				<div class="form-group row">
-					<label class="col-sm-3 col-form-label">Harga</label>
+					<label class="col-sm-3 col-form-label text-md-right">Harga</label>
 					<div class="col-sm-6">
 						<div class="row">
 							<div class="col-sm-6">
@@ -39,50 +51,74 @@
 								</div>
 							</div>
 						</div>			
-						<input type="hidden" id="amount1" readonly style="border:0; color:#f6931f; font-weight:bold;">
-						<input type="hidden" id="amount2" readonly style="border:0; color:#f6931f; font-weight:bold;">
+						<input type="hidden" name="pin" id="amount1" readonly style="border:0; color:#f6931f; font-weight:bold;">
+						<input type="hidden" name="pax" id="amount2" readonly style="border:0; color:#f6931f; font-weight:bold;">
 						<div id="slider-range"></div>
 					</div>
 				</div>
 				<div class="form-group row">
-					<label for="fuel" class="col-sm-3 col-form-label">Kapasitas Mesin</label>
+					<label for="fuel" class="col-sm-3 col-form-label text-md-right">Kapasitas Mesin</label>
 					<div class="col-sm-6">
 						<div class="row">
 							<div class="col-sm-6">
 								<div class="float-left">
-									<small>Rp.<a id="engine1text"></a></small>
+									<small><a id="engine1text"></a>cc</small>
 								</div>
 							</div>
 							<div class="col-sm-6">
 								<div class="float-right">
-									<small>Rp.<a id="engine2text"></a></small>
+									<small><a id="engine2text"></a>cc</small>
 								</div>
 							</div>
 						</div>			
-						<input type="hidden" id="engine1" readonly style="border:0; color:#f6931f; font-weight:bold;">
-						<input type="hidden" id="engine2" readonly style="border:0; color:#f6931f; font-weight:bold;">
+						<input type="hidden" name="ein" id="engine1" readonly style="border:0; color:#f6931f; font-weight:bold;">
+						<input type="hidden" name="eax" id="engine2" readonly style="border:0; color:#f6931f; font-weight:bold;">
 						<div id="slider-range2"></div>
 					</div>
-				</div>				
+				</div>
+				<div class="form-group">
+					<div class="col-sm-10">
+						<button type="submit" class="btn btn-danger btn-lg btn-block">Cari</button>
+					</div>
+				</div>
 			</form>
 		</div>
-		<div class="col-sm-7">
-			<div class="row justify-content-center card-deck">				
-				<div class="card card-default col-sm-4">
-					<div class="card-body">
-						wew
+		<div class="col-sm-8">			
+			<div class="row">
+				@foreach($cars as $car)
+				<div class="col-sm-6">
+					<div class="card card-item border-danger" style="background-color: transparent;">
+						<div style="padding: 10px;">
+							<?php
+							$image = App\CarImage::where('car_id', $car->id)->orderBy('created_at', 'asc')->first();
+							$price = App\Price::where('car_id', $car->id)->orderBy('tdp', 'asc')->first();
+							?>
+							<img class="card-img-top" src="{{ url('https://admin.mobilngetop.com/'.$image->picture) }}" alt="{{ $car->name }}">
+						</div>
+						<div style="padding: 10px;">
+							<div class="card-body" style="padding: 0px;flex: 0;">
+								<h6 class="card-title text-center"><b>{{ $car->name }}</b></h6>
+								<div class="card-text">
+									<div class="row justify-content-center">
+										<div class="col-sm-4 text-center">
+											<small>{{ $car->seat }} Kursi</small>
+										</div>
+										<div class="col-sm-4 text-center">
+											<small>{{ $car->engine_power }}cc</small>
+										</div>
+										<div class="col-sm-4 text-center">
+											<small>{{ $car->power }}hp</small>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="card-footer text-center" style="background-color: transparent;border:0px;padding: 0px;">
+								<a class="text-danger"><b>Rp. {{ number_format($price->tdp,0,",",".") }}</b></a>
+							</div>
+						</div>
 					</div>
 				</div>
-				<div class="card card-default col-sm-4">
-					<div class="card-body">
-						wewwew
-					</div>
-				</div>
-				<div class="card card-default col-sm-4">
-					<div class="card-body">
-						wewwewwew
-					</div>
-				</div>
+				@endforeach
 			</div>
 		</div>
 	</div>
@@ -91,11 +127,31 @@
 
 @section('foot-content')
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<?php 
-$cheap = App\Car::orderBy('tdp', 'asc')->first();
-$rich = App\Car::orderBy('tdp', 'desc')->first();
-$late = App\Car::orderBy('tdp', 'asc')->first();
-$fast = App\Car::orderBy('tdp', 'desc')->first();
+<?php
+if (isset($_SESSION['price_min'])) {
+	$cheaps = $_SESSION['price_min'];
+}
+else {
+	$cheaps = $cheap->tdp;
+}
+if (isset($_SESSION['price_max'])) {
+	$richs = $_SESSION['price_max'];
+}
+else {
+	$richs = $rich->tdp;
+}
+if (isset($_SESSION['engine_min'])) {
+	$lates = $_SESSION['engine_min'];
+}
+else {
+	$lates = $late->engine_power;
+}
+if (isset($_SESSION['engine_max'])) {
+	$fasts = $_SESSION['engine_max'];
+}
+else {
+	$fasts = $fast->engine_power;
+}
 ?>
 <script>
 	$( function() {
@@ -103,7 +159,7 @@ $fast = App\Car::orderBy('tdp', 'desc')->first();
 			range: true,
 			min: {{ $cheap->tdp }},
 			max: {{ $rich->tdp }},
-			values: [ {{ $cheap->tdp }}, {{ $rich->tdp }} ],
+			values: [ {{ $cheaps }}, {{ $richs }} ],
 			slide: function( event, ui ) {
 				$( "#amount1" ).val( ui.values[ 0 ] );
 				$( "#amount2" ).val( ui.values[ 1 ] );
@@ -121,9 +177,9 @@ $fast = App\Car::orderBy('tdp', 'desc')->first();
 	$( function() {
 		$( "#slider-range2" ).slider({
 			range: true,
-			min: {{ $cheap->tdp }},
-			max: {{ $rich->tdp }},
-			values: [ {{ $cheap->tdp }}, {{ $rich->tdp }} ],
+			min: {{ $late->engine_power }},
+			max: {{ $fast->engine_power }},
+			values: [ {{ $lates }}, {{ $fasts }} ],
 			slide: function( event, ui ) {
 				$( "#engine1" ).val( ui.values[ 0 ] );
 				$( "#engine2" ).val( ui.values[ 1 ] );
@@ -131,10 +187,10 @@ $fast = App\Car::orderBy('tdp', 'desc')->first();
 				$( "#engine2text" ).text( ui.values[ 1 ] );
 			}
 		});
-		$( "#engine1" ).val( $( "#slider-range" ).slider( "values", 0 ) );
-		$( "#engine2" ).val( $( "#slider-range" ).slider( "values", 1 ) );
-		$( "#engine1text" ).text( $( "#slider-range" ).slider( "values", 0 ) );
-		$( "#engine2text" ).text( $( "#slider-range" ).slider( "values", 1 ) );
+		$( "#engine1" ).val( $( "#slider-range2" ).slider( "values", 0 ) );
+		$( "#engine2" ).val( $( "#slider-range2" ).slider( "values", 1 ) );
+		$( "#engine1text" ).text( $( "#slider-range2" ).slider( "values", 0 ) );
+		$( "#engine2text" ).text( $( "#slider-range2" ).slider( "values", 1 ) );
 	} );
 </script>
 <script type="text/javascript">	
@@ -151,11 +207,16 @@ $fast = App\Car::orderBy('tdp', 'desc')->first();
 				$('#model').prop('disabled', false);
 				$.get("{{ url('json-regencies') }}?id=" + id,function(data) {
 					console.log(data);
-					$('#model').empty();
+					$('#model').empty();					
 					$.each(data, function(index, regenciesObj){
 						$('#model').append('<option value="'+ regenciesObj.id +'">'+ regenciesObj.name +'</option>');
 						$('#model').change();
 					})
+					<?php
+					if (isset($_SESSION['model'])) {
+						echo 'document.getElementById("model").value = "'.$_SESSION['model'].'"';
+					}
+					?>					
 				});
 			}
 		});
@@ -180,97 +241,6 @@ $fast = App\Car::orderBy('tdp', 'desc')->first();
 					$('#variant').change();
 				});
 			}
-		});
-
-		$('#variant').on('change', function(e){
-			console.log(e);
-			var id = e.target.value;			
-			var model = $('#model').val();
-			var variant_id = $(this).val();
-			if (variant_id == '' || variant_id == null)
-			{
-				$('#transmission').prop('disabled', true);
-			}
-			else {
-				$('#transmission').prop('disabled', false);
-				$.get("{{ url('json-variant') }}?id=" + id +"&model_id=" + model,function(data) {
-					console.log(data);
-					$('#transmission').empty();
-					$.each(data, function(index, regenciesObj){
-						$('#transmission').append('<option>'+ regenciesObj.transmission +'</option>');
-						$('#transmission').change();
-					})
-				});
-			}
-		});
-
-		$('#transmission').on('change', function(e){
-			console.log(e);
-			var id = e.target.value;
-			var model = $('#model').val();
-			var variant = $('#variant').val();
-			var transmission_id = $(this).val();
-			if (transmission_id == '' || transmission_id == null)
-			{
-				$('#tenor').prop('disabled', true);
-			}
-			else {
-				$('#tenor').prop('disabled', false);
-				$.get("{{ url('json-transmission') }}?id=" + id +"&variant_id=" + variant + "&model_id=" + model,function(data) {
-					console.log(data);
-					$('#tenor').empty();
-					$.each(data, function(index, regenciesObj){
-						$('#tenor').append('<option>'+ regenciesObj.tenor +'</option>');
-					})
-					$('#tenor').change();
-				});
-			}
-		});
-
-		$('#tenor').on('change', function(e){
-			console.log(e);
-			var id = e.target.value;
-			var model = $('#model').val();
-			var variant = $('#variant').val();
-			var transmission = $('#transmission').val();
-			var tenor_id = $(this).val();
-			if (tenor_id == '' || tenor_id == null)
-			{
-				$('#fuel').prop('disabled', true);
-			}
-			else {
-				$('#fuel').prop('disabled', false);
-				$.get("{{ url('json-tenor') }}?id=" + id +"&transmission_id=" + transmission + "&variant_id=" + variant + "&model_id=" + model,function(data) {
-					console.log(data);
-					$('#fuel').empty();
-					$.each(data, function(index, regenciesObj){
-						$('#fuel').append('<option>'+ regenciesObj.fuel +'</option>');
-					})
-					$('#fuel').change();
-				});
-			}
-		});
-
-		$('#fuel').on('change', function(e){
-			console.log(e);
-			var id = e.target.value;
-			var model = $('#model').val();
-			var variant = $('#variant').val();
-			var transmission = $('#transmission').val();
-			var tenor = $('#tenor').val();
-			$.get("{{ url('json-fuel') }}?id=" + id +"&tenor_id=" + tenor + "&transmission_id=" + transmission + "&variant_id=" + variant + "&model_id=" + model,function(data) {
-				console.log(data);
-				$.each(data, function(index, regenciesObj){
-					document.getElementById("name").innerHTML = "<b>" + regenciesObj.name + "</b>";
-					document.getElementById("title").innerHTML = regenciesObj.type;
-					var 	bilangan = regenciesObj.tdp;
-					var	reverse = bilangan.toString().split('').reverse().join(''),
-					ribuan 	= reverse.match(/\d{1,3}/g);
-					ribuan	= ribuan.join('.').split('').reverse().join('');					
-					document.getElementById("tdp").innerHTML = "<b>Rp. " + ribuan + "</b>";
-					document.getElementById("image").src = "https://admin.mobilngetop.com/"+ regenciesObj.picture;
-				})
-			});
 		});
 
 		$('#ex6').on('change', function(e){			
