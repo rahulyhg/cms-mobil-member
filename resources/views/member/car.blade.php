@@ -172,10 +172,12 @@
 					console.log(data);					
 					$('#fuel').empty();
 					$.each(data, function(index, regenciesObj){
-						document.getElementById("name").innerHTML = "<b>" + regenciesObj.name + "</b>";
+						document.getElementById("name").innerHTML = "<b>" + regenciesObj.name + "</b>";						
 						document.getElementById("title").innerHTML = regenciesObj.type;
+						<?php if(auth()->guard()->check()): ?>
 						document.getElementById("spesifikasi").innerHTML = '<p><b>' + regenciesObj.specification + '</b></p>';
 						document.getElementById("engine").innerHTML = '<p><b>' + regenciesObj.engine + '</b></p>';
+						<?php endif; ?>
 						$('#fuel').append('<option>'+ regenciesObj.fuel +'</option>');
 					})
 					$('#fuel').change();
