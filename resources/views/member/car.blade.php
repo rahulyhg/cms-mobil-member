@@ -186,7 +186,8 @@
 					$('#image').attr('src', 'https://admin.mobilngetop.com/' + data.picture);		
 				});
 				$.get("{{ url('json-image') }}?id=" + id +"&variant_id=" + variant + "&model_id=" + model,function(data) {
-					console.log(data);										
+					console.log(data);
+					$('#color').empty();
 					$.each(data, function(index, regenciesObj){						
 						$('#color').append('<button onClick="color(' + regenciesObj.id + ')" class="btn btn-sm" id="btn-color" style="padding:10px;border-radius: 100%;background-color: ' + regenciesObj.color + ';"></button>');
 					})					
