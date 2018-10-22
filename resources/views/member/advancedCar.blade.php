@@ -91,7 +91,13 @@
 						<div style="padding: 10px;">
 							<?php
 							$image = App\CarImage::where('car_id', $car->id)->orderBy('created_at', 'asc')->first();
-							$price = App\Price::where('car_id', $car->id)->orderBy('tdp', 'asc')->first();
+							if (isset($_SESSION['price_min']) && isset($_SESSION['price_max']))
+							{
+								$price = App\Price::where('car_id', $car->id)->where('tdp', '>=', $_SESSION['price_min'])->where('tdp', '<=', $_SESSION['price_max'])->orderBy('tdp', 'asc')->first();
+							}
+							else {
+								$price = App\Price::where('car_id', $car->id)->orderBy('tdp', 'asc')->first();
+							}							
 							?>
 							<img class="card-img-top" src="{{ url('https://admin.mobilngetop.com/'.$image->picture) }}" alt="{{ $car->name }}">
 						</div>
