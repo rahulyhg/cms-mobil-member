@@ -207,7 +207,8 @@ else {
 				$('#model').prop('disabled', false);
 				$.get("{{ url('json-regencies') }}?id=" + id,function(data) {
 					console.log(data);
-					$('#model').empty();					
+					$('#model').empty();
+					$('#model').append('<option disabled selected>Pilih Model</option>');
 					$.each(data, function(index, regenciesObj){
 						$('#model').append('<option value="'+ regenciesObj.id +'">'+ regenciesObj.name +'</option>');
 						$('#model').change();
@@ -220,28 +221,7 @@ else {
 				});
 			}
 		});
-		$('#brand').change();
-
-		$('#model').on('change', function(e){
-			console.log(e);
-			var id = e.target.value;
-			var model_id = $(this).val();
-			if (model_id == '' || model_id == null)
-			{
-				$('#variant').prop('disabled', true);
-			}
-			else {
-				$('#variant').prop('disabled', false);
-				$.get("{{ url('json-model') }}?id=" + id,function(data) {
-					console.log(data);
-					$('#variant').empty();					
-					$.each(data, function(index, regenciesObj){
-						$('#variant').append('<option value="'+ regenciesObj.variant +'">'+ regenciesObj.variant +'</option>');
-					})
-					$('#variant').change();
-				});
-			}
-		});
+		$('#brand').change();		
 
 		$('#ex6').on('change', function(e){			
 			var id = e.target.value;			
