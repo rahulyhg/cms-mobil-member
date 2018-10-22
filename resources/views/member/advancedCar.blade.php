@@ -207,8 +207,7 @@ else {
 				$('#model').prop('disabled', false);
 				$.get("{{ url('json-regencies') }}?id=" + id,function(data) {
 					console.log(data);
-					$('#model').empty();
-					$('#model').append('<option disabled selected>Pilih Model</option>');
+					$('#model').empty();					
 					$.each(data, function(index, regenciesObj){
 						$('#model').append('<option value="'+ regenciesObj.id +'">'+ regenciesObj.name +'</option>');
 						$('#model').change();
