@@ -3,12 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Auth;
 use App\Brand;
 use App\Specimen;
 use App\Car;
 use App\User;
 use App\Article;
 use App\Price;
+use App\CarImage;
+use App\Checkout;
 
 class CustomerController extends Controller
 {
@@ -29,15 +32,21 @@ class CustomerController extends Controller
         if (isset($request->b)) {
             $_SESSION['brand'] = $request->b;
         }
-        if (isset($request->m) && isset($request->pin) && isset($request->pax) && isset($request->ein) && isset($request->eax)) {
+        if (isset($request->pin) || isset($request->pax) || isset($request->ein) || isset($request->eax)) {
             $prices = Price::where('tdp', '>=', $request->pin)->where('tdp', '<=', $request->pax)->get();
 
             $ids = array();
             foreach ($prices as $key => $value) {                
                 $ids[] = $value->car_id;                
             }
-            $data['cars'] = Car::where('specimen_id', $request->m)->where('engine_power', '>=', $request->ein)->where('engine_power', '<=', $request->eax)->whereIn('id', $ids)->get();
-            $_SESSION['model'] = $request->m;
+            if (isset($request->m)) {
+                $data['cars'] = Car::where('specimen_id', $request->m)->where('engine_power', '>=', $request->ein)->where('engine_power', '<=', $request->eax)->whereIn('id', $ids)->get();
+                $_SESSION['model'] = $request->m;
+            }
+            else {
+                $data['cars'] = Car::where('engine_power', '>=', $request->ein)->where('engine_power', '<=', $request->eax)->whereIn('id', $ids)->get();
+            }
+
             $_SESSION['price_min'] = $request->pin;
             $_SESSION['price_max'] = $request->pax;
             $_SESSION['engine_min'] = $request->ein;
@@ -51,6 +60,56 @@ class CustomerController extends Controller
         $data['late'] = Car::orderBy('engine_power', 'asc')->first();
         $data['fast'] = Car::orderBy('engine_power', 'desc')->first();
         return view('member.advancedCar')->with($data);
+    }
+
+    public function checkout(Request $request)
+    {
+        if($request->session()->has('image') && $request->session()->has('title') && $request->session()->has('id') && $request->session()->has('price') && $request->session()->has('tenor')){
+            $data['image'] = $request->session()->get('image');
+            $data['title'] = $request->session()->get('title');
+            $data['id'] = $request->session()->get('id');
+            $data['price'] = $request->session()->get('price');
+            $data['tenor'] = $request->session()->get('tenor');
+            return view('member.checkout')->with($data);
+        }
+
+        return back();
+    }
+
+    public function storeCheckout(Request $request)
+    {
+        $price = Price::find($request->tenor);
+        $car = Car::find($request->id);
+        $image = CarImage::where('car_id', $car->id)->first();
+        
+        $request->session()->put('image', $image->picture);
+        $request->session()->put('title', $car->type);
+        $request->session()->put('id', $car->id);
+        $request->session()->put('price', $price->tdp);
+        $request->session()->put('tenor', $price->tenor);
+        $request->session()->save();        
+
+        return redirect('checkout');
+    }
+
+    public function buy(Request $request)
+    {
+        $car = Car::find($request->id);
+        $table = new Checkout;
+        $table->user_id = Auth::user()->id;        
+        $table->unit = $car->name;
+        $table->type = $car->type;
+        $table->tenor = $request->tenor;
+        $table->tdp = $request->tdp;
+        $table->nama = $request->nama;
+        $table->email = $request->email;
+        $table->no_hp = $request->hp;
+        $table->no_ktp = $request->ktp;
+        $table->kota = $request->kota;
+        $table->voucher = Auth::user()->voucher_code;
+        $table->save();
+
+        return 'success';
     }
 
     public function account()

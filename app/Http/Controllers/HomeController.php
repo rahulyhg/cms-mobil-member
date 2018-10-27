@@ -36,6 +36,11 @@ class HomeController extends Controller
       return view('home');
     }
 
+    public function home()
+    {
+      return redirect('/');
+    }
+
     public function generateNumber() {
       $number = rand(1001,9999);
       if ($this->numberExists($number)) {

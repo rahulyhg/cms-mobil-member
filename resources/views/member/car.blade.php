@@ -6,7 +6,8 @@
 		<div class="col-sm-5">
 			<h3 id="name"></h3>
 			<h4 id="title"></h4>
-			<form>
+			<form method="POST" action="{{ route('storeCheckout') }}">
+				@csrf
 				<div class="form-group row">
 					<label for="variant" class="col-sm-3 col-form-label">Variant</label>
 					<div class="col-sm-6">
@@ -40,6 +41,7 @@
 					<h1 id="tdp"></h1>
 				</div>
 				<div class="form-group row justify-content-center">
+					<input type="hidden" name="id" id="id">
 					<button type="submit" class="btn btn-danger" style="border-radius: 0px;">pesan sekarang</button>
 				</div>
 			</form>
@@ -174,6 +176,7 @@
 					$.each(data, function(index, regenciesObj){
 						document.getElementById("name").innerHTML = "<b>" + regenciesObj.name + "</b>";						
 						document.getElementById("title").innerHTML = regenciesObj.type;
+						document.getElementById("id").value = regenciesObj.id;
 						<?php if(auth()->guard()->check()): ?>
 						document.getElementById("spesifikasi").innerHTML = '<p><b>' + regenciesObj.specification + '</b></p>';
 						document.getElementById("engine").innerHTML = '<p><b>' + regenciesObj.engine + '</b></p>';
