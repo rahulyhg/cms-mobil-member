@@ -75,8 +75,9 @@ class HomeController extends Controller
       $str = str_random(8);
       $table->password = Hash::make($str);
       $table->phone_number = $request->input('phone_number');
-      $table->voucher_code = $request->input('voucher_code');      
-      $table->phone_verification_code = $this->generateNumber();
+      $table->voucher_code = $request->input('voucher_code');
+      $vc = $this->generateNumber();
+      $table->phone_verification_code = $vc;
       $table->email_verification_token = $this->generateToken();
       $tkn = $table->email_verification_token;
       $table->save();
@@ -92,7 +93,57 @@ class HomeController extends Controller
         $message->from('no-reply@mobilngetop.com','Admin Mobil Ngetop');
       });
 
-      return view('verifikasi');
+      $apikey      = 'b1a958010bbdcf934345e441c04a966a';
+      $ipserver    = 'http://45.32.118.255';
+      $callbackurl = '';
+
+      $senddata = array(
+        'apikey' => $apikey,  
+        'callbackurl' => $callbackurl, 
+        'datapacket'=>array()
+      );
+
+      $number1=$request->input('phone_number');
+      $message1='Mobilngetop - '.$vc.' adalah kode verifikasi keamanan. PENTING: Demi keamanan akun Anda, mohon tidak menyebarkan kode ini kepada siapa pun.';
+      $sendingdatetime1 =""; 
+      array_push($senddata['datapacket'],array(
+        'number' => trim($number1),
+        'message' => urlencode(stripslashes(utf8_encode($message1))),
+        'sendingdatetime' => $sendingdatetime1));
+
+      $dt=json_encode($sendata);
+      $curlHandle = curl_init($ipserver."/sms/api_sms_reguler_send_json.php");
+      curl_setopt($curlHandle, CURLOPT_CUSTOMREQUEST, "POST");
+      curl_setopt($curlHandle, CURLOPT_POSTFIELDS, $dt);
+      curl_setopt($curlHandle, CURLOPT_RETURNTRANSFER, true);
+      curl_setopt($curlHandle, CURLOPT_HTTPHEADER, array('Content-Type: application/json','Content-Length: ' . strlen($dt)));
+      curl_setopt($curlHandle, CURLOPT_TIMEOUT, 5);
+      curl_setopt($curlHandle, CURLOPT_CONNECTTIMEOUT, 5);
+      $hasil = curl_exec($curlHandle);
+      $curl_errno = curl_errno($curlHandle);
+      $curl_error = curl_error($curlHandle);  
+      $http_code  = curl_getinfo($curlHandle, CURLINFO_HTTP_CODE);
+      curl_close($curlHandle);
+      if ($curl_errno > 0) {
+        $senddata = array(
+          'sending_respon'=>array(
+            'globalstatus' => 90, 
+            'globalstatustext' => $curl_errno."|".$http_code)
+        );
+        $hasil=json_encode($senddata);
+      } else {
+        if ($http_code<>"200") {
+          $senddata = array(
+            'sending_respon'=>array(
+              'globalstatus' => 90, 
+              'globalstatustext' => $curl_errno."|".$http_code)
+          );
+          $hasil= json_encode($senddata); 
+        } 
+      }
+      return $hasil;
+
+      // return view('verifikasi');
     }
 
     public function token($token)

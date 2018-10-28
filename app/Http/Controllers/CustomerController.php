@@ -72,8 +72,8 @@ class CustomerController extends Controller
             $data['tenor'] = $request->session()->get('tenor');
             return view('member.checkout')->with($data);
         }
-
-        return back();
+        
+        return redirect('/');
     }
 
     public function storeCheckout(Request $request)
@@ -108,6 +108,12 @@ class CustomerController extends Controller
         $table->kota = $request->kota;
         $table->voucher = Auth::user()->voucher_code;
         $table->save();
+
+        $request->session()->forget('key');
+        $request->session()->forget('title');
+        $request->session()->forget('id');
+        $request->session()->forget('price');
+        $request->session()->forget('tenor');
 
         return 'success';
     }
