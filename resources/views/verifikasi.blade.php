@@ -10,7 +10,8 @@
     <div class="row justify-content-center">
         <img src="{{ asset('inset/verifikasi.png') }}" class="img-fluid">
     </div>
-    <form method="POST">
+    <form method="POST" action="{{ route('cek-token') }}">
+        @csrf
         <div class="row justify-content-center">
             <div class="col-sm-2">                
                 <input class="form-control text-center" min="1001" max="9999" type="number" name="verification_code" required>

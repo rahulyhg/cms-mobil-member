@@ -15,12 +15,17 @@ Route::get('/', function () {
 	return view('home');
 });
 
+Route::get('test', function () {
+	return view('verifikasi');
+});
+
 Auth::routes();
 Route::get('register/{token}', 'HomeController@token');
 Route::post('change_password', 'HomeController@chgpwd')->name('chgpwd');
 
 Route::get('/home', 'HomeController@home')->name('home');
 Route::post('verifikasi', 'HomeController@form_data')->name('form-data');
+Route::post('cek_token', 'HomeController@cek_token')->name('cek-token');
 
 Route::get('pilih-mobil', 'CustomerController@car')->name('car');
 Route::get('pencarian-lanjutan', 'CustomerController@advancedCar')->name('advancedCar');

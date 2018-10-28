@@ -77,6 +77,8 @@ class HomeController extends Controller
       $table->phone_number = $request->input('phone_number');
       $table->voucher_code = $request->input('voucher_code');
       $vc = $this->generateNumber();
+      $request->session()->put('code', $vc);
+      $request->session()->save();
       $table->phone_verification_code = $vc;
       $table->email_verification_token = $this->generateToken();
       $tkn = $table->email_verification_token;
@@ -141,9 +143,22 @@ class HomeController extends Controller
           $hasil= json_encode($senddata); 
         } 
       }
-      return $hasil;
+      // return $hasil;
 
-      // return view('verifikasi');
+      return view('verifikasi');
+    }
+
+    public function cek_token(Request $request)
+    {
+      $code = $request->session()->get('code');
+      if ($request->verification_code == $code) {
+        $user = User::where('phone_verification_code', $code)->get();
+        $role = $user->role_id;
+        $upgrade = $role + 1;
+        $user->role_id = $upgrade;
+        return 'success';
+      }
+      return back();
     }
 
     public function token($token)

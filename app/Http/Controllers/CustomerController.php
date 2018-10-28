@@ -87,7 +87,7 @@ class CustomerController extends Controller
         $request->session()->put('id', $car->id);
         $request->session()->put('price', $price->tdp);
         $request->session()->put('tenor', $price->tenor);
-        $request->session()->save();        
+        $request->session()->save();
 
         return redirect('checkout');
     }
