@@ -103,8 +103,10 @@ class HomeController extends Controller
         'datapacket'=>array()
       );
 
+      $message="Mobilngetop - ".$vc." adalah kode verifikasi keamanan. PENTING: Demi keamanan akun Anda, mohon tidak menyebarkan kode ini kepada siapa pun.";
+
       $number1=$request->input('phone_number');
-      $message1='Mobilngetop - '.$vc.' adalah kode verifikasi keamanan. PENTING: Demi keamanan akun Anda, mohon tidak menyebarkan kode ini kepada siapa pun.';
+      $message1=$message;
       $sendingdatetime1 =""; 
       array_push($senddata['datapacket'],array(
         'number' => trim($number1),
