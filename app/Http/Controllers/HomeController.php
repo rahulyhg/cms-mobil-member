@@ -111,7 +111,7 @@ class HomeController extends Controller
         'message' => urlencode(stripslashes(utf8_encode($message1))),
         'sendingdatetime' => $sendingdatetime1));
 
-      $dt=json_encode($sendata);
+      $dt=json_encode($senddata);
       $curlHandle = curl_init($ipserver."/sms/api_sms_reguler_send_json.php");
       curl_setopt($curlHandle, CURLOPT_CUSTOMREQUEST, "POST");
       curl_setopt($curlHandle, CURLOPT_POSTFIELDS, $dt);
