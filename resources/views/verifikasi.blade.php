@@ -16,8 +16,13 @@
             <div class="col-sm-2">                
                 <input class="form-control text-center" min="1001" max="9999" type="number" name="verification_code" required>
             </div>
-        </div>
+        </div>        
         <div class="row justify-content-center">
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary" style="border-radius: 0px;">konfirmasi</button>
+            </div>
+        </div>
+        <!-- <div class="row justify-content-center">
             <div class="form-group">
                 <small class="text-danger">1 dari 3 sms</small>
             </div>
@@ -26,7 +31,7 @@
             <div class="form-group">
                 <button class="btn btn-primary" style="border-radius: 0px;">kirim ulang</button>
             </div>
-        </div>
+        </div> -->
     </form>
     <div class="row justify-content-center">
         <div class="col-sm-4">
