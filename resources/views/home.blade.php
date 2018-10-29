@@ -31,36 +31,38 @@
         </div>
     </div>
 </div>
-<div class="row justify-content-center half-c d-none d-sm-none d-md-block d-lg-block d-xl-block" id="half">
-    <div class="col-md-6 nav-item-menu" style="-webkit-box-shadow:0 2px 4px rgba(0,0,0,.04);box-shadow:0 2px 4px rgba(0,0,0,.04);">
-        <form>
-            @csrf
-            <div class="row" style="padding: 10px;">
-                <div class="col-md-4">
-                    <select class="form-control" name="brand" id="brand" style="width: 100%;" required>
-                        <option disabled selected> Pilih Merk </option>
-                        <?php $brands = App\Brand::orderBy('name', 'asc')->get(); ?>
-                        @foreach($brands as $brand)
-                        <option value="{{ $brand->id }}">{{ $brand->name }}</option>
-                        @endforeach
-                    </select>
+<div class="d-none d-sm-none d-md-block d-lg-block d-xl-block" id="half">
+    <div class="row justify-content-center half-c">
+        <div class="col-md-6 nav-item-menu" style="-webkit-box-shadow:0 2px 4px rgba(0,0,0,.04);box-shadow:0 2px 4px rgba(0,0,0,.04);">
+            <form>
+                @csrf
+                <div class="row" style="padding: 10px;">
+                    <div class="col-md-4">
+                        <select class="form-control" name="brand" id="brand" style="width: 100%;" required>
+                            <option disabled selected> Pilih Merk </option>
+                            <?php $brands = App\Brand::orderBy('name', 'asc')->get(); ?>
+                            @foreach($brands as $brand)
+                            <option value="{{ $brand->id }}">{{ $brand->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <select class="form-control" name="model" id="model" style="width: 100%;" required>
+                            <option disabled selected> Pilih Model </option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        @auth
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Cari</button>
+                        @endauth
+                        @guest
+                        <button type="button" class="btn btn-primary d-none d-sm-none d-md-block d-lg-block d-xl-block" data-toggle="modal" data-target=".bd-example-modal-lg" style="cursor: pointer;color: white;width: 100%;">Cari</button>
+                        <button type="button" class="btn btn-primary d-sm-block d-md-none d-lg-none d-xl-none" data-toggle="modal" data-target=".bd-example-modal-lg-hp" style="cursor: pointer;color: white;width: 100%;">Cari</button>
+                        @endguest
+                    </div>
                 </div>
-                <div class="col-md-4">
-                    <select class="form-control" name="model" id="model" style="width: 100%;" required>
-                        <option disabled selected> Pilih Model </option>
-                    </select>
-                </div>
-                <div class="col-md-4">
-                    @auth
-                    <button type="submit" class="btn btn-primary" style="width: 100%;">Cari</button>
-                    @endauth
-                    @guest
-                    <button type="button" class="btn btn-primary d-none d-sm-none d-md-block d-lg-block d-xl-block" data-toggle="modal" data-target=".bd-example-modal-lg" style="cursor: pointer;color: white;width: 100%;">Cari</button>
-                    <button type="button" class="btn btn-primary d-sm-block d-md-none d-lg-none d-xl-none" data-toggle="modal" data-target=".bd-example-modal-lg-hp" style="cursor: pointer;color: white;width: 100%;">Cari</button>
-                    @endguest
-                </div>
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
 </div>
 <div class="row justify-content-center half-c d-block d-sm-block d-md-none d-lg-none d-xl-none">
