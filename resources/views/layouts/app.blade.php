@@ -28,7 +28,9 @@
     $title = App\SearchEngineOptimization::find(1);
     $segment = Request::segment(1);
     $slug = ucwords(str_replace('-', ' ', $segment));
-    if ($slug !== "" || $slug !== null) {
+    if ($slug == "" || $slug == null) {        
+    }
+    else {
         $slug.=" - ";
     }
     ?>
