@@ -3,6 +3,7 @@
 @section('content')
 <div class="container">
 	<h1>Berita Otomotif</h1>
+	@if(count($first)>0)
 	<div class="row">
 		<div class="col-sm-8">			
 			<img src="{{ url('https://admin.mobilngetop.com/'.$first->picture) }}" class="img-fluid" style="width: 100%;">
@@ -48,5 +49,6 @@
 			</div>
 		</div>
 	</div>
+	@endif
 </div>
 @endsection
