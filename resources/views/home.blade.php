@@ -170,10 +170,9 @@
 <script type="text/javascript">
     $(document).ready(function(){
 
-        var width = document.getElementById('half').offsetHeight;
-        var css = width / 2;
-        console.log(width);
-        console.log(css);
+        var height = document.getElementById('half').offsetHeight;
+        var css = height / 2;
+        document.getElementById('half').style.marginTop = "-" + css + "px";        
 
         $('#brand').on('click', function(e){
             console.log(e);
