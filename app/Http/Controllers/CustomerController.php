@@ -125,8 +125,11 @@ class CustomerController extends Controller
 
     public function article()
     {
-        $first = Article::orderBy('created_at', 'desc')->first()->value('id');
-        $data['first'] = Article::find($first);
+        $count = Article::count();
+        if ($count>0) {
+            $first = Article::orderBy('created_at', 'desc')->first()->value('id');
+            $data['first'] = Article::find($first);
+        }
         $data['articles'] = Article::where('id', '!=', $first)->orderby('created_at', 'desc')->paginate(3);
         return view('member.article')->with($data);
     }
