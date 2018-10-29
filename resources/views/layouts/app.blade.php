@@ -24,8 +24,11 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <?php $title = App\SearchEngineOptimization::find(1); ?>
-    <title>{{ $title->content, config('app.name') }}</title>
+    <?php
+    $title = App\SearchEngineOptimization::find(1);
+    $slug = Request::segment(1);
+    ?>
+    <title>{{ $slug, null }} - {{ $title->content, config('app.name') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>    
