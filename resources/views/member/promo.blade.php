@@ -1,7 +1,5 @@
 @extends('layouts.app')
 
-@section('description', 'Promo')
-
 @section('content')
 <div class="container">
 	<div class="row justify-content-center" style="padding: 10px;">
