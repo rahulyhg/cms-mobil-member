@@ -170,9 +170,10 @@
 <script type="text/javascript">
     $(document).ready(function(){
 
-        var width = document.getElementById('half').offsetWidth;
+        var width = document.getElementById('half').offsetHeight;
         var css = width / 2;
-        console.log(css);        
+        console.log(width);
+        console.log(css);
 
         $('#brand').on('click', function(e){
             console.log(e);
