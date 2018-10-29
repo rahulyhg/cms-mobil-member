@@ -31,7 +31,7 @@
         </div>
     </div>
 </div>
-<div class="row justify-content-center half-c d-sm-none d-md-block d-lg-block d-xl-block" id="half">
+<div class="row justify-content-center half-c d-none d-sm-none d-md-block d-lg-block d-xl-block" id="half">
     <div class="col-md-6 nav-item-menu" style="-webkit-box-shadow:0 2px 4px rgba(0,0,0,.04);box-shadow:0 2px 4px rgba(0,0,0,.04);">
         <form>
             @csrf
@@ -63,7 +63,7 @@
         </form>
     </div>
 </div>
-<div class="row justify-content-center half-c d-sm-block d-md-none d-lg-none d-xl-none">
+<div class="row justify-content-center half-c d-none d-sm-block d-md-none d-lg-none d-xl-none">
     <div class="col-md-6 nav-item-menu" style="-webkit-box-shadow:0 2px 4px rgba(0,0,0,.04);box-shadow:0 2px 4px rgba(0,0,0,.04);">
         <form>
             @csrf
