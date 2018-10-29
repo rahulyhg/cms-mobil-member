@@ -26,7 +26,8 @@
 
     <?php
     $title = App\SearchEngineOptimization::find(1);
-    $slug = Request::segment(1);
+    $segment = Request::segment(1);
+    $slug = ucwords(str_replace('-', ' ', $segment)); 
     ?>
     <title>{{ $slug, null }} - {{ $title->content, config('app.name') }}</title>
 
