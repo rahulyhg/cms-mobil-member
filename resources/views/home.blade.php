@@ -5,11 +5,11 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('slick/slick-theme.css') }}"/>
 <style type="text/css">
 .half-c {
-    background-image: linear-gradient(bottom, #FFFFFF 50%, #ebe9ea 50%);
-    background-image: -o-linear-gradient(bottom, #FFFFFF 50%, #ebe9ea 50%);
-    background-image: -moz-linear-gradient(bottom, #FFFFFF 50%, #ebe9ea 50%);
-    background-image: -webkit-linear-gradient(bottom, #FFFFFF 50%, #ebe9ea 50%);
-    background-image: -ms-linear-gradient(bottom, #FFFFFF 50%, #ebe9ea 50%);
+    background-image: linear-gradient(bottom, #ebe9ea 50%, #FFFFFF 50%);
+    background-image: -o-linear-gradient(bottom, #ebe9ea 50%, #FFFFFF 50%);
+    background-image: -moz-linear-gradient(bottom, #ebe9ea 50%, #FFFFFF 50%);
+    background-image: -webkit-linear-gradient(bottom, #ebe9ea 50%, #FFFFFF 50%);
+    background-image: -ms-linear-gradient(bottom, #ebe9ea 50%, #FFFFFF 50%);
 }
 </style>
 @endsection
