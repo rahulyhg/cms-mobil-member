@@ -90,7 +90,7 @@
                             @endguest                    
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link d-md-none d-lg-none d-xl-none" style="cursor: pointer;">Promo</a>
+                            <a href="{{ route('promo') }}" class="nav-link d-md-none d-lg-none d-xl-none" style="cursor: pointer;">Promo</a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('article') }}" class="nav-link d-md-none d-lg-none d-xl-none" style="cursor: pointer;">Artikel</a>
@@ -108,7 +108,7 @@
                                 @endguest
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link nav-item-menu" style="cursor: pointer;color: white;padding-left: 50px;padding-right: 50px;">Promo</a>
+                                <a href="{{ route('promo') }}" class="nav-link nav-item-menu" style="cursor: pointer;color: white;padding-left: 50px;padding-right: 50px;">Promo</a>
                             </li>
                             <li class="nav-item">
                                 <a href="{{ route('article') }}" class="nav-link nav-item-menu" style="cursor: pointer;color: white;padding-left: 50px;padding-right: 50px;">Artikel</a>
