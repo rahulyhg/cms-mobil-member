@@ -31,7 +31,7 @@
         </div>
     </div>
 </div>
-<div class="row justify-content-center half-c">
+<div class="row justify-content-center half-c" id="half">
     <div class="col-md-6 nav-item-menu" style="-webkit-box-shadow:0 2px 4px rgba(0,0,0,.04);box-shadow:0 2px 4px rgba(0,0,0,.04);">
         <form>
             @csrf
@@ -170,7 +170,7 @@
 <script type="text/javascript">
     $(document).ready(function(){
 
-        var width = document.getElementById('menu').offsetWidth;
+        var width = document.getElementById('half').offsetWidth;
         var css = width / 2;
         console.log(css);        
 
