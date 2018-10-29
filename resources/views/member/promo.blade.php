@@ -9,7 +9,9 @@
 				<div class="card card-item border-info" style="background-color: transparent;">
 					<div style="padding: 10px;">
 						<div class="card-body" style="padding: 0px;flex: 0;">
-							<img src="{{ url('https://admin.mobilngetop.com/'.$promo->picture) }}" class="img-fluid">
+							<center>
+								<img src="{{ url('https://admin.mobilngetop.com/'.$promo->picture) }}" class="img-fluid">
+							</center>
 						</div>
 					</div>
 				</div>
