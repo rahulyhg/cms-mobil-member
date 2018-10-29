@@ -4,26 +4,6 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <?php $keyword = App\SearchEngineOptimization::find(2); ?>
-
-    <!-- Meta SEO -->    
-    <meta name="description" content="Mobil Ngetop">
-    <meta name="keywords" content="{{ $keyword->content }}">
-    <!-- Twitter meta-->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:site" content="@mobilngetop">
-    <meta property="twitter:creator" content="@mobilngetop">
-    <!-- Open Graph Meta-->
-    <meta property="og:type" content="website">
-    <meta property="og:site_name" content="{{ config('app.name', 'Laravel') }}">
-    <meta property="og:title" content="Mobil Ngetop">
-    <meta property="og:url" content="https://pratikborsadiya.in/blog/vali-admin">
-    <meta property="og:image" content="http://pratikborsadiya.in/blog/vali-admin/hero-social.png">
-    <meta property="og:description" content="Vali is a responsive and free admin theme built with Bootstrap 4, SASS and PUG.js. It's fully customizable and modular.">
-
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-
     <?php
     $title = App\SearchEngineOptimization::find(1);
     $segment = Request::segment(1);
@@ -32,8 +12,31 @@
     }
     else {
         $slug.=" - ";
-    }
+    }    
+    $keyword = App\SearchEngineOptimization::find(2);
+    $description = App\SearchEngineOptimization::find(3);
     ?>
+
+    <!-- Meta SEO -->    
+    <meta name="description" content="{{ $description->content }}">
+    <meta name="keywords" content="{{ $keyword->content }}">
+
+    <!-- Twitter meta-->
+    <!-- <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:site" content="@mobilngetop">
+    <meta property="twitter:creator" content="@mobilngetop"> -->
+
+    <!-- Open Graph Meta-->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="{{ $title->content, config('app.name') }}">
+    <meta property="og:title" content="{{ $slug, null }}{{ $title->content, config('app.name') }}">
+    <meta property="og:url" content="{{ Request::url() }}">
+    <meta property="og:image" content="{{ asset('inset/logo.png') }}">
+    <meta property="og:description" content="{{ $description->content }}">
+
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    
     <title>{{ $slug, null }}{{ $title->content, config('app.name') }}</title>
 
     <!-- Scripts -->
