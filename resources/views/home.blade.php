@@ -63,7 +63,7 @@
         </form>
     </div>
 </div>
-<div class="row justify-content-center half-c d-block d-sm-block d-md-none d-lg-none d-xl-block">
+<div class="row justify-content-center half-c d-block d-sm-block d-md-none d-lg-none d-xl-none">
     <div class="col-md-6 nav-item-menu" style="-webkit-box-shadow:0 2px 4px rgba(0,0,0,.04);box-shadow:0 2px 4px rgba(0,0,0,.04);">
         <form>
             @csrf
