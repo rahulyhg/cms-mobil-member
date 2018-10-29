@@ -27,9 +27,9 @@
     <?php
     $title = App\SearchEngineOptimization::find(1);
     $segment = Request::segment(1);
-    $slug = ucwords(str_replace('-', ' ', $segment)); 
+    $slug = ucwords(str_replace('-', ' ', $segment))." - ";
     ?>
-    <title>{{ $slug, null }} - {{ $title->content, config('app.name') }}</title>
+    <title>{{ $slug, null }}{{ $title->content, config('app.name') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>    
@@ -87,7 +87,7 @@
                             <a href="{{ route('car') }}" class="nav-link d-md-none d-lg-none d-xl-none" style="cursor: pointer;">Mobil</a>
                             @endauth
                             @guest
-                            <a href="{{ route('car') }}" class="nav-link d-md-none d-lg-none d-xl-none" data-toggle="modal" data-target=".bd-example-modal-lg-hp" style="cursor: pointer;">Mobil</a>
+                            <a class="nav-link d-md-none d-lg-none d-xl-none" data-toggle="modal" data-target=".bd-example-modal-lg-hp" style="cursor: pointer;">Mobil</a>
                             @endguest                    
                         </li>
                         <li class="nav-item">
@@ -105,7 +105,7 @@
                                 <a href="{{ route('car') }}" class="nav-link nav-item-menu" style="cursor: pointer;color: white;padding-left: 50px;padding-right: 50px;">Mobil</a>
                                 @endauth
                                 @guest
-                                <a href="{{ route('car') }}" class="nav-link nav-item-menu" data-toggle="modal" data-target=".bd-example-modal-lg" style="cursor: pointer;color: white;padding-left: 50px;padding-right: 50px;">Mobil</a>                      
+                                <a class="nav-link nav-item-menu" data-toggle="modal" data-target=".bd-example-modal-lg" style="cursor: pointer;color: white;padding-left: 50px;padding-right: 50px;">Mobil</a>                      
                                 @endguest
                             </li>
                             <li class="nav-item">
