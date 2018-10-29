@@ -18,13 +18,8 @@
     ?>
 
     <!-- Meta SEO -->    
-    <meta name="description" content="{{ $description->content }}">
+    <meta name="description" content="@yield('description', $description->content)">
     <meta name="keywords" content="{{ $keyword->content }}">
-
-    <!-- Twitter meta-->
-    <!-- <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:site" content="@mobilngetop">
-    <meta property="twitter:creator" content="@mobilngetop"> -->
 
     <!-- Open Graph Meta-->
     <meta property="og:type" content="website">
