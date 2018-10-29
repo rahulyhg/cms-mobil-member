@@ -46,6 +46,9 @@
     .pb-4, .py-4 {
         padding-bottom: 0rem!important; 
     }
+    div.row {
+        padding-bottom: 10px!important;
+    }
     @font-face {
         font-family: Gotham-Thin;
         src: url('{{ asset('font/Gotham-Thin.otf') }}') format('truetype');
