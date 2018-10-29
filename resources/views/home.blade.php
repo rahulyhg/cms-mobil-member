@@ -5,11 +5,11 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('slick/slick-theme.css') }}"/>
 <style type="text/css">
 .half-c {
-    background-image: linear-gradient(bottom, #FFD51A 50%, #FAC815 50%);
-    background-image: -o-linear-gradient(bottom, #FFD51A 50%, #FAC815 50%);
-    background-image: -moz-linear-gradient(bottom, #FFD51A 50%, #FAC815 50%);
-    background-image: -webkit-linear-gradient(bottom, #FFD51A 50%, #FAC815 50%);
-    background-image: -ms-linear-gradient(bottom, #FFD51A 50%, #FAC815 50%);
+    background-image: linear-gradient(bottom, #FFFFFF 50%, #ebe9ea 50%);
+    background-image: -o-linear-gradient(bottom, #FFFFFF 50%, #ebe9ea 50%);
+    background-image: -moz-linear-gradient(bottom, #FFFFFF 50%, #ebe9ea 50%);
+    background-image: -webkit-linear-gradient(bottom, #FFFFFF 50%, #ebe9ea 50%);
+    background-image: -ms-linear-gradient(bottom, #FFFFFF 50%, #ebe9ea 50%);
 }
 </style>
 @endsection
@@ -31,11 +31,11 @@
         </div>
     </div>
 </div>
-<div class="row justify-content-center">
+<div class="row justify-content-center half-c">
     <div class="col-md-6 nav-item-menu" style="-webkit-box-shadow:0 2px 4px rgba(0,0,0,.04);box-shadow:0 2px 4px rgba(0,0,0,.04);">
         <form>
             @csrf
-            <div class="row half-c" style="padding: 10px;">
+            <div class="row" style="padding: 10px;">
                 <div class="col-md-4">
                     <select class="form-control" name="brand" id="brand" style="width: 100%;" required>
                         <option disabled selected> Pilih Merk </option>
