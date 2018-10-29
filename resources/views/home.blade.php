@@ -4,7 +4,7 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('slick/slick.css') }}"/>
 <link rel="stylesheet" type="text/css" href="{{ asset('slick/slick-theme.css') }}"/>
 <style type="text/css">
-.half-c {    
+.half-c {
     background-image: linear-gradient(bottom, #ebe9ea 50%, #FFFFFF 50%);
     background-image: -o-linear-gradient(bottom, #ebe9ea 50%, #FFFFFF 50%);
     background-image: -moz-linear-gradient(bottom, #ebe9ea 50%, #FFFFFF 50%);
@@ -169,6 +169,11 @@
 <script type="text/javascript" src="{{ asset('slick/slick.min.js') }}"></script>
 <script type="text/javascript">
     $(document).ready(function(){
+
+        var width = document.getElementById('menu').offsetWidth;
+        var css = width / 2;
+        console.log(css);        
+
         $('#brand').on('click', function(e){
             console.log(e);
             var id = e.target.value;
