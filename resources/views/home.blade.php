@@ -4,30 +4,18 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('slick/slick.css') }}"/>
 <link rel="stylesheet" type="text/css" href="{{ asset('slick/slick-theme.css') }}"/>
 <style type="text/css">
-.full {
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
-    max-width: initial;
-    position: relative;
-}
-.half-c {
-    position:absolute;
-    left: 50%;
-    top: 20px;
-    margin-left: -100px;// half-width of logo
-    z-index: 20;
-    /*background-image: linear-gradient(bottom, #ebe9ea 50%, #FFFFFF 50%);
+.half-c {    
+    background-image: linear-gradient(bottom, #ebe9ea 50%, #FFFFFF 50%);
     background-image: -o-linear-gradient(bottom, #ebe9ea 50%, #FFFFFF 50%);
     background-image: -moz-linear-gradient(bottom, #ebe9ea 50%, #FFFFFF 50%);
     background-image: -webkit-linear-gradient(bottom, #ebe9ea 50%, #FFFFFF 50%);
-    background-image: -ms-linear-gradient(bottom, #ebe9ea 50%, #FFFFFF 50%);*/
+    background-image: -ms-linear-gradient(bottom, #ebe9ea 50%, #FFFFFF 50%);
 }
 </style>
 @endsection
 
 @section('slider')
-<div class="row justify-content-center full">
+<div class="row justify-content-center">
     <div class="col-md-12">
         <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
@@ -75,7 +63,7 @@
         </form>
     </div>
 </div>
-<div class="row justify-content-center full">
+<div class="row justify-content-center">
     <div class="col-md-12" style="background-color: #ebe9ea;padding: 50px;">
         <div class="form-group">
             <center><h1>Mobil Pilihan</h1></center>
