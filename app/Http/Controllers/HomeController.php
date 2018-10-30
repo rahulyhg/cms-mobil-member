@@ -153,7 +153,7 @@ class HomeController extends Controller
       $code = $request->session()->get('code');
       if ($request->verification_code == $code) {
         $user = User::where('phone_verification_code', $code)->get();
-        dd($user);
+        dd($user->role_id);
         $role = $user->role_id;
         $upgrade = $role + 1;
         $user->role_id = $upgrade;
