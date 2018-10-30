@@ -260,22 +260,22 @@
             </div>
         </div>
         <?php
-        $facebook = App\Social::find(1)->value('link');
-        $twitter = App\Social::find(2)->value('link');
-        $instagram = App\Social::find(3)->value('link');
-        $youtube = App\Social::find(4)->value('link');
+        $facebook = App\Social::find(1);
+        $twitter = App\Social::find(2);
+        $instagram = App\Social::find(3);
+        $youtube = App\Social::find(4);
         ?>
         <div class="row justify-content-center">
-            <a class="col-xs-3" href="{{ url($facebook) }}" target="_blank" style="padding: 10px;">
+            <a class="col-xs-3" href="{{ url($facebook->link) }}" target="_blank" style="padding: 10px;">
                 <img src="{{ asset('inset/facebook.png') }}" class="img-fluid" style="max-width: 50px;">
             </a>
-            <a class="col-xs-3" href="{{ url($twitter) }}" target="_blank" style="padding: 10px;">
+            <a class="col-xs-3" href="{{ url($twitter->link) }}" target="_blank" style="padding: 10px;">
                 <img src="{{ asset('inset/twitter.png') }}" class="img-fluid" style="max-width: 50px;">
             </a>
-            <a class="col-xs-3" href="{{ url($instagram) }}" target="_blank" style="padding: 10px;">
+            <a class="col-xs-3" href="{{ url($instagram->link) }}" target="_blank" style="padding: 10px;">
                 <img src="{{ asset('inset/instagram.png') }}" class="img-fluid" style="max-width: 50px;">
             </a>
-            <a class="col-xs-3" href="{{ url($youtube) }}" target="_blank" style="padding: 10px;">
+            <a class="col-xs-3" href="{{ url($youtube->link) }}" target="_blank" style="padding: 10px;">
                 <img src="{{ asset('inset/youtube.png') }}" class="img-fluid" style="max-width: 50px;">
             </a>
         </div><br>
