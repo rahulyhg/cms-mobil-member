@@ -152,13 +152,14 @@ class HomeController extends Controller
     {
       $code = $request->session()->get('code');
       if ($request->verification_code == $code) {
-        $role = User::where('phone_verification_code', $code)->value('role_id');
-        dd($role);
+        $id = User::where('phone_verification_code', $code)->value('id');
+        $user = User::find($id);
+        $role = $user->role_id;
         $upgrade = $role + 1;
         $user->role_id = $upgrade;
         return 'success';
       }
-      return back();
+      return 'oops something get wrong here';
     }
 
     public function token($token)
