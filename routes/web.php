@@ -31,7 +31,7 @@ Route::get('pilih-mobil', 'CustomerController@car')->name('car');
 Route::get('pencarian-lanjutan', 'CustomerController@advancedCar')->name('advancedCar');
 Route::get('checkout', 'CustomerController@checkout')->name('checkout');
 Route::post('checkout', 'CustomerController@storeCheckout')->name('storeCheckout');
-Route::post('buy', 'CustomerController@buy')->name('buy');
+Route::post('buy', 'CustomerController@buy')->name('buy')->middleware('member');
 Route::get('akun', 'CustomerController@account')->name('account');
 Route::get('artikel', 'CustomerController@article')->name('article');
 Route::get('artikel/{id}', 'CustomerController@showArticle')->name('showArticle');
