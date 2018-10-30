@@ -178,8 +178,8 @@
 						document.getElementById("title").innerHTML = regenciesObj.type;
 						document.getElementById("id").value = regenciesObj.id;
 						<?php if(auth()->guard()->check()): ?>
-						document.getElementById("spesifikasi").innerHTML = '<p><b>' + regenciesObj.specification + '</b></p>';
-						document.getElementById("engine").innerHTML = '<p><b>' + regenciesObj.engine + '</b></p>';
+						document.getElementById("spesifikasi").innerHTML = '<pre><p><b>' + regenciesObj.specification + '</b></p></pre>';
+						document.getElementById("engine").innerHTML = '<pre><p><b>' + regenciesObj.engine + '</b></p></pre>';
 						<?php endif; ?>
 						$('#fuel').append('<option>'+ regenciesObj.fuel +'</option>');
 					})
