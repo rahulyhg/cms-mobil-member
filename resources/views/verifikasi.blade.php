@@ -10,11 +10,12 @@
     <div class="row justify-content-center">
         <img src="{{ asset('inset/verifikasi.png') }}" class="img-fluid">
     </div>
-    <form method="POST" action="{{ route('cek-token') }}">
+    <form method="POST" action="{{ route('cek-token') }}" onsubmit="return validateForm()" name="verif">
         @csrf
         <div class="row justify-content-center">
             <div class="col-sm-2">                
-                <input class="form-control text-center" min="1001" max="9999" type="number" name="verification_code" required>
+                <input class="form-control text-center" min="1001" max="9999" type="number" name="verification_code" oninput="return reverse()" required>
+                <small id="salah" class="text-danger" style="display: none;">Kode verifikasi salah</small>
             </div>
         </div>        
         <div class="row justify-content-center">
@@ -41,4 +42,20 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('foot-content')
+<script type="text/javascript">
+    function reverse() {
+        document.getElementById('salah').style.display = "none";   
+    }
+    function validateForm()
+    {
+        var x = document.forms["verif"]["verification_code"].value;
+        var y = {{ $code }};
+        if (x != y) {
+            document.getElementById('salah').style.display = "block";
+        }
+    }    
+</script>
 @endsection

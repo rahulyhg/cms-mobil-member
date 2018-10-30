@@ -143,9 +143,9 @@ class HomeController extends Controller
           $hasil= json_encode($senddata); 
         } 
       }
-      return $hasil;
-
-      // return view('verifikasi');
+      // return $hasil;
+      $data['code'] = $vc;
+      return view('verifikasi')->with($data);
     }
 
     public function cek_token(Request $request)
