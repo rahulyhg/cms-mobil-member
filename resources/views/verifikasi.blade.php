@@ -15,7 +15,9 @@
         <div class="row justify-content-center">
             <div class="col-sm-2">                
                 <input id="verif" class="form-control text-center" min="1001" max="9999" type="number" name="verification_code" oninput="return reverse()" required>
-                <small id="salah" class="text-danger" style="display: none;">Kode verifikasi salah</small>
+                <div class="form-group">
+                    <center><small id="salah" class="text-danger" style="display: none;">Kode verifikasi salah</small></center>
+                </div>
             </div>
         </div>        
         <div class="row justify-content-center">
