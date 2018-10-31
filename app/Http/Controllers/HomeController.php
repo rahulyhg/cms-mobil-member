@@ -155,12 +155,19 @@ class HomeController extends Controller
         $id = User::where('phone_verification_code', $code)->value('id');
         $user = User::find($id);
         $role = $user->role_id;
-        $upgrade = $role + 1;
-        dd($user);
+        if ($role == "0") {
+          $upgrade = "1";
+        }
+        elseif ($role == "1") {
+          $upgrade = "2";
+        }
+        else {
+          return 'oops something get wrong here [1101]';
+        }
         $user->role_id = $upgrade;
         return redirect('login');
       }
-      return 'oops something get wrong here';
+      return 'oops something get wrong here [1201]';
     }
 
     public function token($token)
