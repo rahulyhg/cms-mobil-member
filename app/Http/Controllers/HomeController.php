@@ -155,11 +155,11 @@ class HomeController extends Controller
         $id = User::where('phone_verification_code', $code)->value('id');
         $user = User::find($id);
         $role = $user->role_id;
-        if ($role == "0") {
-          $upgrade = "1";
+        if ($role == 0) {
+          $upgrade = 1;
         }
-        elseif ($role == "1") {
-          $upgrade = "2";
+        elseif ($role == 1) {
+          $upgrade = 2;
         }
         else {
           return 'oops something get wrong here [1101]';
