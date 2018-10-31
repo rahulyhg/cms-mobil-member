@@ -55,3 +55,5 @@ Route::post('p', 'HomeController@pn')->name('p');
 
 Route::post( '/get/states', 'HomeController@states' )->name( 'loadStates' );
 Route::post( '/get/cities', 'HomeController@cities' )->name( 'loadCities' );
+
+Route::get('logout', 'Auth\LoginController@logout');

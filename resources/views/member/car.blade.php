@@ -178,8 +178,10 @@
 						document.getElementById("title").innerHTML = regenciesObj.type;
 						document.getElementById("id").value = regenciesObj.id;
 						<?php if(auth()->guard()->check()): ?>
+						<?php if(Auth::user()->role_id >= 2): ?>						
 						document.getElementById("spesifikasi").innerHTML = '<pre><p><b>' + regenciesObj.specification + '</b></p></pre>';
 						document.getElementById("engine").innerHTML = '<pre><p><b>' + regenciesObj.engine + '</b></p></pre>';
+						<?php endif; ?>
 						<?php endif; ?>
 						$('#fuel').append('<option>'+ regenciesObj.fuel +'</option>');
 					})
