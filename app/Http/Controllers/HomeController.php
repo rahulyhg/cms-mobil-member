@@ -156,7 +156,7 @@ class HomeController extends Controller
         $user = User::find($id);
         $role = $user->role_id;
         $upgrade = $role + 1;
-        dd($upgrade);
+        dd($user);
         $user->role_id = $upgrade;
         return redirect('login');
       }
