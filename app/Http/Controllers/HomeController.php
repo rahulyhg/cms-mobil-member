@@ -157,6 +157,7 @@ class HomeController extends Controller
         $role = $user->role_id;
         $upgrade = $role + 1;        
         $user->role_id = $upgrade;
+        $user->save();
         return redirect('login');
       }
       return 'oops something get wrong here';
