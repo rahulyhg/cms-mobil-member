@@ -53,6 +53,7 @@
 
         if (x != y) {
             document.getElementById('salah').style.display = "block";
+            return false;
         }
     });
     function reverse() {
