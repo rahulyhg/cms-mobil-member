@@ -77,11 +77,11 @@
 		<div class="row">
 			<div class="col-sm-6" style="border-right-style: solid;border-right-width: thin;">
 				<h1>Spesifikasi</h1>
-				<div id="spesifikasi" style="word-break: all;"></div>
+				<div id="spesifikasi" style="word-break: all;white-space: pre-line"></div>
 			</div>
 			<div class="col-sm-6" style="border-left-style: solid;border-left-width: thin;">
 				<h1>Engine</h1>
-				<div id="engine" style="word-break: all;"></div>
+				<div id="engine" style="word-break: all;white-space: pre-line"></div>
 			</div>
 		</div>
 	</div>
@@ -179,8 +179,8 @@
 						document.getElementById("id").value = regenciesObj.id;
 						<?php if(auth()->guard()->check()): ?>
 						<?php if(Auth::user()->role_id >= 2): ?>						
-						document.getElementById("spesifikasi").innerHTML = '<pre><p><b>' + regenciesObj.specification + '</b></p></pre>';
-						document.getElementById("engine").innerHTML = '<pre><p><b>' + regenciesObj.engine + '</b></p></pre>';
+						document.getElementById("spesifikasi").innerHTML = '<p><b>' + regenciesObj.specification + '</b></p>';
+						document.getElementById("engine").innerHTML = '<p><b>' + regenciesObj.engine + '</b></p>';
 						<?php endif; ?>
 						<?php endif; ?>
 						$('#fuel').append('<option>'+ regenciesObj.fuel +'</option>');

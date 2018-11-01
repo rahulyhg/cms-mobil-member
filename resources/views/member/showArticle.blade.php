@@ -19,7 +19,7 @@
 				</div>
 			</div>
 			<b>
-				<p style="word-break: all;">{!! $first->content !!}</p>
+				<p style="word-break: all;white-space: pre-line">{{ $first->content }}</p>
 				<!-- <p>({{ $first->user->name }})</p> -->
 			</b>
 		</div>

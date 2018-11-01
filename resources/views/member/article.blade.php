@@ -14,9 +14,9 @@
 			<!-- <small style="color: #006db8;">ditulis oleh {{ $first->user->name }} pukul {{ date("H:i", strtotime($first->created_at)) }}</small> -->
 			</div>
 			@if(strlen($first->content)<=400)
-			<p style="word-break: all;"><b>{{ $first->content }}</b></p>
+			<p style="word-break: all;white-space: pre-line"><b>{{ $first->content }}</b></p>
 			@else
-			<p style="word-break: all;"><b>{{ substr($first->content, 0, 400) }}...</b></p>			
+			<p style="word-break: all;white-space: pre-line"><b>{{ substr($first->content, 0, 400) }}...</b></p>			
 			@endif			
 			<a href="{{ route('showArticle', $first->id) }}" class="btn btn-danger" style="border-radius: 0px;">Baca Selengkapnya</a>
 		</div>
