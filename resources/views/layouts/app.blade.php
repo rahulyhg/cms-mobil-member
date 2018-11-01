@@ -32,7 +32,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     
-    <title>{{ $slug, null }}{{ $title->content, config('app.name') }}</title>
+    <title>@yield('title'){{ $slug, null }}{{ $title->content, config('app.name') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>    
