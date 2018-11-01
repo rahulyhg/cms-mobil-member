@@ -4,6 +4,8 @@
 
 @section('description', $first->content)
 
+@section('image', 'https://admin.mobilngetop.com/'.$first->picture)
+
 @section('content')
 <div class="container">	
 	<div class="row">

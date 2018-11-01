@@ -24,10 +24,10 @@
     <!-- Open Graph Meta-->
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="{{ $title->content, config('app.name') }}">
-    <meta property="og:title" content="{{ $slug, null }}{{ $title->content, config('app.name') }}">
+    <meta property="og:title" content="@yield('title'){{ $slug, null }}{{ $title->content, config('app.name') }}">
     <meta property="og:url" content="{{ Request::url() }}">
-    <meta property="og:image" content="{{ asset('inset/logo.png') }}">
-    <meta property="og:description" content="{{ $description->content }}">
+    <meta property="og:image" content="@yield('image', asset('inset/logo.png'))">
+    <meta property="og:description" content="@yield('description', $description->content)">
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
