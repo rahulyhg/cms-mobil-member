@@ -11,7 +11,7 @@
 				<h2><a href="{{ route('showArticle', $first->id) }}" style="color: black;text-decoration: none;">{{ $first->title }}</a></h2>
 			</div>
 			<div style="padding-top: 10px;padding-bottom: 20px;">
-			<small style="color: #006db8;">ditulis oleh {{ $first->user->name }} pukul {{ date("H:i", strtotime($first->created_at)) }}</small>
+			<!-- <small style="color: #006db8;">ditulis oleh {{ $first->user->name }} pukul {{ date("H:i", strtotime($first->created_at)) }}</small> -->
 			</div>
 			@if(strlen($first->content)<=400)
 			<p style="word-break: all;"><b>{{ $first->content }}</b></p>

@@ -4,10 +4,9 @@
 <div class="container">
 	<div class="row justify-content-center" style="padding: 10px;">
 		<div class="col-sm-12" style="padding-bottom: 10px;">
-			<div class="row justify-content-center">
-				@foreach($promos as $promo)
-				<div class="col-sm-4">
-					<div class="card card-item border-info" style="background-color: transparent;">
+			<div class="row justify-content-center card-columns">
+					@foreach($promos as $promo)					
+					<div class="card card-item border-info col-sm-4" style="background-color: transparent;">
 						<div style="padding: 10px;">
 							<div class="card-body" style="padding: 0px;flex: 0;">
 								<center>
@@ -15,9 +14,8 @@
 								</center>
 							</div>
 						</div>
-					</div>
-				</div>
-				@endforeach
+					</div>					
+					@endforeach				
 			</div>
 		</div>
 		<div class="col-sm-12" style="padding-bottom: 10px;">

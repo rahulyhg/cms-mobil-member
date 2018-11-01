@@ -115,7 +115,7 @@ class CustomerController extends Controller
         $request->session()->forget('price');
         $request->session()->forget('tenor');
 
-        return 'success';
+        return view('member.finish');
     }
 
     public function account()
